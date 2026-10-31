@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCIPS | Sandwell Community Information &amp; Participation Service</title>
+<meta name="description" content="SCIPS is a community-led charity giving free support, information, training and advocacy to tenants, residents and community groups across Sandwell.">
+<!-- Concept build: remove the noindex line below when this goes live on scips.org.uk -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14201b">
+<link rel="preload" as="image" href="assets/img/hero-hands.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NGO","name":"Sandwell Community Information and Participation Service (SCIPS)","url":"https://www.scips.org.uk","telephone":"+441215441230","email":"enquiries@scips.org.uk","address":{"@type":"PostalAddress","streetAddress":"2nd Floor, National Metalforming Centre, 37-47 Birmingham Road","addressLocality":"West Bromwich","addressRegion":"West Midlands","postalCode":"B70 6PY","addressCountry":"GB"},"openingHours":"Mo-Fr 09:30-17:30","areaServed":"Sandwell"}
+</script>
+<style>
+:root{
+  --orange:#e0832a;--orange-deep:#b9621a;--orange-soft:#fcebd8;--orange-glow:rgba(224,131,42,.35);
+  --ink:#14201b;--ink-2:#2c3a34;--muted:#5d6b65;
+  --cream:#f8f3ea;--paper:#fffdf9;--line:#e3d9c8;--line-dark:rgba(255,255,255,.14);
+  --green:#2f6b4f;
+  --radius:22px;--frame:clamp(.6rem,1.4vw,1rem);
+  --shadow:0 1px 2px rgba(20,32,27,.05),0 12px 40px rgba(20,32,27,.09);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:calc(100% * var(--scale,1));scrollbar-color:var(--orange) var(--cream);scrollbar-width:thin}
+/* matching scrollbar */
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--cream);border-left:1px solid var(--line)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--orange),var(--orange-deep));border-radius:999px;border:3px solid var(--cream)}
+::-webkit-scrollbar-thumb:hover{background:var(--orange-deep)}
+::selection{background:var(--orange);color:#fff}
+body{overflow-x:clip;font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.04;letter-spacing:-.025em}
+h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700}
+.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.wrap{width:min(1240px,100% - 2.5rem);margin-inline:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--line);background:var(--paper);padding:.4rem .85rem .4rem .6rem;border-radius:999px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px var(--orange-soft);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px transparent}}
+.lead{font-size:1.15rem;color:var(--ink-2);max-width:58ch}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.8rem 1rem;z-index:200}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--orange),#ffb766);z-index:120}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-size:1rem;font-family:inherit;overflow:hidden;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s;isolation:isolate}
+.btn svg{transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 24px var(--orange-glow)}
+.btn-primary::before{content:"";position:absolute;inset:0;background:var(--orange-deep);transform:translateY(101%);transition:transform .35s var(--ease);z-index:-1;border-radius:inherit}
+.btn-primary:hover::before{transform:none}
+.btn-glass{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff;backdrop-filter:blur(8px)}
+.btn-glass:hover{background:#fff;color:var(--ink)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:var(--orange);color:#fff}
+
+/* top bar */
+.topbar{background:var(--ink);color:#d9e2dd;font-size:.86rem;border-bottom:1px solid var(--line-dark)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem 0;flex-wrap:wrap}
+.topbar a{color:#fff;text-decoration:none;font-weight:600}
+.topbar a:hover{color:#ffb766}
+.topbar .info{display:flex;gap:0;flex-wrap:wrap}
+.topbar .info>*{padding:0 1rem;border-left:1px solid var(--line-dark)}
+.topbar .info>*:first-child{padding-left:0;border-left:0}
+.open-now{display:inline-flex;align-items:center;gap:.45rem}
+.open-now i{width:7px;height:7px;border-radius:50%;background:#7bd389}
+.open-now.closed i{background:#e8a06a}
+.textsize{display:flex;align-items:center;gap:.35rem}
+.textsize button{background:transparent;border:1px solid var(--line-dark);color:#fff;border-radius:8px;padding:.15rem .55rem;cursor:pointer;font-family:inherit;font-weight:700;transition:.2s}
+.textsize button:hover{border-color:#fff}
+.textsize button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange)}
+
+/* header: bordered floating bar */
+header.site{position:sticky;top:0;z-index:100;padding:.75rem 0;transition:padding .3s var(--ease)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:rgba(255,253,249,.88);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1.5px solid var(--line);border-radius:20px;padding:.6rem .6rem .6rem 1rem;box-shadow:0 4px 20px rgba(20,32,27,.04);transition:box-shadow .3s,border-color .3s}
+header.site.scrolled{padding:.45rem 0}
+header.site.scrolled .bar{box-shadow:var(--shadow);border-color:#d6c9b3}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand-mark{width:44px;height:44px;border-radius:13px;background:var(--orange);display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.brand-mark svg{width:26px;height:26px}
+.brand-text strong{display:block;font-family:"Bricolage Grotesque";font-size:1.3rem;line-height:1;font-weight:800}
+.brand-text span{font-size:.72rem;color:var(--muted);line-height:1.2;display:block;max-width:24ch}
+nav.main ul{display:flex;gap:.2rem;list-style:none;align-items:center;border:1px solid var(--line);border-radius:14px;padding:.25rem;background:var(--cream)}
+nav.main a{display:block;text-decoration:none;font-weight:600;color:var(--ink-2);padding:.5rem .85rem;border-radius:10px;font-size:.95rem;transition:background .2s,color .2s}
+nav.main a:hover{background:var(--paper)}
+nav.main a.active{background:var(--ink);color:#fff}
+.menu-btn{display:none;background:var(--ink);border:0;border-radius:12px;width:46px;height:46px;cursor:pointer;position:relative;z-index:2}
+.menu-btn span{display:block;width:20px;height:2px;background:#fff;margin:4px auto;transition:transform .3s var(--ease),opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* HERO slideshow */
+.hero{padding:0 var(--frame) var(--frame)}
+.hero-frame{position:relative;min-height:min(88vh,820px);border-radius:32px;overflow:hidden;border:1.5px solid var(--ink);background:var(--ink);color:#fff;display:flex;align-items:flex-end}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 7.5s linear}
+.slide.on{opacity:1}
+.slide.on img{transform:scale(1)}
+.hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,32,27,.35) 0%,rgba(20,32,27,.1) 35%,rgba(20,32,27,.85) 100%),linear-gradient(90deg,rgba(20,32,27,.7) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;width:100%;padding:clamp(1.5rem,5vw,4rem);display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end}
+.hero .eyebrow{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(2.8rem,8vw,6.4rem);font-weight:800;margin:1.1rem 0 1.2rem;line-height:.95}
+.hero h1 .serif{color:#ffb766;font-size:1.08em}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.hero h1 .w>span{display:inline-block;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+@keyframes rise{to{transform:none}}
+.hero p.lead{color:#e6ece9;opacity:0;animation:fade 1s .9s forwards}
+.hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem;opacity:0;animation:fade 1s 1.1s forwards}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-side{display:grid;gap:1rem;justify-items:end;opacity:0;animation:fade 1s 1.3s forwards}
+.call-card{background:rgba(20,32,27,.55);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:1.2rem 1.4rem;width:min(100%,320px)}
+.call-card small{display:block;color:#b9c6c0;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.7rem}
+.call-card a{display:block;color:#fff;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.7rem;text-decoration:none;margin:.2rem 0}
+.call-card span{color:#cfdad5;font-size:.9rem}
+.slide-nav{display:flex;gap:.5rem;width:min(100%,320px)}
+.slide-nav button{flex:1;background:none;border:0;cursor:pointer;color:#fff;text-align:left;font:inherit;font-size:.75rem;font-weight:600;opacity:.65;transition:opacity .2s}
+.slide-nav button.on,.slide-nav button:hover{opacity:1}
+.slide-nav .track{display:block;height:3px;background:rgba(255,255,255,.3);border-radius:3px;overflow:hidden;margin-bottom:.45rem}
+.slide-nav .track i{display:block;height:100%;width:0;background:var(--orange)}
+.slide-nav button.on .track i{animation:fill 6s linear forwards}
+.slide-nav.paused button.on .track i{animation-play-state:paused}
+@keyframes fill{to{width:100%}}
+.scroll-cue{position:absolute;top:1.4rem;right:1.4rem;z-index:2;width:84px;height:84px;display:grid;place-items:center;color:#fff;text-decoration:none}
+.scroll-cue svg.ring{position:absolute;inset:0;animation:spin 14s linear infinite}
+.scroll-cue svg.ring text{font-size:9.2px;letter-spacing:2.6px;fill:#fff;font-weight:700;font-family:Figtree}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ticker */
+.ticker{border-block:1.5px solid var(--ink);background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;margin-top:var(--frame)}
+.ticker .row{display:inline-flex;gap:2.4rem;padding:1rem 0;animation:marquee 38s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:clamp(1.1rem,2.4vw,1.6rem)}
+.ticker .row span{display:inline-flex;align-items:center;gap:2.4rem}
+.ticker .row span::after{content:"✦";color:var(--ink);font-size:.8em}
+.ticker:hover .row{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
+.sec-head{display:grid;gap:1rem;margin-bottom:3rem;max-width:780px;justify-items:start}
+.sec-head.center{margin-inline:auto;justify-items:center;text-align:center}
+.panel{background:var(--paper);border-block:1.5px solid var(--line)}
+.dark{background:var(--ink);color:#fff;border-block:1.5px solid var(--ink)}
+.dark .lead{color:#c9d4cf}
+.dark .eyebrow{background:rgba(255,255,255,.06);border-color:var(--line-dark);color:#ffb766}
+
+/* about split */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.collage{position:relative;aspect-ratio:1/1.05}
+.collage figure{position:absolute;border-radius:24px;overflow:hidden;border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+.collage figure img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.collage figure:hover img{transform:scale(1.06)}
+.collage .a{inset:0 22% 18% 0}
+.collage .b{inset:42% 0 0 38%}
+.collage .badge{position:absolute;left:4%;bottom:4%;z-index:3;background:var(--paper);border:1.5px solid var(--ink);border-radius:20px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:center;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
+.collage .badge b{font-family:"Bricolage Grotesque";font-size:2rem;line-height:1;color:var(--orange-deep)}
+.collage .badge span{font-size:.85rem;font-weight:600;line-height:1.25;max-width:13ch}
+@keyframes float{50%{transform:translateY(-10px)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.2rem;border:1.5px solid var(--line);border-radius:20px;background:var(--paper);overflow:hidden}
+.stats div{padding:1.2rem 1.3rem;border-left:1.5px solid var(--line)}
+.stats div:first-child{border-left:0}
+.stats b{display:block;font-family:"Bricolage Grotesque";font-size:2.3rem;font-weight:800;line-height:1;color:var(--ink)}
+.stats div>span{display:block;font-size:.88rem;color:var(--muted);font-weight:600}
+.who-list{display:grid;gap:.8rem;margin-top:1.8rem}
+.who-list li{list-style:none;display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);transition:border-color .25s,transform .25s var(--ease)}
+.who-list li:hover{border-color:var(--orange);transform:translateX(6px)}
+.who-list strong{display:block}
+.who-list p{color:var(--muted);font-size:.95rem}
+.icon{flex:none;width:46px;height:46px;border-radius:13px;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center}
+
+/* services bento */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(150px,auto);gap:1rem}
+.card{border:1.5px solid var(--line-dark);border-radius:var(--radius);padding:1.7rem;background:rgba(255,255,255,.04);display:flex;flex-direction:column;gap:.6rem;position:relative;overflow:hidden;transition:transform .35s var(--ease),border-color .35s,background .35s}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,183,102,.6);background:rgba(255,255,255,.07)}
+.card .icon{background:rgba(224,131,42,.15);color:#ffb766}
+.card p,.card li{color:#c3cfc9}
+.card ul{list-style:none;display:grid;gap:.4rem;margin-top:.3rem}
+.card li{padding-left:1.4rem;position:relative;font-size:.97rem}
+.card li::before{content:"";position:absolute;left:0;top:.6em;width:.55rem;height:.55rem;border-radius:50%;background:var(--orange)}
+.card .num{position:absolute;top:1.2rem;right:1.4rem;font-family:"Bricolage Grotesque";font-weight:800;font-size:.9rem;color:rgba(255,255,255,.3)}
+.c-a{grid-column:span 5;grid-row:span 2}
+.c-img{grid-column:span 7;grid-row:span 2;padding:0;border-color:var(--line-dark)}
+.c-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.c-img:hover img{transform:scale(1.05)}
+.c-img .cap{position:relative;margin-top:auto;padding:1.6rem;background:linear-gradient(transparent,rgba(20,32,27,.9));z-index:1}
+.c-img .cap h3{font-size:1.5rem}
+.c-b{grid-column:span 4}.c-c{grid-column:span 4}.c-d{grid-column:span 4}
+.c-a{background:linear-gradient(160deg,var(--orange) 0%,var(--orange-deep) 100%);border-color:var(--orange)}
+.c-a p,.c-a li{color:#fff3e6}
+.c-a .icon{background:rgba(255,255,255,.2);color:#fff}
+.c-a li::before{background:#fff}
+.c-a:hover{background:linear-gradient(160deg,var(--orange) 0%,var(--orange-deep) 100%);border-color:#fff}
+
+/* steps */
+.steps-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.sticky{position:sticky;top:120px;display:grid;gap:1.4rem}
+.sticky figure{border-radius:24px;overflow:hidden;border:1.5px solid var(--ink);aspect-ratio:4/3;position:relative}
+.sticky figure img{width:100%;height:100%;object-fit:cover}
+.sticky figure figcaption{position:absolute;left:1rem;right:1rem;bottom:1rem;background:var(--paper);border:1.5px solid var(--ink);border-radius:16px;padding:1rem 1.2rem;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.15rem;line-height:1.25}
+.steps{list-style:none;position:relative;display:grid;gap:1.1rem;padding-left:3.6rem}
+.steps::before{content:"";position:absolute;left:1.35rem;top:1.5rem;bottom:1.5rem;width:3px;background:var(--line);border-radius:3px}
+.steps .line{position:absolute;left:1.35rem;top:1.5rem;width:3px;height:calc(100% - 3rem);background:var(--orange);border-radius:3px;transform-origin:top;transform:scaleY(var(--p,0))}
+.steps li{background:var(--paper);border:1.5px solid var(--line);border-radius:20px;padding:1.5rem 1.6rem;position:relative;transition:border-color .4s,box-shadow .4s}
+.steps li.lit{border-color:var(--ink);box-shadow:var(--shadow)}
+.steps li .dot{position:absolute;left:-3.6rem;top:1.25rem;width:2.8rem;height:2.8rem;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;transition:background .4s,border-color .4s,color .4s,transform .4s var(--ease)}
+.steps li.lit .dot{background:var(--orange);border-color:var(--orange);color:#fff;transform:scale(1.08)}
+.steps h3{font-size:1.15rem;margin-bottom:.3rem}
+.steps p{color:var(--muted);font-size:.98rem}
+
+/* involve */
+.involve{display:grid;grid-template-columns:repeat(5,1fr);border:1.5px solid var(--ink);border-radius:24px;overflow:hidden;background:var(--paper)}
+.involve article{padding:1.8rem 1.4rem;border-left:1.5px solid var(--ink);position:relative;transition:background .35s,color .35s;min-height:240px;display:flex;flex-direction:column}
+.involve article:first-child{border-left:0}
+.involve article b{font-family:"Bricolage Grotesque";font-size:.9rem;color:var(--orange-deep);margin-bottom:auto}
+.involve h3{font-size:1.15rem;margin:2.5rem 0 .5rem}
+.involve p{color:var(--muted);font-size:.94rem;transition:color .35s}
+.involve article:hover{background:var(--ink);color:#fff}
+.involve article:hover p{color:#c9d4cf}
+.involve article:hover b{color:#ffb766}
+.strategy{margin-top:1.4rem;position:relative;border-radius:24px;overflow:hidden;border:1.5px solid var(--ink);color:#fff;min-height:280px;display:flex;align-items:flex-end}
+.strategy img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;will-change:transform}
+.strategy::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,32,27,.92) 0%,rgba(20,32,27,.55) 60%,rgba(20,32,27,.25))}
+.strategy .in{position:relative;z-index:1;padding:clamp(1.5rem,4vw,2.8rem);display:flex;gap:1.5rem;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;width:100%}
+.strategy h3{font-size:clamp(1.6rem,3.2vw,2.4rem);max-width:20ch}
+.strategy p{max-width:52ch;color:#d3ddd8;margin-top:.6rem}
+
+/* reviews carousel */
+.reviews .wrap{position:relative}
+.rv-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.rv-ctrl{display:flex;gap:.6rem}
+.rv-ctrl button{width:54px;height:54px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .25s,border-color .25s,transform .25s var(--ease)}
+.rv-ctrl button:hover{background:var(--orange);border-color:var(--orange);transform:scale(1.06)}
+.viewport{overflow:hidden;border-radius:24px;cursor:grab;touch-action:pan-y}
+.viewport.dragging{cursor:grabbing}
+.track-rv{display:flex;gap:1.2rem;transition:transform .7s var(--ease)}
+.review{flex:0 0 calc((100% - 2.4rem)/3);border:1.5px solid var(--line-dark);border-radius:24px;padding:2rem;background:rgba(255,255,255,.04);display:flex;flex-direction:column;gap:1.2rem;user-select:none;transition:border-color .3s,background .3s}
+.review.focus{border-color:rgba(255,183,102,.55);background:rgba(255,255,255,.07)}
+.stars{color:#ffb766;letter-spacing:.15em;font-size:1.05rem}
+.review blockquote{font-family:"Bricolage Grotesque";font-size:1.3rem;line-height:1.3;font-weight:500;color:#fff}
+.review blockquote::before{content:"“";display:block;font-family:"Instrument Serif";font-size:4rem;line-height:.6;color:var(--orange);margin-bottom:.4rem}
+.who-rv{display:flex;align-items:center;gap:.8rem;margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line-dark)}
+.avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-family:"Bricolage Grotesque";background:var(--orange);color:#fff}
+.who-rv strong{display:block;font-size:.98rem}
+.who-rv span{font-size:.85rem;color:#a9b8b1}
+.dots{display:flex;gap:.5rem;justify-content:center;margin-top:1.8rem}
+.dots button{width:10px;height:10px;border-radius:999px;border:0;background:rgba(255,255,255,.25);cursor:pointer;transition:width .35s var(--ease),background .35s}
+.dots button.on{width:34px;background:var(--orange)}
+.sample{display:inline-block;margin-left:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px dashed rgba(255,255,255,.4);color:#c9d4cf;border-radius:999px;padding:.2rem .6rem;vertical-align:middle}
+
+/* coverage */
+.cover{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.map-card{background:var(--paper);border:1.5px solid var(--ink);border-radius:24px;padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.6rem}
+.map-card svg{margin-top:auto;width:100%;height:auto}
+.map-card .town text{font-family:Figtree;font-weight:700;font-size:13px;fill:var(--ink)}
+.map-card .route{stroke-dasharray:6 8;animation:dash 2.5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.town circle.pt{transform-box:fill-box;transform-origin:center;transition:transform .3s var(--ease)}
+.town:hover circle.pt{transform:scale(1.5)}
+.photo-card{border-radius:24px;overflow:hidden;border:1.5px solid var(--ink);position:relative;min-height:380px}
+.photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-card .tag{position:absolute;left:1rem;bottom:1rem;right:1rem;background:var(--ink);color:#fff;border-radius:18px;padding:1.2rem 1.4rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.photo-card .tag b{font-family:"Bricolage Grotesque";font-size:1.2rem}
+
+/* faq */
+.faq-head{position:sticky;top:120px}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.faq{display:grid;gap:.75rem}
+.faq details{background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:0 1.4rem;transition:border-color .3s}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;list-style:none;padding:1.25rem 0;font-weight:700;font-size:1.07rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:transform .35s var(--ease),background .3s,border-color .3s,color .3s;font-style:normal;font-size:1.2rem;color:var(--orange-deep)}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--orange);border-color:var(--orange);color:#fff}
+.faq .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.faq details[open] .ans{grid-template-rows:1fr}
+.faq .ans>div{overflow:hidden}
+.faq .ans p{padding-bottom:1.3rem;color:var(--muted)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1.4rem;align-items:stretch}
+form.card-form{background:var(--paper);border:1.5px solid var(--ink);border-radius:26px;padding:clamp(1.4rem,3vw,2.4rem);display:grid;gap:1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:grid;gap:.35rem;font-weight:600;font-size:.93rem}
+input,select,textarea{font:inherit;font-size:1rem;padding:.9rem 1rem;border:1.5px solid var(--line);border-radius:14px;background:var(--cream);color:var(--ink);width:100%;transition:border-color .2s,background .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange);background:#fff;box-shadow:0 0 0 4px var(--orange-soft)}
+textarea{min-height:140px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.consent{display:flex;gap:.6rem;align-items:flex-start;font-weight:500;font-size:.9rem;color:var(--muted)}
+.consent input{width:auto;margin-top:.3rem;accent-color:var(--orange)}
+.form-note{font-size:.88rem;color:var(--muted)}
+.form-ok{display:none;background:#e7f3ec;color:var(--green);padding:1rem;border-radius:12px;font-weight:600;border:1.5px solid #bfdccb}
+.side{display:grid;gap:1rem;grid-template-rows:auto auto auto 1fr}
+.detail{background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:1.1rem 1.3rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .25s}
+.detail:hover{border-color:var(--orange)}
+.detail a{font-weight:700;color:var(--orange-deep);text-decoration:none;word-break:break-word}
+.detail small{display:block;color:var(--muted);font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.map{border-radius:18px;overflow:hidden;border:1.5px solid var(--ink);min-height:240px;background:#e9e5dc}
+.map iframe{width:100%;height:100%;min-height:240px;border:0;filter:grayscale(.35) contrast(1.05)}
+
+/* footer */
+footer{background:var(--ink);color:#c9d4cf;padding:4rem 0 2rem;font-size:.95rem;border-top:1.5px solid var(--ink);overflow:hidden}
+.cta-band{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;border:1.5px solid var(--line-dark);border-radius:26px;padding:clamp(1.5rem,4vw,2.6rem);margin-bottom:3.5rem;background:rgba(255,255,255,.03)}
+.cta-band h2{color:#fff;font-size:clamp(1.8rem,4vw,3rem);max-width:18ch}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line-dark)}
+footer h4{color:#fff;font-family:"Bricolage Grotesque";font-size:1.05rem;margin-bottom:.8rem}
+footer ul{list-style:none;display:grid;gap:.45rem}
+footer a{color:#e9efe9;text-decoration:none;transition:color .2s}
+footer a:hover{color:#ffb766}
+.legal{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.5rem;font-size:.84rem;color:#9fb0a8}
+.giant{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(5rem,22vw,19rem);line-height:.8;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.14);margin-top:2.5rem;text-align:center;user-select:none;white-space:nowrap}
+
+.concept{position:fixed;left:1rem;bottom:1rem;z-index:90;background:var(--paper);border:1.5px solid var(--ink);box-shadow:var(--shadow);border-radius:999px;padding:.45rem .9rem;font-size:.76rem;font-weight:700;color:var(--muted);text-decoration:none}
+.concept b{color:var(--orange-deep)}
+.to-top{position:fixed;right:1rem;bottom:1rem;z-index:90;width:52px;height:52px;border-radius:50%;background:var(--ink);color:#fff;border:1.5px solid var(--ink);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s var(--ease),background .2s;pointer-events:none}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--orange);border-color:var(--orange)}
+
+/* reveal animations */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.l{transform:translateX(-40px)}.rv.r{transform:translateX(40px)}.rv.s{transform:scale(.94)}
+.rv.in{opacity:1;transform:none}
+.clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s var(--ease)}
+.clip.in{clip-path:inset(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.clip{opacity:1;transform:none;clip-path:none}
+  .hero h1 .w>span{transform:none}.hero p.lead,.hero .actions,.hero-side{opacity:1}
+  html{scroll-behavior:auto}
+}
+
+/* responsive */
+@media (max-width:1080px){
+  nav.main a{padding:.5rem .6rem;font-size:.9rem}
+  .involve{grid-template-columns:repeat(3,1fr)}
+  .involve article:nth-child(4){border-left:0}
+  .involve article:nth-child(n+4){border-top:1.5px solid var(--ink)}
+}
+@media (max-width:980px){
+  .about,.steps-wrap,.contact-grid,.faq-grid,.cover,.hero-inner{grid-template-columns:1fr}
+  .hero-side{justify-items:start}
+  .sticky,.faq-head{position:static}
+  .bento{grid-template-columns:1fr 1fr}
+  .c-a,.c-img,.c-b,.c-c,.c-d{grid-column:span 1;grid-row:auto}
+  .c-img{min-height:320px}
+  .review{flex-basis:calc((100% - 1.2rem)/2)}
+  .foot{grid-template-columns:1fr 1fr}
+  .collage{max-width:560px}
+}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .header-cta{display:none}
+  nav.main{position:fixed;top:0;right:0;height:100dvh;width:min(340px,86vw);background:var(--paper);border-left:1.5px solid var(--ink);padding:6.5rem 1.4rem 2rem;transform:translateX(105%);visibility:hidden;transition:transform .45s var(--ease),visibility .45s;z-index:1}
+  nav.main.open{transform:none;visibility:visible}
+  nav.main ul{flex-direction:column;align-items:stretch;gap:.4rem;border:0;background:none;padding:0}
+  nav.main a{font-size:1.25rem;font-family:"Bricolage Grotesque";font-weight:700;padding:.9rem 1rem;border:1.5px solid var(--line);border-radius:14px}
+  .bar{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--paper)}
+}
+@media (max-width:640px){
+  body{font-size:1rem}
+  .bento,.row,.foot,.stats{grid-template-columns:1fr}
+  .stats div{border-left:0;border-top:1.5px solid var(--line)}
+  .stats div:first-child{border-top:0}
+  .involve{grid-template-columns:1fr}
+  .involve article{border-left:0!important;border-top:1.5px solid var(--ink);min-height:0}
+  .involve article:first-child{border-top:0}
+  .involve h3{margin-top:1rem}
+  .review{flex-basis:100%}
+  .topbar .hide-sm{display:none}
+  .topbar .info>*{padding:0 .7rem}
+  .topbar .wrap{flex-wrap:nowrap}
+  .topbar .info{flex-direction:column;gap:.1rem}
+  .topbar .info>*{border-left:0;padding:0}
+  .eyebrow{font-size:.68rem;letter-spacing:.1em}
+  .brand-text span{display:none}
+  .hero-frame{min-height:86svh;border-radius:24px}
+  .hero .actions .btn{flex:1 1 100%}
+  .scroll-cue{display:none}
+  .collage{aspect-ratio:1/1.15}
+  .concept{bottom:.7rem;left:.7rem;font-size:.7rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="info">
+      <a href="tel:01215441230">0121 544 1230</a>
+      <a class="hide-sm" href="mailto:enquiries@scips.org.uk">enquiries@scips.org.uk</a>
+      <span class="open-now" id="open-now"><i></i><span>Open Mon–Fri</span><span class="hide-sm">&nbsp;· 9:30am–5:30pm</span></span>
+    </div>
+    <div class="textsize" role="group" aria-label="Text size">
+      <span class="hide-sm">Text size</span>
+      <button type="button" data-scale="1" aria-pressed="true">A</button>
+      <button type="button" data-scale="1.125" aria-pressed="false">A+</button>
+      <button type="button" data-scale="1.25" aria-pressed="false">A++</button>
+    </div>
+  </div>
+</div>
+
+<header class="site" id="header">
+  <div class="wrap">
+    <div class="bar">
+      <a href="#top" class="brand" aria-label="SCIPS home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><circle cx="12" cy="14" r="2.2"/></svg>
+        </span>
+        <span class="brand-text"><strong>SCIPS</strong><span>Sandwell Community Information &amp; Participation Service</span></span>
+      </a>
+      <nav class="main" id="nav" aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">What we do</a></li>
+          <li><a href="#start">Start a group</a></li>
+          <li><a href="#involved">Get involved</a></li>
+          <li><a href="#reviews">Stories</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary header-cta" href="#contact">Get in touch
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top" style="padding-top:0">
+  <div class="hero-frame">
+    <div class="slides" aria-hidden="true">
+      <div class="slide on"><img src="assets/img/hero-hands.jpg" alt=""></div>
+      <div class="slide"><img src="assets/img/hero-meeting.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="assets/img/hero-table.jpg" alt="" loading="lazy"></div>
+      <div class="slide"><img src="assets/img/hero-cleanup.jpg" alt="" loading="lazy"></div>
+    </div>
+
+    <a class="scroll-cue" href="#about" aria-label="Scroll to learn more">
+      <svg class="ring" viewBox="0 0 84 84" aria-hidden="true"><defs><path id="c" d="M42,42 m-32,0 a32,32 0 1,1 64,0 a32,32 0 1,1 -64,0"/></defs><text><textPath href="#c">SCROLL · DISCOVER · SCIPS · </textPath></text></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </a>
+
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow"><i></i>Community-led charity · Sandwell</span>
+        <h1 aria-label="Your home. Your street. Your say.">
+          <span class="w"><span style="animation-delay:.1s">Your</span></span> <span class="w"><span style="animation-delay:.18s">home.</span></span><br>
+          <span class="w"><span style="animation-delay:.26s">Your</span></span> <span class="w"><span style="animation-delay:.34s">street.</span></span><br>
+          <span class="w"><span class="serif" style="animation-delay:.5s">Your say.</span></span>
+        </h1>
+        <p class="lead">Free support, information, training and advocacy for tenants, residents and community groups across Sandwell, so you can shape the decisions that affect your home.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#start">Start a residents' group
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-glass" href="#contact">Ask us a question</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="call-card">
+          <small>Need to talk to someone?</small>
+          <a href="tel:01215441230">0121 544 1230</a>
+          <span>Monday to Friday, 9:30am–5:30pm</span>
+        </div>
+        <div class="slide-nav" id="slide-nav">
+          <button class="on" aria-label="Slide 1: Together"><span class="track"><i></i></span>Together</button>
+          <button aria-label="Slide 2: Meet"><span class="track"><i></i></span>Meet</button>
+          <button aria-label="Slide 3: Talk"><span class="track"><i></i></span>Talk</button>
+          <button aria-label="Slide 4: Act"><span class="track"><i></i></span>Act</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="row">
+    <span>West Bromwich</span><span>Oldbury</span><span>Smethwick</span><span>Tipton</span><span>Wednesbury</span><span>Rowley Regis</span><span>Support</span><span>Training</span><span>Advocacy</span><span>Information</span>
+    <span>West Bromwich</span><span>Oldbury</span><span>Smethwick</span><span>Tipton</span><span>Wednesbury</span><span>Rowley Regis</span><span>Support</span><span>Training</span><span>Advocacy</span><span>Information</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="collage">
+      <figure class="a clip"><img src="assets/img/hero-table.jpg" alt="Neighbours sitting together around a long table, talking" loading="lazy"></figure>
+      <figure class="b clip"><img src="assets/img/laughing.jpg" alt="People laughing together outdoors" loading="lazy"></figure>
+      <div class="badge rv s"><b>6</b><span>towns, one borough-wide service</span></div>
+    </div>
+    <div>
+      <div class="sec-head rv" style="margin-bottom:0">
+        <span class="eyebrow"><i></i>Who we are</span>
+        <h2>Built by residents, <span class="serif" style="color:var(--orange-deep)">for residents.</span></h2>
+        <p class="lead">SCIPS is a well-established charity that's led and governed by the community. We help people come together, build pride in their neighbourhoods and get a real say in how their homes and services are run.</p>
+      </div>
+      <ul class="who-list">
+        <li class="rv"><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><div><strong>Tenants &amp; leaseholders</strong><p>Understand your rights, raise issues and take part in decisions about your housing.</p></div></li>
+        <li class="rv"><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.8 6 5.5"/></svg></span><div><strong>Tenants' &amp; residents' associations</strong><p>From starting a TRA from scratch to keeping an established one running well.</p></div></li>
+        <li class="rv"><span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg></span><div><strong>Community groups</strong><p>Guidance, training and a route to the people who make decisions.</p></div></li>
+      </ul>
+      <div class="stats rv">
+        <div><b data-count="6">0</b><span>towns covered</span></div>
+        <div><b data-count="5">0</b><span>ways to get involved</span></div>
+        <div><b>£<span data-count="0">0</span></b><span>cost to residents</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="dark" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><i></i>What we do</span>
+      <h2>Practical help that gets <span class="serif" style="color:#ffb766">residents heard.</span></h2>
+    </div>
+    <div class="bento">
+      <article class="card c-a rv">
+        <span class="num">01</span>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg></div>
+        <h3 style="font-size:1.8rem;margin-top:auto">Group support</h3>
+        <p>Hands-on help to set up and run a residents' or community group properly.</p>
+        <ul>
+          <li>Writing a constitution and electing a committee</li>
+          <li>Running meetings and AGMs</li>
+          <li>Finding funding and managing money</li>
+        </ul>
+      </article>
+      <article class="card c-img rv">
+        <img src="assets/img/hero-meeting.jpg" alt="Residents seated at a community meeting" loading="lazy">
+        <div class="cap">
+          <span class="num" style="position:static;color:#ffb766">02</span>
+          <h3>Consultation &amp; participation</h3>
+          <p>We co-ordinate consultation so residents' views reach the council and housing providers, and come back as real change.</p>
+        </div>
+      </article>
+      <article class="card c-b rv">
+        <span class="num">03</span>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg></div>
+        <h3>Information</h3>
+        <p>Clear, plain-English information on housing, your rights and what's happening locally.</p>
+      </article>
+      <article class="card c-c rv">
+        <span class="num">04</span>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 8l10-5 10 5-10 5z"/><path d="M6 10v5c3 2.5 9 2.5 12 0v-5"/></svg></div>
+        <h3>Training</h3>
+        <p>Free sessions for committee members and volunteers, from chairing meetings to understanding housing.</p>
+      </article>
+      <article class="card c-d rv">
+        <span class="num">05</span>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+        <h3>Advocacy</h3>
+        <p>When something isn't right, we'll help you put your case to the people who can fix it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- START A GROUP -->
+<section id="start">
+  <div class="wrap steps-wrap">
+    <div class="sticky">
+      <div class="sec-head rv" style="margin-bottom:0">
+        <span class="eyebrow"><i></i>Start a group</span>
+        <h2>Thinking about starting a <span class="serif" style="color:var(--orange-deep)">residents' association?</span></h2>
+        <p class="lead">You don't need experience. You need a few neighbours who care, and we'll help with the rest.</p>
+      </div>
+      <figure class="clip">
+        <img src="assets/img/workshop.jpg" alt="Residents working together around a table at a community workshop" loading="lazy" style="object-position:center 35%">
+        <figcaption>One strong voice beats lots of separate complaints.</figcaption>
+      </figure>
+    </div>
+    <ol class="steps" id="steps">
+      <span class="line" aria-hidden="true"></span>
+      <li><span class="dot">1</span><h3>Get in touch</h3><p>Call, email or use the form below. Tell us where you live and what's going on in your area.</p></li>
+      <li><span class="dot">2</span><h3>Gather your neighbours</h3><p>We'll help you reach other residents and plan a first meeting in a local venue.</p></li>
+      <li><span class="dot">3</span><h3>Set up properly</h3><p>We'll guide you through a constitution, electing a committee and opening a bank account.</p></li>
+      <li><span class="dot">4</span><h3>Get recognised and get heard</h3><p>Once you're up and running, we'll help you build a relationship with your landlord and the council, and keep supporting you as you grow.</p></li>
+      <li style="background:var(--ink);color:#fff;border-color:var(--ink)"><span class="dot">✓</span><h3>Ready to start?</h3><p style="color:#c9d4cf;margin-bottom:1rem">It all begins with one conversation.</p><a class="btn btn-primary" href="#contact">Talk to us
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="panel" id="involved">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><i></i>Get involved</span>
+      <h2>More ways to have your say on <span class="serif" style="color:var(--orange-deep)">housing in Sandwell.</span></h2>
+      <p class="lead">Not ready to run a group? There are other ways to get involved, and we can point you to the right one.</p>
+    </div>
+    <div class="involve rv">
+      <article><b>01</b><h3>Scrutiny group</h3><p>Residents who look closely at housing services and recommend improvements.</p></article>
+      <article><b>02</b><h3>Building Safety Forum</h3><p>For people in high-rise blocks to have a say on fire, gas, water and other safety issues.</p></article>
+      <article><b>03</b><h3>Youth involvement</h3><p>Getting younger tenants' and residents' voices into the conversation.</p></article>
+      <article><b>04</b><h3>Task &amp; finish groups</h3><p>Short-term groups that help write a specific policy or strategy.</p></article>
+      <article><b>05</b><h3>TRAs &amp; community groups</h3><p>Bringing tenants and residents in a local area together.</p></article>
+    </div>
+    <div class="strategy rv">
+      <img src="assets/img/neighbour.jpg" alt="" loading="lazy" data-parallax style="object-position:center 30%">
+      <div class="in">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:#ffb766"><i></i>Our track record</span>
+          <h3 style="margin-top:1rem">We helped write the rules.</h3>
+          <p>SCIPS worked alongside tenant volunteers and Sandwell Council's housing team to co-produce the council's Tenant Engagement Strategy.</p>
+        </div>
+        <a class="btn btn-light" href="https://www.sandwell.gov.uk/housing/tenant-engagement-strategy" target="_blank" rel="noopener">Read the strategy
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="dark reviews" id="reviews">
+  <div class="wrap">
+    <div class="rv-top">
+      <div class="sec-head rv" style="margin-bottom:0">
+        <span class="eyebrow"><i></i>Stories from Sandwell</span>
+        <h2>What residents <span class="serif" style="color:#ffb766">say about us.</span></h2>
+        <!-- CONCEPT: sample reviews. Replace with real, consented feedback from SCIPS groups before launch. -->
+        <p style="color:#a9b8b1;font-size:.95rem">Example quotes for this concept <span class="sample">Sample</span></p>
+      </div>
+      <div class="rv-ctrl">
+        <button type="button" id="rv-prev" aria-label="Previous review"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button type="button" id="rv-next" aria-label="Next review"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="viewport rv" id="viewport" aria-roledescription="carousel" aria-label="Resident reviews">
+      <div class="track-rv" id="track-rv">
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>We'd been complaining on our own for years. SCIPS helped us set up properly, and now the council actually comes to our meetings.</blockquote><div class="who-rv"><span class="avatar">J</span><div><strong>Resident group chair</strong><span>Tipton</span></div></div></article>
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>I didn't know the first thing about a constitution or an AGM. They walked us through every step and never made us feel daft for asking.</blockquote><div class="who-rv"><span class="avatar" style="background:#2f6b4f">S</span><div><strong>TRA secretary</strong><span>Oldbury</span></div></div></article>
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>The training gave me the confidence to chair a meeting with housing officers in the room. That's something I never thought I'd do.</blockquote><div class="who-rv"><span class="avatar" style="background:#b9621a">M</span><div><strong>Committee member</strong><span>West Bromwich</span></div></div></article>
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>Living in a high-rise, safety is always on your mind. Having a forum where we're listened to has made a real difference.</blockquote><div class="who-rv"><span class="avatar" style="background:#44546b">D</span><div><strong>Tenant</strong><span>Smethwick</span></div></div></article>
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>Friendly, local and they know Sandwell inside out. One phone call and we had a plan for our first community meeting.</blockquote><div class="who-rv"><span class="avatar" style="background:#7a4e9a">P</span><div><strong>Community volunteer</strong><span>Wednesbury</span></div></div></article>
+        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>They helped us find funding for our estate's summer fun day. Over a hundred neighbours came, and people still talk about it.</blockquote><div class="who-rv"><span class="avatar" style="background:#2b6f8a">R</span><div><strong>Residents' association</strong><span>Rowley Regis</span></div></div></article>
+      </div>
+    </div>
+    <div class="dots" id="dots" role="tablist" aria-label="Choose review"></div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow"><i></i>Where we work</span>
+      <h2>Across all six towns <span class="serif" style="color:var(--orange-deep)">of Sandwell.</span></h2>
+    </div>
+    <div class="cover">
+      <div class="map-card rv l">
+        <h3>From West Bromwich to every corner of the borough</h3>
+        <p style="color:var(--muted)">Our office is in West Bromwich, and we meet residents in community venues wherever they're needed.</p>
+        <svg viewBox="0 0 360 240" role="img" aria-label="Graphic of Sandwell's six towns connected to West Bromwich: Wednesbury, Tipton, Oldbury, Rowley Regis and Smethwick">
+          <g stroke="#e0832a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7">
+            <path class="route" d="M180 125 L190 50"/><path class="route" d="M180 125 L70 62"/><path class="route" d="M180 125 L295 98"/><path class="route" d="M180 125 L252 188"/><path class="route" d="M180 125 L108 192"/>
+          </g>
+          <g stroke="#e3d9c8" stroke-width="1.5" fill="none" stroke-dasharray="3 6"><path d="M70 62 L190 50 L295 98 L252 188 L108 192 Z"/></g>
+          <g class="town"><circle class="pt" cx="190" cy="50" r="9" fill="#e0832a"/><text x="205" y="45">Wednesbury</text></g>
+          <g class="town"><circle class="pt" cx="70" cy="62" r="9" fill="#e0832a"/><text x="42" y="40">Tipton</text></g>
+          <g class="town"><circle class="pt" cx="295" cy="98" r="9" fill="#e0832a"/><text x="268" y="80">Smethwick</text></g>
+          <g class="town"><circle class="pt" cx="252" cy="188" r="9" fill="#e0832a"/><text x="234" y="218">Oldbury</text></g>
+          <g class="town"><circle class="pt" cx="108" cy="192" r="9" fill="#e0832a"/><text x="58" y="222">Rowley Regis</text></g>
+          <g class="town"><circle cx="180" cy="125" r="28" fill="none" stroke="#e0832a" stroke-width="2"><animate attributeName="r" values="16;32;16" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/></circle><circle class="pt" cx="180" cy="125" r="15" fill="#14201b"/><text x="122" y="164">West Bromwich</text></g>
+        </svg>
+      </div>
+      <div class="photo-card rv r">
+        <img src="assets/img/hero-cleanup.jpg" alt="Volunteers in matching t-shirts tidying a local green space" loading="lazy" data-parallax>
+        <div class="tag"><b>Out in the community, not stuck behind a desk.</b><a class="btn btn-primary" href="#contact" style="padding:.75rem 1.1rem">Invite us</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="panel" id="faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head rv faq-head">
+      <span class="eyebrow"><i></i>FAQs</span>
+      <h2>Common <span class="serif" style="color:var(--orange-deep)">questions.</span></h2>
+      <p class="lead">Can't see your question? Call us on <a href="tel:01215441230" style="color:var(--orange-deep);font-weight:700">0121 544 1230</a>.</p>
+    </div>
+    <div class="faq">
+      <details class="rv"><summary>Does it cost anything to get help from SCIPS?<i>+</i></summary><div class="ans"><div><p>No. Our support is free for tenants, residents and community groups in Sandwell.</p></div></div></details>
+      <details class="rv"><summary>Are you part of Sandwell Council?<i>+</i></summary><div class="ans"><div><p>No. SCIPS is an independent charity, led and governed by the community. We work closely with the council and housing providers so residents' views are heard.</p></div></div></details>
+      <details class="rv"><summary>Do I need to be a council tenant?<i>+</i></summary><div class="ans"><div><p>No. We support tenants, leaseholders and residents across the borough, plus the community groups that serve them.</p></div></div></details>
+      <details class="rv"><summary>How do I get referred?<i>+</i></summary><div class="ans"><div><p>You don't need a referral. Just call 0121 544 1230, email enquiries@scips.org.uk, or send us a message using the form below.</p></div></div></details>
+      <details class="rv"><summary>Can you come to us?<i>+</i></summary><div class="ans"><div><p>Yes. As well as our office in West Bromwich, we work from community venues across Sandwell when needed.</p></div></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><i></i>Contact</span>
+      <h2>Get in <span class="serif" style="color:var(--orange-deep)">touch.</span></h2>
+      <p class="lead">Got a question or want to get involved? Fill in the form and we'll get back to you, usually within two working days.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="card-form rv l" id="contact-form" novalidate>
+        <div class="row">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Phone (optional)<input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+        <div class="row">
+          <label>Your town
+            <select name="town">
+              <option value="">Choose…</option>
+              <option>West Bromwich</option><option>Oldbury</option><option>Smethwick</option>
+              <option>Tipton</option><option>Wednesbury</option><option>Rowley Regis</option>
+              <option>Outside Sandwell</option>
+            </select>
+          </label>
+          <label>What's it about?
+            <select name="topic">
+              <option>General question</option>
+              <option>Starting a residents' group</option>
+              <option>Support for an existing group</option>
+              <option>Training</option>
+              <option>Getting involved</option>
+              <option>Something else</option>
+            </select>
+          </label>
+        </div>
+        <label>Your message<textarea name="message" required></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="consent" required> I'm happy for SCIPS to contact me about my enquiry, as set out in the privacy policy.</label>
+        <button class="btn btn-primary" type="submit">Send message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="form-note">Prefer to talk? Call <a href="tel:01215441230">0121 544 1230</a>.</p>
+        <div class="form-ok" role="status" id="form-ok">Thanks, your message is ready to send. We'll be in touch soon.</div>
+      </form>
+
+      <div class="side rv r">
+        <div class="detail">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div>
+          <div><small>Call</small><a href="tel:01215441230">0121 544 1230</a></div>
+        </div>
+        <div class="detail">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div><small>Email</small><a href="mailto:enquiries@scips.org.uk">enquiries@scips.org.uk</a></div>
+        </div>
+        <div class="detail">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><small>Visit</small>2nd Floor, National Metalforming Centre,<br>37–47 Birmingham Road, West Bromwich B70 6PY<br><a href="https://www.google.com/maps/search/?api=1&query=National+Metalforming+Centre+B70+6PY" target="_blank" rel="noopener">Get directions →</a></div>
+        </div>
+        <div class="map">
+          <iframe title="Map showing SCIPS office at the National Metalforming Centre, West Bromwich" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9935%2C52.5115%2C-1.9775%2C52.5185&amp;layer=mapnik&amp;marker=52.5150%2C-1.9855"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cta-band rv">
+      <h2>Ready to give your street <span class="serif" style="color:#ffb766">a voice?</span></h2>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-glass" href="tel:01215441230">0121 544 1230</a>
+      </div>
+    </div>
+    <div class="foot">
+      <div>
+        <h4>SCIPS</h4>
+        <p>Sandwell Community Information and Participation Service. A community-led charity supporting tenants, residents and community groups across Sandwell.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#services">What we do</a></li>
+          <li><a href="#start">Start a group</a></li>
+          <li><a href="#involved">Get involved</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:01215441230">0121 544 1230</a></li>
+          <li><a href="mailto:enquiries@scips.org.uk">enquiries@scips.org.uk</a></li>
+          <li>Mon–Fri, 9:30am–5:30pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr">2026</span> Sandwell Community Information and Participation Service Limited · Registered charity no. 1097702 · Company no. 03071683</span>
+      <span><a href="#">Privacy policy</a> · <a href="#">Accessibility</a> · Photos: Unsplash</span>
+    </div>
+    <div class="giant" aria-hidden="true">SCIPS</div>
+  </div>
+</footer>
+
+<a class="concept" href="https://yrbnova.com" target="_blank" rel="noopener">Concept by <b>YRB Nova</b></a>
+<button class="to-top" id="to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+// menu
+const menuBtn=$('.menu-btn'),nav=$('#nav');
+const setMenu=o=>{nav.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o);menuBtn.setAttribute('aria-label',o?'Close menu':'Open menu')};
+menuBtn.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
+// text size
+const sizeBtns=$$('[data-scale]');
+function setScale(s){document.documentElement.style.setProperty('--scale',s);sizeBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.scale===String(s)));try{localStorage.setItem('scips-scale',s)}catch(e){}}
+sizeBtns.forEach(b=>b.addEventListener('click',()=>setScale(b.dataset.scale)));
+try{const s=localStorage.getItem('scips-scale');if(s)setScale(s)}catch(e){}
+
+// open now (UK time)
+(()=>{const el=$('#open-now');try{const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));const m=+p.hour*60+ +p.minute;const open=!['Sat','Sun'].includes(p.weekday)&&m>=570&&m<1050;el.classList.toggle('closed',!open);el.children[1].textContent=open?'Open now':'Closed now'}catch(e){}})();
+
+// hero slideshow
+(()=>{const slides=$$('.slide'),btns=$$('#slide-nav button'),navEl=$('#slide-nav');let i=0,t;
+const go=n=>{slides[i].classList.remove('on');btns[i].classList.remove('on');i=(n+slides.length)%slides.length;slides[i].classList.add('on');void btns[i].offsetWidth;btns[i].classList.add('on');};
+const play=()=>{clearInterval(t);if(!reduce)t=setInterval(()=>go(i+1),6000)};
+btns.forEach((b,n)=>b.addEventListener('click',()=>{go(n);play()}));
+const frame=$('.hero-frame');frame.addEventListener('mouseenter',()=>{clearInterval(t);navEl.classList.add('paused')});frame.addEventListener('mouseleave',()=>{navEl.classList.remove('paused');play()});
+play();})();
+
+// scroll: progress, header, to-top, parallax, steps line, active nav
+const prog=$('.progress'),header=$('#header'),toTop=$('#to-top'),par=$$('[data-parallax]'),steps=$('#steps'),stepItems=$$('#steps li'),line=$('#steps .line');
+const sections=$$('main section[id]'),links=$$('nav.main a');
+let ticking=false;
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.transform=`scaleX(${h>0?y/h:0})`;
+  header.classList.toggle('scrolled',y>40);toTop.classList.toggle('show',y>900);
+  if(!reduce)par.forEach(img=>{const r=img.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const p=(r.top+r.height/2-innerHeight/2)/innerHeight;img.style.transform=`translateY(${p*-50}px) scale(1.08)`}});
+  const r=steps.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.6-r.top)/r.height));line.style.setProperty('--p',p);
+  stepItems.forEach(li=>{li.classList.toggle('lit',li.getBoundingClientRect().top<innerHeight*.62)});
+  let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.35)cur=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  ticking=false}
+addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true}},{passive:true});onScroll();
+toTop.addEventListener('click',()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'}));
+
+// reveals with stagger + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;
+  const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=Math.min(sib.indexOf(el),5)*90+'ms';
+  el.classList.add('in');io.unobserve(el);
+  el.querySelectorAll('[data-count]').forEach(c=>{const end=+c.dataset.count;if(reduce||!end){c.textContent=end;return}let s=null;const step=ts=>{s??=ts;const k=Math.min(1,(ts-s)/1200);c.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})
+}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+$$('.rv,.clip').forEach(el=>io.observe(el));
+
+// reviews carousel
+(()=>{const vp=$('#viewport'),track=$('#track-rv'),cards=[...track.children],dotsEl=$('#dots');let idx=0,timer;
+const perView=()=>innerWidth<=640?1:innerWidth<=980?2:3;
+const maxIdx=()=>cards.length-perView();
+function build(){dotsEl.innerHTML='';for(let n=0;n<=maxIdx();n++){const b=document.createElement('button');b.setAttribute('aria-label','Show review '+(n+1));b.addEventListener('click',()=>{go(n);auto()});dotsEl.appendChild(b)}go(Math.min(idx,maxIdx()))}
+function go(n){const m=maxIdx();idx=n>m?0:n<0?m:n;const w=cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap);track.style.transform=`translateX(${-idx*w}px)`;
+  [...dotsEl.children].forEach((d,k)=>d.classList.toggle('on',k===idx));cards.forEach((c,k)=>c.classList.toggle('focus',k>=idx&&k<idx+perView()))}
+const auto=()=>{clearInterval(timer);if(!reduce)timer=setInterval(()=>go(idx+1),5500)};
+$('#rv-prev').addEventListener('click',()=>{go(idx-1);auto()});$('#rv-next').addEventListener('click',()=>{go(idx+1);auto()});
+vp.addEventListener('mouseenter',()=>clearInterval(timer));vp.addEventListener('mouseleave',auto);
+let sx=null;vp.addEventListener('pointerdown',e=>{sx=e.clientX;vp.classList.add('dragging')});
+addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;if(Math.abs(dx)>40){go(idx+(dx<0?1:-1));auto()}sx=null;vp.classList.remove('dragging')});
+addEventListener('resize',build);build();auto();})();
+
+// smooth FAQ: close others
+$$('.faq details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)$$('.faq details').forEach(o=>{if(o!==d)o.open=false})}));
+
+// contact form (opens email app; swap for Formspree to receive directly — see README)
+$('#contact-form').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(f.website.value)return;if(!f.reportValidity())return;const d=new FormData(f);
+  const body=`Name: ${d.get('name')}\nEmail: ${d.get('email')}\nPhone: ${d.get('phone')||'-'}\nTown: ${d.get('town')||'-'}\nTopic: ${d.get('topic')}\n\n${d.get('message')}`;
+  location.href=`mailto:enquiries@scips.org.uk?subject=${encodeURIComponent('Website enquiry: '+d.get('topic'))}&body=${encodeURIComponent(body)}`;$('#form-ok').style.display='block'});
+$('#yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
