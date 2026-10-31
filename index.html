@@ -4,20 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SCIPS | Sandwell Community Information &amp; Participation Service</title>
-<meta name="description" content="SCIPS is a community-led charity giving free support, information, training and advocacy to tenants, residents and community groups across Sandwell.">
+<meta name="description" content="SCIPS is a community-led charity giving support, information, training and advocacy to tenants, residents and community groups across Sandwell.">
 <!-- Concept build: remove the noindex line below when this goes live on scips.org.uk -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#14201b">
 <link rel="preload" as="image" href="assets/img/hero-hands.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"NGO","name":"Sandwell Community Information and Participation Service (SCIPS)","url":"https://www.scips.org.uk","telephone":"+441215441230","email":"enquiries@scips.org.uk","address":{"@type":"PostalAddress","streetAddress":"2nd Floor, National Metalforming Centre, 37-47 Birmingham Road","addressLocality":"West Bromwich","addressRegion":"West Midlands","postalCode":"B70 6PY","addressCountry":"GB"},"openingHours":"Mo-Fr 09:30-17:30","areaServed":"Sandwell"}
 </script>
 <style>
 :root{
-  --orange:#e0832a;--orange-deep:#b9621a;--orange-soft:#fcebd8;--orange-glow:rgba(224,131,42,.35);
+  --orange:#e0832a;--orange-deep:#9a4a0c;--on-orange:#14201b;--orange-btn-hover:#9a4a0c;--orange-soft:#fcebd8;--orange-glow:rgba(224,131,42,.35);
   --ink:#14201b;--ink-2:#2c3a34;--muted:#5d6b65;
   --cream:#f8f3ea;--paper:#fffdf9;--line:#e3d9c8;--line-dark:rgba(255,255,255,.14);
   --green:#2f6b4f;
@@ -32,7 +30,7 @@ html{scroll-behavior:smooth;font-size:calc(100% * var(--scale,1));scrollbar-colo
 ::-webkit-scrollbar-track{background:var(--cream);border-left:1px solid var(--line)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--orange),var(--orange-deep));border-radius:999px;border:3px solid var(--cream)}
 ::-webkit-scrollbar-thumb:hover{background:var(--orange-deep)}
-::selection{background:var(--orange);color:#fff}
+::selection{background:var(--orange);color:var(--on-orange)}
 body{overflow-x:clip;font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -56,15 +54,16 @@ h3{font-size:1.25rem;font-weight:700}
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-size:1rem;font-family:inherit;overflow:hidden;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s;isolation:isolate}
 .btn svg{transition:transform .25s var(--ease)}
 .btn:hover svg{transform:translateX(4px)}
-.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 24px var(--orange-glow)}
-.btn-primary::before{content:"";position:absolute;inset:0;background:var(--orange-deep);transform:translateY(101%);transition:transform .35s var(--ease);z-index:-1;border-radius:inherit}
+.btn-primary{background:var(--orange);color:var(--on-orange);box-shadow:0 8px 24px var(--orange-glow)}
+.btn-primary:hover{color:#fff}
+.btn-primary::before{content:"";position:absolute;inset:0;background:var(--orange-btn-hover);transform:translateY(101%);transition:transform .35s var(--ease);z-index:-1;border-radius:inherit}
 .btn-primary:hover::before{transform:none}
 .btn-glass{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff;backdrop-filter:blur(8px)}
 .btn-glass:hover{background:#fff;color:var(--ink)}
 .btn-ghost{border-color:var(--ink);color:var(--ink)}
 .btn-ghost:hover{background:var(--ink);color:#fff}
 .btn-light{background:#fff;color:var(--ink)}
-.btn-light:hover{background:var(--orange);color:#fff}
+.btn-light:hover{background:var(--orange);color:var(--on-orange)}
 
 /* top bar */
 .topbar{background:var(--ink);color:#d9e2dd;font-size:.86rem;border-bottom:1px solid var(--line-dark)}
@@ -80,7 +79,7 @@ h3{font-size:1.25rem;font-weight:700}
 .textsize{display:flex;align-items:center;gap:.35rem}
 .textsize button{background:transparent;border:1px solid var(--line-dark);color:#fff;border-radius:8px;padding:.15rem .55rem;cursor:pointer;font-family:inherit;font-weight:700;transition:.2s}
 .textsize button:hover{border-color:#fff}
-.textsize button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange)}
+.textsize button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:var(--on-orange)}
 
 /* header: bordered floating bar */
 header.site{position:sticky;top:0;z-index:100;padding:.75rem 0;transition:padding .3s var(--ease)}
@@ -88,7 +87,7 @@ header.site{position:sticky;top:0;z-index:100;padding:.75rem 0;transition:paddin
 header.site.scrolled{padding:.45rem 0}
 header.site.scrolled .bar{box-shadow:var(--shadow);border-color:#d6c9b3}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
-.brand-mark{width:44px;height:44px;border-radius:13px;background:var(--orange);display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.brand-mark{width:44px;height:44px;border-radius:13px;background:var(--orange);display:grid;place-items:center;color:var(--ink);position:relative;overflow:hidden}
 .brand-mark svg{width:26px;height:26px}
 .brand-text strong{display:block;font-family:"Bricolage Grotesque";font-size:1.3rem;line-height:1;font-weight:800}
 .brand-text span{font-size:.72rem;color:var(--muted);line-height:1.2;display:block;max-width:24ch}
@@ -140,10 +139,10 @@ nav.main a.active{background:var(--ink);color:#fff}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ticker */
-.ticker{border-block:1.5px solid var(--ink);background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;margin-top:var(--frame)}
+.ticker{border-block:1.5px solid var(--ink);background:var(--orange);color:var(--on-orange);overflow:hidden;white-space:nowrap;margin-top:var(--frame)}
 .ticker .row{display:inline-flex;gap:2.4rem;padding:1rem 0;animation:marquee 38s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:clamp(1.1rem,2.4vw,1.6rem)}
 .ticker .row span{display:inline-flex;align-items:center;gap:2.4rem}
-.ticker .row span::after{content:"✦";color:var(--ink);font-size:.8em}
+.ticker .row span::after{content:"✦";color:#fff;font-size:.8em}
 .ticker:hover .row{animation-play-state:paused}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
@@ -197,11 +196,11 @@ section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
 .c-img .cap{position:relative;margin-top:auto;padding:1.6rem;background:linear-gradient(transparent,rgba(20,32,27,.9));z-index:1}
 .c-img .cap h3{font-size:1.5rem}
 .c-b{grid-column:span 4}.c-c{grid-column:span 4}.c-d{grid-column:span 4}
-.c-a{background:linear-gradient(160deg,var(--orange) 0%,var(--orange-deep) 100%);border-color:var(--orange)}
+.c-a{background:linear-gradient(160deg,#a8520f 0%,#7f3c08 100%);border-color:#a8520f}
 .c-a p,.c-a li{color:#fff3e6}
 .c-a .icon{background:rgba(255,255,255,.2);color:#fff}
 .c-a li::before{background:#fff}
-.c-a:hover{background:linear-gradient(160deg,var(--orange) 0%,var(--orange-deep) 100%);border-color:#fff}
+.c-a:hover{background:linear-gradient(160deg,#a8520f 0%,#7f3c08 100%);border-color:#fff}
 
 /* steps */
 .steps-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
@@ -215,7 +214,7 @@ section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
 .steps li{background:var(--paper);border:1.5px solid var(--line);border-radius:20px;padding:1.5rem 1.6rem;position:relative;transition:border-color .4s,box-shadow .4s}
 .steps li.lit{border-color:var(--ink);box-shadow:var(--shadow)}
 .steps li .dot{position:absolute;left:-3.6rem;top:1.25rem;width:2.8rem;height:2.8rem;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;transition:background .4s,border-color .4s,color .4s,transform .4s var(--ease)}
-.steps li.lit .dot{background:var(--orange);border-color:var(--orange);color:#fff;transform:scale(1.08)}
+.steps li.lit .dot{background:var(--orange);border-color:var(--orange);color:var(--on-orange);transform:scale(1.08)}
 .steps h3{font-size:1.15rem;margin-bottom:.3rem}
 .steps p{color:var(--muted);font-size:.98rem}
 
@@ -241,7 +240,7 @@ section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
 .rv-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.4rem}
 .rv-ctrl{display:flex;gap:.6rem}
 .rv-ctrl button{width:54px;height:54px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .25s,border-color .25s,transform .25s var(--ease)}
-.rv-ctrl button:hover{background:var(--orange);border-color:var(--orange);transform:scale(1.06)}
+.rv-ctrl button:hover{background:var(--orange);border-color:var(--orange);color:var(--on-orange);transform:scale(1.06)}
 .viewport{overflow:hidden;border-radius:24px;cursor:grab;touch-action:pan-y}
 .viewport.dragging{cursor:grabbing}
 .track-rv{display:flex;gap:1.2rem;transition:transform .7s var(--ease)}
@@ -253,7 +252,7 @@ section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
 .who-rv{display:flex;align-items:center;gap:.8rem;margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line-dark)}
 .avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-family:"Bricolage Grotesque";background:var(--orange);color:#fff}
 .who-rv strong{display:block;font-size:.98rem}
-.who-rv span{font-size:.85rem;color:#a9b8b1}
+.who-rv span{font-size:.85rem;color:#c9d4cf}
 .dots{display:flex;gap:.5rem;justify-content:center;margin-top:1.8rem}
 .dots button{width:10px;height:10px;border-radius:999px;border:0;background:rgba(255,255,255,.25);cursor:pointer;transition:width .35s var(--ease),background .35s}
 .dots button.on{width:34px;background:var(--orange)}
@@ -282,7 +281,7 @@ section{padding:clamp(4rem,9vw,7.5rem) 0;position:relative}
 .faq summary{cursor:pointer;list-style:none;padding:1.25rem 0;font-weight:700;font-size:1.07rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary i{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:transform .35s var(--ease),background .3s,border-color .3s,color .3s;font-style:normal;font-size:1.2rem;color:var(--orange-deep)}
-.faq details[open] summary i{transform:rotate(45deg);background:var(--orange);border-color:var(--orange);color:#fff}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--orange);border-color:var(--orange);color:var(--on-orange)}
 .faq .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
 .faq details[open] .ans{grid-template-rows:1fr}
 .faq .ans>div{overflow:hidden}
@@ -325,7 +324,166 @@ footer a:hover{color:#ffb766}
 .concept b{color:var(--orange-deep)}
 .to-top{position:fixed;right:1rem;bottom:1rem;z-index:90;width:52px;height:52px;border-radius:50%;background:var(--ink);color:#fff;border:1.5px solid var(--ink);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s var(--ease),background .2s;pointer-events:none}
 .to-top.show{opacity:1;transform:none;pointer-events:auto}
-.to-top:hover{background:var(--orange);border-color:var(--orange)}
+.to-top:hover{background:var(--orange);border-color:var(--orange);color:var(--on-orange)}
+
+
+/* ===== v3 additions ===== */
+.linkbtn{background:none;border:0;color:#e9efe9;font:inherit;cursor:pointer;padding:0;text-decoration:underline}
+.linkbtn:hover{color:#ffb766}
+.credits{font-size:.8rem;color:#9fb0a8;padding-top:1.2rem}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:150;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:300;background:var(--ink);color:#fff;display:grid;place-content:center;justify-items:center;gap:1.4rem;transition:clip-path .9s var(--ease) .1s;clip-path:inset(0 0 0 0)}
+.loader.done{clip-path:inset(0 0 100% 0)}
+.l-word{display:flex;font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(4rem,16vw,9rem);line-height:.9;letter-spacing:-.04em;overflow:hidden}
+.l-word span{display:inline-block;transform:translateY(105%);animation:rise .8s var(--ease) forwards}
+.l-word span:nth-child(2){animation-delay:.07s}.l-word span:nth-child(3){animation-delay:.14s}.l-word span:nth-child(4){animation-delay:.21s}.l-word span:nth-child(5){animation-delay:.28s;color:var(--orange)}
+.l-bar{width:min(260px,60vw);height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden}
+.l-bar i{display:block;height:100%;width:0;background:var(--orange);animation:load 1.1s var(--ease) forwards}
+@keyframes load{to{width:100%}}
+.loader small{font-family:"Instrument Serif";font-style:italic;font-size:1.3rem;color:#c9d4cf;opacity:0;animation:fade .8s .4s forwards}
+body.loading .hero *{animation-play-state:paused!important}
+body.loading{overflow:hidden}
+
+/* cursor */
+.cursor{position:fixed;left:0;top:0;z-index:250;pointer-events:none;display:none}
+@media (pointer:fine){.cursor{display:block}}
+.c-dot,.c-ring{position:fixed;left:0;top:0;border-radius:50%;transform:translate(-50%,-50%)}
+.c-dot{width:6px;height:6px;background:var(--orange)}
+.c-ring{width:36px;height:36px;border:1.5px solid var(--orange);transition:width .25s var(--ease),height .25s var(--ease),background .25s,border-color .25s}
+.cursor.hover .c-ring{width:64px;height:64px;background:rgba(224,131,42,.12)}
+.cursor.down .c-ring{width:26px;height:26px}
+
+/* split headings */
+[data-split] .sw{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+[data-split] .sw>span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease)}
+[data-split].in .sw>span{transform:none}
+
+/* hero scroll scale */
+.hero-frame{transform-origin:center top;will-change:transform}
+
+/* top bar a11y */
+.tb-right{display:flex;align-items:center;gap:.8rem}
+.a11y-btn{display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--line-dark);color:#fff;border-radius:8px;padding:.2rem .6rem;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
+.a11y-btn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* a11y panel */
+.a11y{position:fixed;inset:0;z-index:220;background:rgba(20,32,27,.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:1rem}
+.a11y[hidden]{display:none}
+.a11y-card{background:var(--paper);border:1.5px solid var(--ink);border-radius:26px;width:min(560px,100%);max-height:90vh;overflow:auto;padding:1.6rem;display:grid;gap:1.1rem;animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.a11y-top{display:flex;justify-content:space-between;align-items:center}
+.a11y-top h2{font-size:1.6rem}
+.x{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:none;font-size:1.6rem;line-height:1;cursor:pointer}
+.x:hover{border-color:var(--ink)}
+.a11y-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.tog{text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:1rem;background:var(--cream);cursor:pointer;font:inherit;display:grid;gap:.15rem;transition:border-color .2s,background .2s}
+.tog span{font-size:.85rem;color:var(--muted)}
+.tog:hover{border-color:var(--ink)}
+.tog[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tog[aria-pressed="true"] span{color:#c9d4cf}
+.a11y-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1rem}
+.a11y-row label{display:grid;gap:0}
+.a11y-row label span{font-weight:500;font-size:.85rem;color:var(--muted)}
+.textsize.alt button{color:var(--ink);border-color:var(--line);padding:.35rem .8rem}
+.tr{display:flex;gap:.5rem}
+.tr select{width:auto;padding:.6rem .8rem}
+.tr .btn{padding:.6rem 1.1rem}
+.a11y-foot{font-size:.85rem;color:var(--muted)}
+.a11y-foot a{color:var(--orange-deep);font-weight:700}
+
+/* modes */
+body.readable,body.readable h1,body.readable h2,body.readable h3,body.readable .serif,body.readable .btn,body.readable input,body.readable select,body.readable textarea{font-family:"Atkinson Hyperlegible",Figtree,sans-serif!important;font-style:normal!important;letter-spacing:.01em}
+body.readable{word-spacing:.08em;line-height:1.75}
+body.links a:not(.btn){text-decoration:underline!important;text-underline-offset:3px}
+body.hc{--cream:#fff;--paper:#fff;--line:#14201b;--muted:#1b1b1b;--ink-2:#000;--orange-deep:#7a3600;--line-dark:rgba(255,255,255,.6)}
+body.hc .hero-frame::after{background:rgba(0,0,0,.72)}
+body.hc .card p,body.hc .card li,body.hc .dark .lead,body.hc footer{color:#fff!important}
+body.hc::after{display:none}
+body.calm *,body.calm *::before,body.calm *::after{animation-play-state:paused!important;transition-duration:0s!important}
+body.calm .rv,body.calm .clip,body.calm [data-split] .sw>span{opacity:1!important;transform:none!important;clip-path:none!important}
+
+/* help finder */
+.finder-sec{padding-bottom:0}
+.finder{display:grid;grid-template-columns:.9fr 1.1fr;border:1.5px solid var(--ink);border-radius:30px;overflow:hidden;background:var(--paper)}
+.f-head{padding:clamp(1.6rem,4vw,3rem);display:grid;gap:1rem;align-content:start;background:radial-gradient(circle at 0% 100%,var(--orange-soft),transparent 60%);border-right:1.5px solid var(--ink)}
+.f-body{padding:clamp(1.6rem,4vw,3rem);position:relative;min-height:380px}
+.f-progress{list-style:none;display:flex;gap:.4rem;margin-bottom:1.4rem}
+.f-progress li{flex:1;height:5px;border-radius:5px;background:var(--line);transition:background .4s}
+.f-progress li.on{background:var(--orange)}
+.f-step{display:none;border:0;animation:fade .5s var(--ease)}
+.f-step.on{display:block}
+.f-step legend{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.35rem;margin-bottom:1rem}
+.f-opts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.f-opts button{text-align:left;font:inherit;font-weight:600;padding:1.1rem 1.1rem;border:1.5px solid var(--line);border-radius:16px;background:var(--cream);cursor:pointer;transition:border-color .2s,transform .25s var(--ease),background .2s}
+.f-opts button:hover{border-color:var(--ink);transform:translateY(-3px);background:#fff}
+.f-back{margin-top:1rem;background:none;border:0;font:inherit;font-weight:700;color:var(--orange-deep);cursor:pointer;padding:.3rem 0}
+.f-result h3{font-size:clamp(1.5rem,3vw,2rem);margin:.8rem 0 .6rem}
+.f-result p{color:var(--muted);max-width:48ch}
+.f-cta{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1.4rem}
+.f-cta .f-back{margin:0}
+.pill{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border-radius:999px;background:var(--orange-soft);color:var(--orange-deep)}
+
+/* scenario carousel */
+.review .pill{align-self:flex-start;background:rgba(224,131,42,.16);color:#ffb766}
+.review blockquote::before{content:none}
+.review blockquote{font-size:1.35rem}
+.review .how{border-top:1px solid var(--line-dark);padding-top:1rem;margin-top:auto}
+.review .how b{display:block;color:#ffb766;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.review .how p{color:#d3ddd8}
+.review .more{color:#fff;font-weight:700;text-decoration:none;font-size:.95rem}
+.review .more:hover{color:#ffb766}
+.viewport:focus-visible{outline-offset:6px}
+
+/* gallery */
+.gallery{padding:clamp(3rem,6vw,5rem) 0;overflow:hidden;position:relative;border-bottom:1.5px solid var(--line)}
+.g-row{overflow:hidden;padding:.5rem 0}
+.g-track{display:flex;gap:1rem;width:max-content;animation:marquee 60s linear infinite}
+.g-row.rev .g-track{animation-direction:reverse;animation-duration:70s}
+.gallery:hover .g-track{animation-play-state:paused}
+.g-track figure{width:clamp(200px,24vw,320px);aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1.5px solid var(--ink);flex:none}
+.g-track img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .5s,transform .8s var(--ease)}
+.g-track figure:hover img{filter:none;transform:scale(1.07)}
+.g-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--orange);color:var(--on-orange);border:1.5px solid var(--ink);border-radius:999px;padding:.8rem 1.6rem;font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(1.3rem,3vw,2rem);white-space:nowrap;box-shadow:var(--shadow);pointer-events:none}
+.g-label .serif{font-weight:400}
+
+/* map placeholder */
+.map{position:relative}
+.map-ph{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:.7rem;text-align:center;padding:1.4rem;color:var(--ink-2);background:repeating-linear-gradient(45deg,#efe9dd 0 12px,#ebe4d6 12px 24px)}
+.map-ph p{font-size:.9rem;max-width:32ch}
+
+/* consent bar */
+.consent-bar{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);z-index:200;width:min(880px,calc(100% - 2rem));background:var(--paper);border:1.5px solid var(--ink);border-radius:22px;box-shadow:0 20px 60px rgba(20,32,27,.25);padding:1.2rem 1.4rem;display:flex;gap:1.2rem;align-items:center;justify-content:space-between;flex-wrap:wrap;animation:pop .45s var(--ease)}
+.consent-bar[hidden]{display:none}
+.cb-text{flex:1 1 380px}
+.cb-text p{font-size:.92rem;color:var(--muted)}
+.cb-text a{color:var(--orange-deep);font-weight:700}
+.cb-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.cb-btns .btn{padding:.75rem 1.2rem;font-size:.95rem}
+
+/* quickbar */
+.quickbar{display:none}
+@media (max-width:640px){
+  .quickbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:.6rem;right:.6rem;bottom:.6rem;z-index:95;background:var(--ink);border:1.5px solid var(--ink);border-radius:20px;padding:.35rem;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .quickbar a{display:grid;justify-items:center;gap:.15rem;color:#fff;text-decoration:none;font-size:.72rem;font-weight:700;padding:.5rem 0;border-radius:14px}
+  .quickbar a.hl{background:var(--orange);color:var(--on-orange)}
+  body{padding-bottom:5.2rem}
+  .concept{bottom:5.6rem}
+  .to-top{bottom:5.6rem}
+  .consent-bar{bottom:5.4rem;padding:1rem;gap:.8rem}
+  .cb-text{flex-basis:100%}
+  .cb-text p{font-size:.85rem}
+  .cb-btns{width:100%}
+  .cb-btns .btn{flex:1;padding:.7rem .6rem;font-size:.85rem}
+  .a11y-btn span{display:none}
+  .tb-right>.textsize{display:none}
+  .finder{grid-template-columns:1fr}
+  .f-head{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .f-opts,.a11y-grid{grid-template-columns:1fr}
+  .g-label{font-size:1.2rem;padding:.6rem 1.2rem}
+}
+@media (max-width:980px){.finder{grid-template-columns:1fr}.f-head{border-right:0;border-bottom:1.5px solid var(--ink)}}
 
 /* reveal animations */
 .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -392,7 +550,7 @@ footer a:hover{color:#ffb766}
 }
 </style>
 </head>
-<body>
+<body class="loading">
 <a class="skip" href="#main">Skip to main content</a>
 <div class="progress" aria-hidden="true"></div>
 
@@ -403,11 +561,14 @@ footer a:hover{color:#ffb766}
       <a class="hide-sm" href="mailto:enquiries@scips.org.uk">enquiries@scips.org.uk</a>
       <span class="open-now" id="open-now"><i></i><span>Open Mon–Fri</span><span class="hide-sm">&nbsp;· 9:30am–5:30pm</span></span>
     </div>
+    <div class="tb-right">
+    <button type="button" class="a11y-btn" id="a11y-open" aria-haspopup="dialog" aria-controls="a11y" aria-label="Accessibility options"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8l7 1.5L19 8M12 9.5V15m0 0l-3 6m3-6l3 6"/></svg><span>Accessibility</span></button>
     <div class="textsize" role="group" aria-label="Text size">
       <span class="hide-sm">Text size</span>
       <button type="button" data-scale="1" aria-pressed="true">A</button>
       <button type="button" data-scale="1.125" aria-pressed="false">A+</button>
       <button type="button" data-scale="1.25" aria-pressed="false">A++</button>
+    </div>
     </div>
   </div>
 </div>
@@ -427,7 +588,7 @@ footer a:hover{color:#ffb766}
           <li><a href="#services">What we do</a></li>
           <li><a href="#start">Start a group</a></li>
           <li><a href="#involved">Get involved</a></li>
-          <li><a href="#reviews">Stories</a></li>
+          <li><a href="#finder">Find help</a></li>
           <li><a href="#faq">FAQs</a></li>
         </ul>
       </nav>
@@ -462,7 +623,7 @@ footer a:hover{color:#ffb766}
           <span class="w"><span style="animation-delay:.26s">Your</span></span> <span class="w"><span style="animation-delay:.34s">street.</span></span><br>
           <span class="w"><span class="serif" style="animation-delay:.5s">Your say.</span></span>
         </h1>
-        <p class="lead">Free support, information, training and advocacy for tenants, residents and community groups across Sandwell, so you can shape the decisions that affect your home.</p>
+        <p class="lead">Support, information, training and advocacy for tenants, residents and community groups across Sandwell, so you can shape the decisions that affect your home.</p>
         <div class="actions">
           <a class="btn btn-primary" href="#start">Start a residents' group
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -504,7 +665,7 @@ footer a:hover{color:#ffb766}
     <div>
       <div class="sec-head rv" style="margin-bottom:0">
         <span class="eyebrow"><i></i>Who we are</span>
-        <h2>Built by residents, <span class="serif" style="color:var(--orange-deep)">for residents.</span></h2>
+        <h2 data-split>Built by residents, <span class="serif" style="color:var(--orange-deep)">for residents.</span></h2>
         <p class="lead">SCIPS is a well-established charity that's led and governed by the community. We help people come together, build pride in their neighbourhoods and get a real say in how their homes and services are run.</p>
       </div>
       <ul class="who-list">
@@ -515,7 +676,7 @@ footer a:hover{color:#ffb766}
       <div class="stats rv">
         <div><b data-count="6">0</b><span>towns covered</span></div>
         <div><b data-count="5">0</b><span>ways to get involved</span></div>
-        <div><b>£<span data-count="0">0</span></b><span>cost to residents</span></div>
+        <div><b data-count="1">0</b><span>call to get started</span></div>
       </div>
     </div>
   </div>
@@ -526,7 +687,7 @@ footer a:hover{color:#ffb766}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow"><i></i>What we do</span>
-      <h2>Practical help that gets <span class="serif" style="color:#ffb766">residents heard.</span></h2>
+      <h2 data-split>Practical help that gets <span class="serif" style="color:#ffb766">residents heard.</span></h2>
     </div>
     <div class="bento">
       <article class="card c-a rv">
@@ -558,7 +719,7 @@ footer a:hover{color:#ffb766}
         <span class="num">04</span>
         <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 8l10-5 10 5-10 5z"/><path d="M6 10v5c3 2.5 9 2.5 12 0v-5"/></svg></div>
         <h3>Training</h3>
-        <p>Free sessions for committee members and volunteers, from chairing meetings to understanding housing.</p>
+        <p>Sessions for committee members and volunteers, from chairing meetings to understanding housing.</p>
       </article>
       <article class="card c-d rv">
         <span class="num">05</span>
@@ -570,13 +731,54 @@ footer a:hover{color:#ffb766}
   </div>
 </section>
 
+<!-- HELP FINDER -->
+<section class="finder-sec" id="finder">
+  <div class="wrap">
+    <div class="finder rv s">
+      <div class="f-head">
+        <span class="eyebrow"><i></i>Help finder</span>
+        <h2 data-split>Not sure where <span class="serif" style="color:var(--orange-deep)">to start?</span></h2>
+        <p class="lead">Answer two quick questions and we'll point you in the right direction. Nothing is saved or sent.</p>
+      </div>
+      <div class="f-body">
+        <ol class="f-progress" aria-hidden="true"><li class="on"></li><li></li><li></li></ol>
+        <fieldset class="f-step on" data-step="1">
+          <legend>1. Which best describes you?</legend>
+          <div class="f-opts">
+            <button type="button" data-v="tenant">🏠 I'm a tenant or leaseholder</button>
+            <button type="button" data-v="start">🌱 I want to start a group</button>
+            <button type="button" data-v="group">👥 I'm in a residents' group</button>
+            <button type="button" data-v="org">🤝 I run a community group</button>
+          </div>
+        </fieldset>
+        <fieldset class="f-step" data-step="2">
+          <legend>2. What do you need most?</legend>
+          <div class="f-opts">
+            <button type="button" data-v="info">📘 Information about my rights</button>
+            <button type="button" data-v="voice">📣 A say in decisions</button>
+            <button type="button" data-v="skills">🎓 Skills and training</button>
+            <button type="button" data-v="problem">🛠️ Help with a problem</button>
+          </div>
+          <button type="button" class="f-back">← Back</button>
+        </fieldset>
+        <div class="f-step f-result" data-step="3" aria-live="polite">
+          <span class="pill">Our suggestion</span>
+          <h3 id="f-title"></h3>
+          <p id="f-text"></p>
+          <div class="f-cta"><a class="btn btn-primary" id="f-go" href="#contact">Get in touch</a><button type="button" class="f-back f-restart">Start again</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- START A GROUP -->
 <section id="start">
   <div class="wrap steps-wrap">
     <div class="sticky">
       <div class="sec-head rv" style="margin-bottom:0">
         <span class="eyebrow"><i></i>Start a group</span>
-        <h2>Thinking about starting a <span class="serif" style="color:var(--orange-deep)">residents' association?</span></h2>
+        <h2 data-split>Thinking about starting a <span class="serif" style="color:var(--orange-deep)">residents' association?</span></h2>
         <p class="lead">You don't need experience. You need a few neighbours who care, and we'll help with the rest.</p>
       </div>
       <figure class="clip">
@@ -601,7 +803,7 @@ footer a:hover{color:#ffb766}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow"><i></i>Get involved</span>
-      <h2>More ways to have your say on <span class="serif" style="color:var(--orange-deep)">housing in Sandwell.</span></h2>
+      <h2 data-split>More ways to have your say on <span class="serif" style="color:var(--orange-deep)">housing in Sandwell.</span></h2>
       <p class="lead">Not ready to run a group? There are other ways to get involved, and we can point you to the right one.</p>
     </div>
     <div class="involve rv">
@@ -626,33 +828,43 @@ footer a:hover{color:#ffb766}
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- SOUND FAMILIAR (scenario carousel) -->
 <section class="dark reviews" id="reviews">
   <div class="wrap">
     <div class="rv-top">
       <div class="sec-head rv" style="margin-bottom:0">
-        <span class="eyebrow"><i></i>Stories from Sandwell</span>
-        <h2>What residents <span class="serif" style="color:#ffb766">say about us.</span></h2>
-        <!-- CONCEPT: sample reviews. Replace with real, consented feedback from SCIPS groups before launch. -->
-        <p style="color:#a9b8b1;font-size:.95rem">Example quotes for this concept <span class="sample">Sample</span></p>
+        <span class="eyebrow"><i></i>Sound familiar?</span>
+        <h2 data-split>If this is you, <span class="serif" style="color:#ffb766">we can help.</span></h2>
+        <!-- Add real, consented resident testimonials here once SCIPS provides them. Never invent reviews. -->
       </div>
       <div class="rv-ctrl">
-        <button type="button" id="rv-prev" aria-label="Previous review"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-        <button type="button" id="rv-next" aria-label="Next review"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="button" id="rv-prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button type="button" id="rv-next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
-    <div class="viewport rv" id="viewport" aria-roledescription="carousel" aria-label="Resident reviews">
+    <div class="viewport rv" id="viewport" tabindex="0" aria-roledescription="carousel" aria-label="Common situations we help with. Use left and right arrow keys to move.">
       <div class="track-rv" id="track-rv">
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>We'd been complaining on our own for years. SCIPS helped us set up properly, and now the council actually comes to our meetings.</blockquote><div class="who-rv"><span class="avatar">J</span><div><strong>Resident group chair</strong><span>Tipton</span></div></div></article>
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>I didn't know the first thing about a constitution or an AGM. They walked us through every step and never made us feel daft for asking.</blockquote><div class="who-rv"><span class="avatar" style="background:#2f6b4f">S</span><div><strong>TRA secretary</strong><span>Oldbury</span></div></div></article>
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>The training gave me the confidence to chair a meeting with housing officers in the room. That's something I never thought I'd do.</blockquote><div class="who-rv"><span class="avatar" style="background:#b9621a">M</span><div><strong>Committee member</strong><span>West Bromwich</span></div></div></article>
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>Living in a high-rise, safety is always on your mind. Having a forum where we're listened to has made a real difference.</blockquote><div class="who-rv"><span class="avatar" style="background:#44546b">D</span><div><strong>Tenant</strong><span>Smethwick</span></div></div></article>
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>Friendly, local and they know Sandwell inside out. One phone call and we had a plan for our first community meeting.</blockquote><div class="who-rv"><span class="avatar" style="background:#7a4e9a">P</span><div><strong>Community volunteer</strong><span>Wednesbury</span></div></div></article>
-        <article class="review" aria-roledescription="slide"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote>They helped us find funding for our estate's summer fun day. Over a hundred neighbours came, and people still talk about it.</blockquote><div class="who-rv"><span class="avatar" style="background:#2b6f8a">R</span><div><strong>Residents' association</strong><span>Rowley Regis</span></div></div></article>
+        <article class="review" aria-roledescription="slide" aria-label="1 of 6"><span class="pill">Group support</span><blockquote>Bins, fly-tipping, broken lights: you've reported it again and again.</blockquote><div class="how"><b>How we help</b><p>We help neighbours raise it together as a group, so it lands with the people who can sort it.</p></div><a class="more" href="#start" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
+        <article class="review" aria-roledescription="slide" aria-label="2 of 6"><span class="pill">Start a group</span><blockquote>You want to start a residents' group but don't know where to begin.</blockquote><div class="how"><b>How we help</b><p>We take you through it step by step: first meeting, constitution, committee, bank account.</p></div><a class="more" href="#start" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
+        <article class="review" aria-roledescription="slide" aria-label="3 of 6"><span class="pill">Consultation</span><blockquote>Your group's been asked to give its views, but the paperwork is a lot.</blockquote><div class="how"><b>How we help</b><p>We explain what's being asked in plain English and help you get your response in.</p></div><a class="more" href="#services" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
+        <article class="review" aria-roledescription="slide" aria-label="4 of 6"><span class="pill">Training</span><blockquote>You've been made chair or treasurer and nobody showed you how.</blockquote><div class="how"><b>How we help</b><p>Training for committee members and volunteers, so you feel confident in the role.</p></div><a class="more" href="#services" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
+        <article class="review" aria-roledescription="slide" aria-label="5 of 6"><span class="pill">Get involved</span><blockquote>You live in a tower block and have questions about building safety.</blockquote><div class="how"><b>How we help</b><p>We can point you to the Resident Building Safety Forum and help you be heard there.</p></div><a class="more" href="#involved" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
+        <article class="review" aria-roledescription="slide" aria-label="6 of 6"><span class="pill">Advocacy</span><blockquote>Something's not right with your housing and you're not being listened to.</blockquote><div class="how"><b>How we help</b><p>We help you put your case clearly to the people who can fix it.</p></div><a class="more" href="#services" tabindex="-1">Find out more <span aria-hidden="true">→</span></a></article>
       </div>
     </div>
-    <div class="dots" id="dots" role="tablist" aria-label="Choose review"></div>
+    <div class="dots" id="dots" aria-label="Choose slide"></div>
   </div>
+</section>
+
+<!-- GALLERY MARQUEE -->
+<section class="gallery" aria-label="Photo gallery">
+  <div class="g-row">
+    <div class="g-track"><figure><img src="assets/img/hero-hands.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/laughing.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/food.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-meeting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/painting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/workshop.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/neighbour.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-table.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-cleanup.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-hands.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/laughing.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/food.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-meeting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/painting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/workshop.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/neighbour.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-table.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-cleanup.jpg" alt="" loading="lazy"></figure></div>
+  </div>
+  <div class="g-row rev">
+    <div class="g-track"><figure><img src="assets/img/wall.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-cleanup.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-table.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/painting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-hands.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/food.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/laughing.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-meeting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/workshop.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/wall.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-cleanup.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-table.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/painting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-hands.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/food.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/laughing.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/hero-meeting.jpg" alt="" loading="lazy"></figure><figure><img src="assets/img/workshop.jpg" alt="" loading="lazy"></figure></div>
+  </div>
+  <div class="g-label"><span>Life in</span> <b class="serif">Sandwell</b></div>
 </section>
 
 <!-- COVERAGE -->
@@ -660,7 +872,7 @@ footer a:hover{color:#ffb766}
   <div class="wrap">
     <div class="sec-head center rv">
       <span class="eyebrow"><i></i>Where we work</span>
-      <h2>Across all six towns <span class="serif" style="color:var(--orange-deep)">of Sandwell.</span></h2>
+      <h2 data-split>Across all six towns <span class="serif" style="color:var(--orange-deep)">of Sandwell.</span></h2>
     </div>
     <div class="cover">
       <div class="map-card rv l">
@@ -692,12 +904,12 @@ footer a:hover{color:#ffb766}
   <div class="wrap faq-grid">
     <div class="sec-head rv faq-head">
       <span class="eyebrow"><i></i>FAQs</span>
-      <h2>Common <span class="serif" style="color:var(--orange-deep)">questions.</span></h2>
+      <h2 data-split>Common <span class="serif" style="color:var(--orange-deep)">questions.</span></h2>
       <p class="lead">Can't see your question? Call us on <a href="tel:01215441230" style="color:var(--orange-deep);font-weight:700">0121 544 1230</a>.</p>
     </div>
     <div class="faq">
-      <details class="rv"><summary>Does it cost anything to get help from SCIPS?<i>+</i></summary><div class="ans"><div><p>No. Our support is free for tenants, residents and community groups in Sandwell.</p></div></div></details>
-      <details class="rv"><summary>Are you part of Sandwell Council?<i>+</i></summary><div class="ans"><div><p>No. SCIPS is an independent charity, led and governed by the community. We work closely with the council and housing providers so residents' views are heard.</p></div></div></details>
+      <details class="rv"><summary>Which areas do you cover?<i>+</i></summary><div class="ans"><div><p>We cover the Borough of Sandwell: West Bromwich, Oldbury, Smethwick, Tipton, Wednesbury and Rowley Regis.</p></div></div></details>
+      <details class="rv"><summary>Are you part of Sandwell Council?<i>+</i></summary><div class="ans"><div><p>No. SCIPS is a registered charity (no. 1097702), led and governed by the community. We work closely with Sandwell Council and housing providers so residents' views are heard.</p></div></div></details>
       <details class="rv"><summary>Do I need to be a council tenant?<i>+</i></summary><div class="ans"><div><p>No. We support tenants, leaseholders and residents across the borough, plus the community groups that serve them.</p></div></div></details>
       <details class="rv"><summary>How do I get referred?<i>+</i></summary><div class="ans"><div><p>You don't need a referral. Just call 0121 544 1230, email enquiries@scips.org.uk, or send us a message using the form below.</p></div></div></details>
       <details class="rv"><summary>Can you come to us?<i>+</i></summary><div class="ans"><div><p>Yes. As well as our office in West Bromwich, we work from community venues across Sandwell when needed.</p></div></div></details>
@@ -710,8 +922,8 @@ footer a:hover{color:#ffb766}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow"><i></i>Contact</span>
-      <h2>Get in <span class="serif" style="color:var(--orange-deep)">touch.</span></h2>
-      <p class="lead">Got a question or want to get involved? Fill in the form and we'll get back to you, usually within two working days.</p>
+      <h2 data-split>Get in <span class="serif" style="color:var(--orange-deep)">touch.</span></h2>
+      <p class="lead">Got a question or want to get involved? Fill in the form and we'll get back to you.</p>
     </div>
     <div class="contact-grid">
       <form class="card-form rv l" id="contact-form" novalidate>
@@ -742,10 +954,10 @@ footer a:hover{color:#ffb766}
         </div>
         <label>Your message<textarea name="message" required></textarea></label>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent"><input type="checkbox" name="consent" required> I'm happy for SCIPS to contact me about my enquiry, as set out in the privacy policy.</label>
+        <label class="consent"><input type="checkbox" name="consent" required> I'm happy for SCIPS to use these details to reply to my enquiry, as explained in the <a href="privacy.html">privacy policy</a>.</label>
         <button class="btn btn-primary" type="submit">Send message
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="form-note">Prefer to talk? Call <a href="tel:01215441230">0121 544 1230</a>.</p>
+        <p class="form-note">We only ask for what we need to reply. Phone and town are optional. Prefer to talk? Call <a href="tel:01215441230">0121 544 1230</a>.</p>
         <div class="form-ok" role="status" id="form-ok">Thanks, your message is ready to send. We'll be in touch soon.</div>
       </form>
 
@@ -762,9 +974,12 @@ footer a:hover{color:#ffb766}
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <div><small>Visit</small>2nd Floor, National Metalforming Centre,<br>37–47 Birmingham Road, West Bromwich B70 6PY<br><a href="https://www.google.com/maps/search/?api=1&query=National+Metalforming+Centre+B70+6PY" target="_blank" rel="noopener">Get directions →</a></div>
         </div>
-        <div class="map">
-          <iframe title="Map showing SCIPS office at the National Metalforming Centre, West Bromwich" loading="lazy"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9935%2C52.5115%2C-1.9775%2C52.5185&amp;layer=mapnik&amp;marker=52.5150%2C-1.9855"></iframe>
+        <div class="map" id="map" data-src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9935%2C52.5115%2C-1.9775%2C52.5185&amp;layer=mapnik&amp;marker=52.5150%2C-1.9855">
+          <div class="map-ph">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
+            <p>The map is provided by OpenStreetMap, which will receive your IP address.</p>
+            <button type="button" class="btn btn-primary" id="load-map">Load map</button>
+          </div>
         </div>
       </div>
     </div>
@@ -804,13 +1019,70 @@ footer a:hover{color:#ffb766}
         </ul>
       </div>
     </div>
+    <p class="credits">Photos: Unsplash (Unsplash Licence). Fonts: Bricolage Grotesque, Figtree, Instrument Serif, Atkinson Hyperlegible (SIL Open Font Licence), hosted on this site.</p>
     <div class="legal">
-      <span>© <span id="yr">2026</span> Sandwell Community Information and Participation Service Limited · Registered charity no. 1097702 · Company no. 03071683</span>
-      <span><a href="#">Privacy policy</a> · <a href="#">Accessibility</a> · Photos: Unsplash</span>
+      <span>© <span id="yr">2026</span> Sandwell Community Information and Participation Service Limited. Registered charity no. 1097702. Company no. 03071683 (England &amp; Wales). Registered office: 2nd Floor, National Metalforming Centre, 47 Birmingham Road, West Bromwich B70 6PY.</span>
+      <span><a href="privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a> · <a href="accessibility.html">Accessibility</a> · <a href="terms.html">Terms</a> · <button type="button" class="linkbtn" data-open-consent>Cookie settings</button></span>
     </div>
     <div class="giant" aria-hidden="true">SCIPS</div>
   </div>
 </footer>
+
+<!-- loader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="l-word"><span>S</span><span>C</span><span>I</span><span>P</span><span>S</span></div>
+  <div class="l-bar"><i></i></div>
+  <small>Your home. Your street. Your say.</small>
+</div>
+
+<!-- cursor (decorative, mouse only; native cursor stays visible) -->
+<div class="cursor" aria-hidden="true"><div class="c-ring"></div><div class="c-dot"></div></div>
+
+<!-- accessibility panel -->
+<div class="a11y" id="a11y" role="dialog" aria-modal="true" aria-labelledby="a11y-h" hidden>
+  <div class="a11y-card">
+    <div class="a11y-top"><h2 id="a11y-h">Accessibility</h2><button type="button" class="x" data-close aria-label="Close accessibility options">×</button></div>
+    <div class="a11y-grid">
+      <button type="button" class="tog" data-tog="hc" aria-pressed="false"><b>High contrast</b><span>Stronger colours and borders</span></button>
+      <button type="button" class="tog" data-tog="readable" aria-pressed="false"><b>Readable font</b><span>Atkinson Hyperlegible, wider spacing</span></button>
+      <button type="button" class="tog" data-tog="calm" aria-pressed="false"><b>Stop animations</b><span>Pause slides and motion</span></button>
+      <button type="button" class="tog" data-tog="links" aria-pressed="false"><b>Underline links</b><span>Make every link easy to spot</span></button>
+    </div>
+    <div class="a11y-row">
+      <b>Text size</b>
+      <div class="textsize alt" role="group" aria-label="Text size">
+        <button type="button" data-scale="1" aria-pressed="true">A</button><button type="button" data-scale="1.125" aria-pressed="false">A+</button><button type="button" data-scale="1.25" aria-pressed="false">A++</button>
+      </div>
+    </div>
+    <div class="a11y-row">
+      <label for="lang"><b>Translate this page</b><span>Opens in Google Translate in a new tab</span></label>
+      <div class="tr"><select id="lang">
+        <option value="pa">ਪੰਜਾਬੀ Punjabi</option><option value="ur">اردو Urdu</option><option value="pl">Polski Polish</option><option value="bn">বাংলা Bengali</option><option value="gu">ગુજરાતી Gujarati</option><option value="ro">Română Romanian</option><option value="ar">العربية Arabic</option><option value="ku">Kurdî Kurdish</option><option value="so">Soomaali Somali</option><option value="ti">ትግርኛ Tigrinya</option>
+      </select><button type="button" class="btn btn-primary" id="translate">Go</button></div>
+    </div>
+    <p class="a11y-foot">Your choices are saved on this device only. <a href="accessibility.html">Accessibility statement</a></p>
+  </div>
+</div>
+
+<!-- cookie / external content consent -->
+<div class="consent-bar" id="consent" role="region" aria-label="Cookie and privacy choices" hidden>
+  <div class="cb-text">
+    <b>Your privacy choices</b>
+    <p>We don't use tracking or advertising cookies. The map on this page comes from OpenStreetMap and only loads if you allow external content. <a href="cookies.html">Cookie policy</a></p>
+  </div>
+  <div class="cb-btns">
+    <button type="button" class="btn btn-ghost" data-consent="essential">Essential only</button>
+    <button type="button" class="btn btn-primary" data-consent="all">Allow external content</button>
+  </div>
+</div>
+
+<!-- mobile quick actions -->
+<nav class="quickbar" aria-label="Quick actions">
+  <a href="tel:01215441230"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+  <a href="mailto:enquiries@scips.org.uk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+  <a href="#finder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Find help</a>
+  <a href="#contact" class="hl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L3 21l2-6.2A8 8 0 1 1 21 12z"/></svg>Message</a>
+</nav>
 
 <a class="concept" href="https://yrbnova.com" target="_blank" rel="noopener">Concept by <b>YRB Nova</b></a>
 <button class="to-top" id="to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
@@ -838,7 +1110,7 @@ try{const s=localStorage.getItem('scips-scale');if(s)setScale(s)}catch(e){}
 // hero slideshow
 (()=>{const slides=$$('.slide'),btns=$$('#slide-nav button'),navEl=$('#slide-nav');let i=0,t;
 const go=n=>{slides[i].classList.remove('on');btns[i].classList.remove('on');i=(n+slides.length)%slides.length;slides[i].classList.add('on');void btns[i].offsetWidth;btns[i].classList.add('on');};
-const play=()=>{clearInterval(t);if(!reduce)t=setInterval(()=>go(i+1),6000)};
+const play=()=>{clearInterval(t);if(!reduce&&!document.body.classList.contains('calm'))t=setInterval(()=>go(i+1),6000)};document.addEventListener('calmchange',play);
 btns.forEach((b,n)=>b.addEventListener('click',()=>{go(n);play()}));
 const frame=$('.hero-frame');frame.addEventListener('mouseenter',()=>{clearInterval(t);navEl.classList.add('paused')});frame.addEventListener('mouseleave',()=>{navEl.classList.remove('paused');play()});
 play();})();
@@ -861,10 +1133,12 @@ toTop.addEventListener('click',()=>scrollTo({top:0,behavior:reduce?'auto':'smoot
 // reveals with stagger + counters
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;
   const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=Math.min(sib.indexOf(el),5)*90+'ms';
-  el.classList.add('in');io.unobserve(el);
+  el.classList.add('in');io.unobserve(el);el.querySelectorAll(':scope > .clip').forEach(c=>c.classList.add('in'));
   el.querySelectorAll('[data-count]').forEach(c=>{const end=+c.dataset.count;if(reduce||!end){c.textContent=end;return}let s=null;const step=ts=>{s??=ts;const k=Math.min(1,(ts-s)/1200);c.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})
 }),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
-$$('.rv,.clip').forEach(el=>io.observe(el));
+$$('.rv').forEach(el=>io.observe(el));
+// clip-path hides the element itself from IntersectionObserver, so watch its parent
+$$('.clip').forEach(el=>io.observe(el.parentElement));
 
 // reviews carousel
 (()=>{const vp=$('#viewport'),track=$('#track-rv'),cards=[...track.children],dotsEl=$('#dots');let idx=0,timer;
@@ -873,11 +1147,13 @@ const maxIdx=()=>cards.length-perView();
 function build(){dotsEl.innerHTML='';for(let n=0;n<=maxIdx();n++){const b=document.createElement('button');b.setAttribute('aria-label','Show review '+(n+1));b.addEventListener('click',()=>{go(n);auto()});dotsEl.appendChild(b)}go(Math.min(idx,maxIdx()))}
 function go(n){const m=maxIdx();idx=n>m?0:n<0?m:n;const w=cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap);track.style.transform=`translateX(${-idx*w}px)`;
   [...dotsEl.children].forEach((d,k)=>d.classList.toggle('on',k===idx));cards.forEach((c,k)=>c.classList.toggle('focus',k>=idx&&k<idx+perView()))}
-const auto=()=>{clearInterval(timer);if(!reduce)timer=setInterval(()=>go(idx+1),5500)};
+const auto=()=>{clearInterval(timer);if(!reduce&&!document.body.classList.contains('calm'))timer=setInterval(()=>go(idx+1),5500)};
 $('#rv-prev').addEventListener('click',()=>{go(idx-1);auto()});$('#rv-next').addEventListener('click',()=>{go(idx+1);auto()});
 vp.addEventListener('mouseenter',()=>clearInterval(timer));vp.addEventListener('mouseleave',auto);
 let sx=null;vp.addEventListener('pointerdown',e=>{sx=e.clientX;vp.classList.add('dragging')});
 addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;if(Math.abs(dx)>40){go(idx+(dx<0?1:-1));auto()}sx=null;vp.classList.remove('dragging')});
+vp.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(idx+1);auto()}if(e.key==='ArrowLeft'){go(idx-1);auto()}});vp.addEventListener('focusin',()=>clearInterval(timer));vp.addEventListener('focusout',auto);
+document.addEventListener('calmchange',()=>{if(document.body.classList.contains('calm'))clearInterval(timer);else auto()});
 addEventListener('resize',build);build();auto();})();
 
 // smooth FAQ: close others
@@ -888,6 +1164,75 @@ $('#contact-form').addEventListener('submit',e=>{e.preventDefault();const f=e.ta
   const body=`Name: ${d.get('name')}\nEmail: ${d.get('email')}\nPhone: ${d.get('phone')||'-'}\nTown: ${d.get('town')||'-'}\nTopic: ${d.get('topic')}\n\n${d.get('message')}`;
   location.href=`mailto:enquiries@scips.org.uk?subject=${encodeURIComponent('Website enquiry: '+d.get('topic'))}&body=${encodeURIComponent(body)}`;$('#form-ok').style.display='block'});
 $('#yr').textContent=new Date().getFullYear();
+
+// ===== v3 =====
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+// loader
+(()=>{const l=$('#loader');const done=()=>{if(l.classList.contains('done'))return;l.classList.add('done');document.body.classList.remove('loading');setTimeout(()=>l.remove(),1100)};
+if(reduce||store.get('scips-seen')){done();}else{addEventListener('load',()=>setTimeout(done,1250));setTimeout(done,2600);store.set('scips-seen','1')}})();
+
+// split headings into words
+$$('[data-split]').forEach(h=>{let k=0;const wrap=n=>{const o=document.createElement('span');o.className='sw';const i=document.createElement('span');i.style.transitionDelay=(k++*70)+'ms';o.appendChild(i);return[o,i]};
+  [...h.childNodes].forEach(n=>{if(n.nodeType===3){const parts=n.textContent.split(/(\s+)/);const f=document.createDocumentFragment();parts.forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(' '));return}const[o,i]=wrap();i.textContent=t;f.appendChild(o)});h.replaceChild(f,n)}
+  else if(n.nodeType===1){const[o,i]=wrap();h.replaceChild(o,n);i.appendChild(n)}});
+  h.setAttribute('aria-label',h.textContent.replace(/\s+/g,' ').trim());io.observe(h)});
+
+// custom cursor + magnetic buttons (mouse only)
+if(matchMedia('(pointer:fine)').matches&&!reduce){const c=$('.cursor'),dot=$('.c-dot'),ring=$('.c-ring');let mx=-99,my=-99,rx=-99,ry=-99;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`});
+  (function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+  document.addEventListener('mouseover',e=>c.classList.toggle('hover',!!e.target.closest('a,button,select,summary,.g-track figure,input,textarea')));
+  addEventListener('mousedown',()=>c.classList.add('down'));addEventListener('mouseup',()=>c.classList.remove('down'));
+  $$('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+}
+
+// hero frame gently shrinks as you scroll
+(()=>{const f=$('.hero-frame');if(reduce)return;addEventListener('scroll',()=>{const y=Math.min(scrollY,600);f.style.transform=`scale(${1-y/600*.06})`;f.style.borderRadius=(32+y/600*16)+'px'},{passive:true})})();
+
+// focus trap helper
+function trap(el,e){if(e.key!=='Tab')return;const f=[...el.querySelectorAll('a[href],button:not([disabled]),select,input,textarea,[tabindex="0"]')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+nav.addEventListener('keydown',e=>{if(nav.classList.contains('open'))trap(header,e)});
+let lastMenuFocus;menuBtn.addEventListener('click',()=>{if(nav.classList.contains('open')){lastMenuFocus=menuBtn;setTimeout(()=>nav.querySelector('a').focus(),50)}});
+
+// accessibility panel
+(()=>{const panel=$('#a11y'),open=$('#a11y-open');let last;
+  const show=()=>{last=document.activeElement;panel.hidden=false;panel.querySelector('.x').focus()};
+  const hide=()=>{panel.hidden=true;(last||open).focus()};
+  open.addEventListener('click',show);panel.querySelector('[data-close]').addEventListener('click',hide);
+  panel.addEventListener('click',e=>{if(e.target===panel)hide()});panel.addEventListener('keydown',e=>{if(e.key==='Escape')hide();trap(panel,e)});
+  $$('.tog').forEach(t=>{const k=t.dataset.tog,on=store.get('scips-'+k)==='1';if(on){document.body.classList.add(k);t.setAttribute('aria-pressed','true');if(k==='calm')setTimeout(()=>document.dispatchEvent(new Event('calmchange')))}
+    t.addEventListener('click',()=>{const v=document.body.classList.toggle(k);t.setAttribute('aria-pressed',v);store.set('scips-'+k,v?'1':'0');if(k==='calm')document.dispatchEvent(new Event('calmchange'))})});
+  $$('[data-scale]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.scale;$$('[data-scale]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.scale===v))}));
+  $('#translate').addEventListener('click',()=>{const u=location.href.startsWith('http')?location.href:'https://www.scips.org.uk/';open_(`https://translate.google.com/translate?sl=en&tl=${$('#lang').value}&u=${encodeURIComponent(u)}`)});
+  function open_(u){window.open(u,'_blank','noopener')}
+})();
+
+// consent: external content (map) only loads after opt-in
+(()=>{const bar=$('#consent'),map=$('#map');
+  const loadMap=()=>{if(map.querySelector('iframe'))return;const f=document.createElement('iframe');f.title='Map showing SCIPS office at the National Metalforming Centre, West Bromwich';f.loading='lazy';f.src=map.dataset.src;map.querySelector('.map-ph').remove();map.appendChild(f)};
+  const apply=v=>{store.set('scips-consent',v);bar.hidden=true;if(v==='all')loadMap()};
+  const c=store.get('scips-consent');if(!c)setTimeout(()=>bar.hidden=false,1800);else if(c==='all')loadMap();
+  $$('[data-consent]').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.consent)));
+  $$('[data-open-consent]').forEach(b=>b.addEventListener('click',()=>{bar.hidden=false;bar.querySelector('button').focus()}));
+  $('#load-map').addEventListener('click',()=>{loadMap();store.set('scips-consent-map','1')});
+})();
+
+// help finder
+(()=>{const steps=$$('.f-step'),prog=$$('.f-progress li');let who='';
+  const go=n=>{steps.forEach(s=>s.classList.toggle('on',+s.dataset.step===n));prog.forEach((p,i)=>p.classList.toggle('on',i<n));const f=steps[n-1].querySelector('button');if(f&&n>1)f.focus()};
+  const R={
+   tenant:{info:['Know your rights as a tenant','We can explain your rights and point you to the right information, in plain English.','General question'],voice:['Join a residents\' group or forum','We\'ll connect you with a local TRA or a way to have your say on housing services.','Getting involved'],skills:['Build your confidence','Our training helps residents get involved and speak up with confidence.','Training'],problem:['Let us help you be heard','We\'ll help you put your case to the people who can fix it.','General question']},
+   start:{info:['How to start a residents\' group','We\'ll take you through every step, from first meeting to constitution.','Starting a residents\' group'],voice:['Start a group, get a voice','A residents\' group gives your street one strong voice. We\'ll help you set it up.','Starting a residents\' group'],skills:['Set up with the right skills','We\'ll support your new committee with training on running a group.','Starting a residents\' group'],problem:['Tackle it together','Lots of neighbours with the same issue? A group is the best way to get it sorted.','Starting a residents\' group']},
+   group:{info:['Keep your group on track','We can help with your constitution, AGMs, funding and money.','Support for an existing group'],voice:['Get your group heard','We co-ordinate consultation so your group\'s views reach decision-makers.','Support for an existing group'],skills:['Training for your committee','From chairing meetings to being treasurer, we can help your committee grow.','Training'],problem:['Support for your group','Tell us what\'s going on and we\'ll help your group find a way forward.','Support for an existing group']},
+   org:{info:['Information for community groups','We can share information and connect you with others working in Sandwell.','Something else'],voice:['Take part in consultation','We can help your group feed into decisions that affect the people you serve.','Getting involved'],skills:['Training for your volunteers','Sessions for committee members and volunteers.','Training'],problem:['Talk it through with us','Get in touch and we\'ll help you work out the next step.','Something else']}};
+  $$('[data-step="1"] [data-v]').forEach(b=>b.addEventListener('click',()=>{who=b.dataset.v;go(2)}));
+  $$('[data-step="2"] [data-v]').forEach(b=>b.addEventListener('click',()=>{const r=R[who][b.dataset.v];$('#f-title').textContent=r[0];$('#f-text').textContent=r[1];$('#f-go').dataset.topic=r[2];go(3);$('#f-go').focus()}));
+  $$('.f-back').forEach(b=>b.addEventListener('click',()=>go(b.classList.contains('f-restart')?1:Math.max(1,+b.closest('.f-step').dataset.step-1))));
+  $('#f-go').addEventListener('click',()=>{const sel=$('#contact-form select[name="topic"]');if(sel)sel.value=$('#f-go').dataset.topic});
+})();
+
 </script>
 </body>
 </html>
