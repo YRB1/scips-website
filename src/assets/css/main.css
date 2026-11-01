@@ -1020,3 +1020,44 @@ html { scrollbar-color: var(--brand) var(--stone); }
 .about5 { padding-bottom: calc(var(--space-xl) + var(--roof)); }
 .page-header, .page-header--photo { padding-bottom: calc(var(--space-l) + var(--roof)); }
 .cta { padding-top: calc(var(--space-l) + var(--roof)); }
+
+/* ===== Polish ===== */
+/* Smooth fade between pages (supported browsers only) */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+
+/* Sticky header that tightens on scroll */
+.masthead { position: sticky; top: 0; transition: box-shadow .25s, background .25s; }
+.masthead .container { transition: padding .25s var(--ease); }
+.masthead.is-stuck { box-shadow: 0 8px 24px rgba(20,40,31,.10); background: rgba(246,239,226,.94); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); }
+.masthead.is-stuck .container { padding-block: .6rem; }
+@media (max-width: 68em) { .masthead.is-stuck { background: var(--paper); backdrop-filter: none; } }
+html { scroll-padding-top: 6rem; }
+
+/* Animated underline on text links in body copy */
+.prose a, .arrow-link, .lede a, .facts dd a, .tasks5__head a {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat,
+              linear-gradient(var(--brand), var(--brand)) 0 100% / 0 3px no-repeat;
+  padding-bottom: 2px; transition: background-size .3s var(--ease), color .2s;
+}
+.prose a:hover, .arrow-link:hover, .lede a:hover, .facts dd a:hover, .tasks5__head a:hover { background-size: 100% 1px, 100% 3px; color: var(--ink); }
+
+/* Hero photo settles in on load */
+@media (prefers-reduced-motion: no-preference) {
+  .h5 .slideshow__frame { animation: settle 1.4s var(--ease) both; }
+  .h5__inset { animation: rise-in 1s .5s var(--ease) both; }
+  .h5__media::before { animation: frame-in 1.2s .2s var(--ease) both; }
+  @keyframes settle { from { opacity: 0; transform: scale(1.04); } }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(24px); } }
+  @keyframes frame-in { from { opacity: 0; transform: translate(-14px, 14px); } }
+}
+
+/* Task cards: number becomes a progress dot on hover */
+.task5__num { transition: letter-spacing .3s var(--ease); }
+.task5:hover .task5__num { letter-spacing: .08em; }
+
+/* Place photos: name lifts slightly on hover */
+.place5 .place5__name { transition: transform .4s var(--ease); }
+.place5 figure:hover .place5__name { transform: translateY(-4px); }

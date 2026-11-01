@@ -14,6 +14,15 @@
     targets.forEach((el) => { if (el.getBoundingClientRect().top > window.innerHeight) { el.setAttribute("data-reveal", ""); io.observe(el); } });
   }
 
+  /* Header gains a shadow once the page scrolls */
+  const masthead = $(".masthead");
+  if (masthead) {
+    const sentinel = document.createElement("div");
+    sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(([e]) => masthead.classList.toggle("is-stuck", !e.isIntersecting), { rootMargin: "80px 0px 0px 0px" }).observe(sentinel);
+  }
+
   /* Mobile navigation ---------------------------------------------------- */
   const toggle = $(".menu-toggle");
   const nav = $("#site-nav");
