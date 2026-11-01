@@ -28,6 +28,94 @@
     });
   }
 
+
+  /* Search suggestions: popular searches on focus, live Pagefind results as you type */
+  const box = $("[data-search-box]");
+  if (box) {
+    const input = $("input", box);
+    const panel = $("[data-suggest]", box);
+    const list = $("[data-suggest-list]", box);
+    const heading = $("[data-suggest-heading]", box);
+    const status = $("[data-suggest-status]", box);
+    const siteBase = document.querySelector('link[rel="icon"]').getAttribute("href").replace("favicon.svg", "");
+    const popular = JSON.parse(panel.dataset.popular || "[]");
+    const icon = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="2"/></svg>';
+    let pagefind, items = [], active = -1, token = 0;
+
+    const withBase = (url) => (url.startsWith("/") ? siteBase + url.slice(1) : url);
+    const getPagefind = async () => (pagefind ??= await import(`${siteBase}pagefind/pagefind.js`).then(async (pf) => { await pf.options({ excerptLength: 18 }); return pf; }));
+
+    const open = () => { panel.hidden = false; input.setAttribute("aria-expanded", "true"); };
+    const close = () => { panel.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
+    const setActive = (i) => {
+      items.forEach((el, n) => el.setAttribute("aria-selected", String(n === i)));
+      active = i;
+      if (i >= 0) { input.setAttribute("aria-activedescendant", items[i].id); items[i].scrollIntoView({ block: "nearest" }); }
+      else input.removeAttribute("aria-activedescendant");
+    };
+    const render = (rows, title) => {
+      heading.textContent = title;
+      list.replaceChildren(...rows.map((r, i) => {
+        const li = document.createElement("li");
+        li.id = `suggest-${i}`;
+        li.setAttribute("role", "option");
+        li.setAttribute("aria-selected", "false");
+        li.className = `suggest__item ${r.kind ? `suggest__item--${r.kind}` : ""}`;
+        li.dataset.url = r.url;
+        li.innerHTML = r.html;
+        li.addEventListener("mousedown", (e) => { e.preventDefault(); location.href = r.url; });
+        return li;
+      }));
+      items = [...list.children];
+      active = -1;
+      open();
+    };
+    const showPopular = () => render(
+      popular.map((p) => ({ kind: "popular", url: withBase(p.url), html: `${icon}<span class="suggest__title">${p.label}</span>` })),
+      "Popular searches"
+    );
+    const showResults = async (q) => {
+      const mine = ++token;
+      try {
+        const pf = await getPagefind();
+        const search = await pf.debouncedSearch(q, {}, 180);
+        if (!search || mine !== token) return;
+        const data = await Promise.all(search.results.slice(0, 5).map((r) => r.data()));
+        if (mine !== token) return;
+        const rows = [];
+        data.forEach((d) => {
+          const sub = (d.sub_results || []).find((s) => s.url !== d.url && s.excerpt.includes("<mark>"));
+          rows.push({ url: (sub || d).url, html: `<span class="suggest__title">${sub ? `${d.meta.title} › ${sub.title}` : d.meta.title}</span><span class="suggest__excerpt">${(sub || d).excerpt}</span>` });
+        });
+        const all = withBase(`/search/?q=${encodeURIComponent(q)}`);
+        if (rows.length) {
+          rows.push({ kind: "all", url: all, html: `See all results for “${q.replace(/[<>&"]/g, "")}” →` });
+          render(rows, `${search.results.length} ${search.results.length === 1 ? "result" : "results"}`);
+          status.textContent = `${search.results.length} results. Use up and down arrows to choose.`;
+        } else {
+          heading.textContent = "No matches";
+          list.innerHTML = `<li class="suggest__empty" role="presentation">Nothing found for “${q.replace(/[<>&"]/g, "")}”. Try another word, or call 0121 544 1230.</li>`;
+          items = [];
+          open();
+          status.textContent = "No results.";
+        }
+      } catch {
+        close(); // search index unavailable (e.g. local dev without a build): fall back to the form
+      }
+    };
+
+    input.addEventListener("focus", () => { input.value.trim().length < 2 ? showPopular() : showResults(input.value.trim()); getPagefind().catch(() => {}); });
+    input.addEventListener("input", () => { const q = input.value.trim(); q.length < 2 ? showPopular() : showResults(q); });
+    input.addEventListener("keydown", (e) => {
+      if (panel.hidden && (e.key === "ArrowDown" || e.key === "ArrowUp")) { open(); }
+      if (e.key === "ArrowDown") { e.preventDefault(); if (items.length) setActive((active + 1) % items.length); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (items.length) setActive(active <= 0 ? items.length - 1 : active - 1); }
+      else if (e.key === "Enter" && active >= 0) { e.preventDefault(); location.href = items[active].dataset.url; }
+      else if (e.key === "Escape") { if (!panel.hidden) { e.stopPropagation(); close(); } }
+    });
+    input.addEventListener("blur", () => setTimeout(close, 120));
+  }
+
   /* Translate menu: close on outside click / Escape ---------------------- */
   const translate = $("[data-translate]");
   if (translate) {

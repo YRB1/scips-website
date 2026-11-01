@@ -39,10 +39,17 @@
           {% endfor %}
         </ul>
       </nav>
-      <form class="site-search" action="/search/" method="get" role="search">
+      <form class="site-search" action="/search/" method="get" role="search" data-search-box>
         <label class="visually-hidden" for="site-search-q">Search this website</label>
-        <input id="site-search-q" name="q" type="search" placeholder="Search" autocomplete="off">
+        <input id="site-search-q" name="q" type="search" placeholder="Search" autocomplete="off" spellcheck="false"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="site-search-list" aria-describedby="site-search-help">
+        <span id="site-search-help" class="visually-hidden">Suggestions appear as you type. Use the up and down arrows to choose one.</span>
         <button type="submit" aria-label="Search"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="2"/></svg></button>
+        <div class="suggest" data-suggest hidden data-popular="{{ searchSuggestions | dump | escape }}">
+          <p class="suggest__heading" data-suggest-heading>Popular searches</p>
+          <ul class="suggest__list" id="site-search-list" role="listbox" aria-label="Search suggestions" data-suggest-list></ul>
+          <p class="suggest__status visually-hidden" role="status" aria-live="polite" data-suggest-status></p>
+        </div>
       </form>
     </div>
   </div>

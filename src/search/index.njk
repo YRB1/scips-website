@@ -11,6 +11,12 @@ eleventyExcludeFromCollections: true
     <div class="search" data-search>
       <noscript><p>Search needs JavaScript. You can <a href="/guides/">browse our guides</a> or <a href="/contact/">contact us</a> instead.</p></noscript>
     </div>
+    <div data-search-chips>
+      <p class="mt-l"><strong>Popular searches</strong></p>
+      <ul class="search-chips">
+        {% for s in searchSuggestions %}<li><a href="{{ s.url }}">{{ s.label }}</a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
 <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
@@ -26,6 +32,10 @@ eleventyExcludeFromCollections: true
     });
     const q = new URLSearchParams(location.search).get("q");
     if (q) ui.triggerSearch(q);
+    const chips = document.querySelector("[data-search-chips]");
+    const syncChips = () => { chips.hidden = !!document.querySelector(".pagefind-ui__search-input")?.value; };
+    document.addEventListener("input", syncChips);
+    setTimeout(syncChips, 100);
     setTimeout(() => document.querySelector(".pagefind-ui__search-input")?.focus(), 50);
   });
 </script>
