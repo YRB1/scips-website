@@ -1,3 +1,3 @@
-node_modules/
-_site/
 .cache/
+_site/
+node_modules/

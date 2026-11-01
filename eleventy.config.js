@@ -2,6 +2,7 @@ import { HtmlBasePlugin } from "@11ty/eleventy";
 import Image from "@11ty/eleventy-img";
 import { readFileSync } from "node:fs";
 import markdownItAnchor from "markdown-it-anchor";
+import { buildDuotones } from "./scripts/duotone.js";
 
 const photos = JSON.parse(readFileSync("src/_data/photos.json", "utf8"));
 
@@ -9,10 +10,11 @@ const photos = JSON.parse(readFileSync("src/_data/photos.json", "utf8"));
  * Responsive image from the photo library in src/_data/photos.json.
  * Generates AVIF/WebP/JPEG at several widths and returns a <picture>.
  */
-async function picture(id, sizes = "100vw", { loading = "lazy", className = "", widths = [480, 800, 1024] } = {}) {
+async function picture(id, sizes = "100vw", { loading = "lazy", className = "", widths = [480, 800, 1024], colour = false } = {}) {
   const p = photos[id];
   if (!p) throw new Error(`Unknown photo id: ${id}`);
-  const meta = await Image(p.src, {
+  const src = colour ? p.src : `.cache/duotone/${id}.jpg`;
+  const meta = await Image(src, {
     widths: [...widths, "auto"],
     formats: ["avif", "webp", "jpeg"],
     outputDir: "_site/assets/img/",
@@ -37,12 +39,15 @@ function credit(id) {
 }
 
 export default function (eleventyConfig) {
+  eleventyConfig.on("eleventy.before", buildDuotones);
+
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
   eleventyConfig.addPassthroughCopy({ "src/assets/favicon.svg": "favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/roofline.svg": "assets/roofline.svg" });
   eleventyConfig.addPassthroughCopy({ "src/static/.nojekyll": ".nojekyll" });
 
   eleventyConfig.addShortcode("picture", picture);
