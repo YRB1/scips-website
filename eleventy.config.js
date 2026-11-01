@@ -2,7 +2,7 @@ import { HtmlBasePlugin } from "@11ty/eleventy";
 import Image from "@11ty/eleventy-img";
 import { readFileSync } from "node:fs";
 import markdownItAnchor from "markdown-it-anchor";
-import { buildDuotones } from "./scripts/duotone.js";
+import { buildDuotones, photoCacheDir } from "./scripts/duotone.js";
 
 const photos = JSON.parse(readFileSync("src/_data/photos.json", "utf8"));
 
@@ -13,7 +13,7 @@ const photos = JSON.parse(readFileSync("src/_data/photos.json", "utf8"));
 async function picture(id, sizes = "100vw", { loading = "lazy", className = "", widths = [480, 800, 1024], colour = false } = {}) {
   const p = photos[id];
   if (!p) throw new Error(`Unknown photo id: ${id}`);
-  const src = colour ? p.src : `.cache/duotone/${id}.jpg`;
+  const src = colour ? p.src : `${photoCacheDir}/${id}.jpg`;
   const meta = await Image(src, {
     widths: [...widths, "auto"],
     formats: ["avif", "webp", "jpeg"],
