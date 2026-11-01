@@ -1,0 +1,87 @@
+---
+layout: layouts/page.njk
+title: Contact us
+description: Contact SCIPS by phone, email or our contact form. Open Monday to Friday, 9:30am to 5:30pm.
+lede: You don't need a referral. Call, email or use the form below and tell us what's happening where you live.
+topics: [["general","A general question"],["start","Starting a residents' group"],["group","Support for an existing group"],["training","Training"],["involved","Getting involved"],["issue","An issue in my area"]]
+towns: ["West Bromwich","Oldbury","Rowley Regis","Smethwick","Tipton","Wednesbury","Outside Sandwell"]
+---
+<div class="section">
+  <div class="container grid">
+    <div class="span-7">
+      <h2>Send us a message</h2>
+      <p class="mt-s muted">Fields marked optional can be left blank. We only use your details to reply to you.</p>
+
+      <div class="error-summary mt-m" data-error-summary role="alert" tabindex="-1" aria-labelledby="error-summary-title">
+        <h2 id="error-summary-title">There is a problem</h2>
+        <ul data-error-list></ul>
+      </div>
+      <div class="notice mt-m" data-form-notice role="status" tabindex="-1">
+        <strong>Your email app should now open with your message.</strong> Press send in your email app to send it to us. If nothing happened, email us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+      </div>
+
+      <form class="form mt-l" action="mailto:{{ site.email }}" method="post" enctype="text/plain" novalidate data-contact-form>
+        <div class="field" id="field-name">
+          <label for="name">Your name</label>
+          <p class="error-message" id="name-error"><span class="visually-hidden">Error:</span> Enter your name</p>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+        </div>
+        <div class="field" id="field-email">
+          <label for="email">Email address</label>
+          <p class="hint" id="email-hint">We'll use this to reply to you</p>
+          <p class="error-message" id="email-error"><span class="visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com</p>
+          <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" required aria-describedby="email-hint email-error">
+        </div>
+        <div class="field field--narrow">
+          <label for="phone">Phone number (optional)</label>
+          <p class="hint" id="phone-hint">If you'd prefer us to call you back</p>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" aria-describedby="phone-hint">
+        </div>
+        <div class="field field--narrow">
+          <label for="town">Where do you live? (optional)</label>
+          <select id="town" name="town">
+            <option value="">Choose a town</option>
+            {% for t in towns %}<option>{{ t }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="topic">What is your message about?</label>
+          <select id="topic" name="topic">
+            {% for t in topics %}<option value="{{ t[0] }}">{{ t[1] }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field" id="field-message">
+          <label for="message">Your message</label>
+          <p class="error-message" id="message-error"><span class="visually-hidden">Error:</span> Enter your message</p>
+          <textarea id="message" name="message" rows="6" required aria-describedby="message-error"></textarea>
+        </div>
+        <div class="field" id="field-consent">
+          <p class="error-message" id="consent-error"><span class="visually-hidden">Error:</span> Confirm that we can use your details to reply</p>
+          <div class="checkbox">
+            <input id="consent" name="consent" type="checkbox" value="yes" required aria-describedby="consent-error">
+            <label for="consent" style="font-weight:400">I agree that SCIPS can use these details to reply to my message, as explained in the <a href="/privacy/">privacy notice</a>.</label>
+          </div>
+        </div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div><button class="button" type="submit">Send message</button></div>
+      </form>
+    </div>
+
+    <aside class="span-4 start-9">
+      <dl class="facts">
+        <div><dt>Phone</dt><dd><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        <div><dt>Open</dt><dd>{{ site.hours }}</dd></div>
+        <div><dt>Address</dt><dd>{% for line in site.address %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</dd></div>
+      </dl>
+      <div class="map mt-l" data-map data-src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9935%2C52.5115%2C-1.9775%2C52.5185&amp;layer=mapnik&amp;marker=52.5150%2C-1.9855">
+        <div class="map__placeholder">
+          <p>The map is provided by OpenStreetMap, which will receive your IP address when it loads.</p>
+          <button class="button button--secondary" type="button" data-map-load>Show map</button>
+          <a href="https://www.openstreetmap.org/search?query=B70%206PY">Open in OpenStreetMap</a>
+        </div>
+      </div>
+      <p class="mt-s"><a class="arrow-link" href="https://www.google.com/maps/search/?api=1&amp;query=National+Metalforming+Centre+B70+6PY">Get directions</a></p>
+    </aside>
+  </div>
+</div>

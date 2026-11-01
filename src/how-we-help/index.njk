@@ -1,0 +1,81 @@
+---
+layout: layouts/page.njk
+title: How we help
+description: Group support, consultation, information, training and advocacy for tenants, residents and community groups in Sandwell.
+lede: We offer support, information, training and advocacy to tenants, residents and community groups across Sandwell.
+sections:
+  - id: group-support
+    title: Support for groups
+    photo: "6351591"
+    intro: Hands-on help to set up and run a tenants' and residents' association or community group properly.
+    points:
+      - Getting neighbours together and holding a first meeting
+      - Writing a constitution and electing a committee
+      - Running meetings and annual general meetings
+      - Keeping records, managing money and finding funding
+  - id: consultation
+    title: Consultation and participation
+    photo: "5220886"
+    intro: We co-ordinate and support consultation so that residents' views reach Sandwell Council and housing providers, and come back as real change.
+    points:
+      - Explaining what's being consulted on, in plain English
+      - Helping groups put together a response
+      - Bringing residents and decision-makers into the same room
+  - id: information
+    title: Information
+    photo: "5853324"
+    intro: Clear information about housing, your rights and what's happening in your area, so you can make informed decisions.
+    points:
+      - What to expect from your landlord
+      - How to raise an issue and who to contact
+      - Changes to housing services that affect you
+  - id: training
+    title: Training
+    photo: "7398084"
+    intro: Training for committee members and volunteers, so you feel confident running your group and representing your area.
+    points:
+      - Chairing meetings and taking minutes
+      - Being a treasurer
+      - Understanding how housing services are run
+  - id: advocacy
+    title: Advocacy
+    photo: "6345055"
+    intro: When something isn't right, we help you set out your case clearly and take it to the people who can put it right.
+    points:
+      - Helping you understand the issue and your options
+      - Supporting you in conversations with your landlord or the council
+      - Helping groups raise issues that affect a whole street or estate
+---
+<div class="section">
+  <div class="container with-sidebar">
+    <nav class="toc" aria-labelledby="toc-title" data-toc>
+      <h2 id="toc-title">On this page</h2>
+      <ol>
+        {% for s in sections %}<li><a href="#{{ s.id }}">{{ s.title }}</a></li>{% endfor %}
+      </ol>
+    </nav>
+    <div>
+      {% for s in sections %}
+      <section class="service" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+        <div class="service__grid">
+          <div class="prose">
+            <p class="kicker">{{ "0" + loop.index }}</p>
+            <h2 id="{{ s.id }}-title" style="margin-top:.5rem">{{ s.title }}</h2>
+            <p>{{ s.intro }}</p>
+            <ul>{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul>
+          </div>
+          <figure class="figure">
+            {% picture s.photo, "(min-width: 70em) 30vw, 100vw" %}
+            <figcaption>{% credit s.photo %}</figcaption>
+          </figure>
+        </div>
+      </section>
+      {% endfor %}
+
+      <div class="panel mt-l">
+        <h2>Not sure which you need?</h2>
+        <p>Call us on <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a> or <a href="/contact/">send us a message</a> and we'll point you in the right direction.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+---
+layout: layouts/legal.njk
+title: Privacy notice
+crumb: Privacy
+lede: How SCIPS uses personal information you give us through this website.
+---
+<h2>Who we are</h2>
+<p>{{ site.legalName }} ("SCIPS", "we") is responsible for personal information collected through this website. You can contact us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>, on {{ site.phone }}, or by post at {% for line in site.address %}{{ line }}{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+
+<h2>What we collect and why</h2>
+<table>
+  <thead><tr><th scope="col">Information</th><th scope="col">Why we need it</th><th scope="col">Lawful basis</th></tr></thead>
+  <tbody>
+    <tr><td>Your name, email address and message</td><td>To reply to your enquiry</td><td>Consent, given using the tick box on the form</td></tr>
+    <tr><td>Phone number and town (optional)</td><td>To call you back if you'd prefer, and to pass your enquiry to the right person</td><td>Consent</td></tr>
+  </tbody>
+</table>
+<p>We only ask for what we need. We don't use your details for marketing, we don't sell them, and we only share them if the law requires it or you ask us to, for example to raise an issue with your landlord on your behalf.</p>
+
+<h2>How the contact form works</h2>
+<p>When you press "Send message", your own email app opens with your message filled in. Nothing is sent to us until you send that email.</p>
+
+<h2>How long we keep information</h2>
+<p>We keep enquiry emails only for as long as we need them to help you, and then delete them.</p>
+
+<h2>Your rights</h2>
+<p>Under UK data protection law you can ask us to:</p>
+<ul>
+  <li>tell you what information we hold about you and give you a copy</li>
+  <li>correct anything that's wrong</li>
+  <li>delete your information</li>
+  <li>stop or limit how we use it</li>
+</ul>
+<p>You can also withdraw your consent at any time. To make a request, including asking us to delete your information, email <a href="mailto:{{ site.email }}?subject=Data%20request">{{ site.email }}</a> with "Data request" in the subject line, or call {{ site.phone }}. We'll reply within one month.</p>
+
+<h2>Children</h2>
+<p>If you're under 13, please ask a parent, carer or another adult you trust to contact us for you.</p>
+
+<h2>Other services used by this website</h2>
+<p>Fonts and images are stored on this website, so loading a page doesn't share your information with anyone else. Two optional features use other services, and only when you choose them:</p>
+<ul>
+  <li>the map on our contact page comes from OpenStreetMap and loads only if you select "Show map"</li>
+  <li>the translate menu opens your chosen language in Google Translate in a new tab</li>
+</ul>
+
+<h2>Complaints</h2>
+<p>If you're unhappy with how we've handled your information, please tell us first so we can try to put it right. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk/make-a-complaint</a> or on 0303 123 1113.</p>

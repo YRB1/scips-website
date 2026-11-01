@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title and page.url != "/" %}{{ title }} | {% endif %}{{ site.name }}{% if page.url == "/" %}: {{ site.fullName }}{% endif %}</title>
+  <meta name="description" content="{{ description or 'SCIPS supports tenants, residents and community groups across Sandwell to have a say in decisions about their homes and neighbourhoods.' }}">
+  {% if site.concept %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta name="theme-color" content="#1c1b19">
+  <meta property="og:title" content="{{ title or site.fullName }}">
+  <meta property="og:description" content="{{ description or 'Support for tenants, residents and community groups across Sandwell.' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-next-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "{{ site.fullName }} ({{ site.name }})",
+    "legalName": "{{ site.legalName }}",
+    "url": "{{ site.url }}",
+    "telephone": "{{ site.phoneHref }}",
+    "email": "{{ site.email }}",
+    "nonprofitStatus": "https://schema.org/UKNonprofitType",
+    "identifier": [{"@type":"PropertyValue","propertyID":"Registered charity number (England and Wales)","value":"{{ site.charityNumber }}"},{"@type":"PropertyValue","propertyID":"Company number","value":"{{ site.companyNumber }}"}],
+    "address": {"@type":"PostalAddress","streetAddress":"{{ site.address[0] }}, {{ site.address[1] }}","addressLocality":"{{ site.address[2] }}","postalCode":"{{ site.address[3] }}","addressCountry":"GB"},
+    "openingHours": "Mo-Fr 09:30-17:30",
+    "areaServed": "Sandwell"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  {% include "partials/header.njk" %}
+  <main id="main" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

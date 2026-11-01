@@ -1,0 +1,12 @@
+---
+layout: layouts/page.njk
+---
+<div class="section">
+  <div class="container">
+    <div class="prose">
+      {% if site.concept %}<p class="inset"><strong>Draft for SCIPS to review.</strong> This page was written for the website proposal. SCIPS should check it, and take advice if needed, before the site goes live.</p>{% endif %}
+      {{ content | safe }}
+      <p class="muted">Last updated: November 2026</p>
+    </div>
+  </div>
+</div>

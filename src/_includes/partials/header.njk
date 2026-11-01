@@ -1,0 +1,41 @@
+<div class="brand-stripe"></div>
+<div class="utility">
+  <div class="container">
+    <span class="charity">Registered charity {{ site.charityNumber }}</span>
+    <ul>
+      <li>
+        <details class="translate" data-translate>
+          <summary>Translate</summary>
+          <ul>
+            {% set langs = [["pa","Punjabi","ਪੰਜਾਬੀ"],["ur","Urdu","اردو"],["pl","Polish","Polski"],["bn","Bengali","বাংলা"],["gu","Gujarati","ગુજરાતી"],["ro","Romanian","Română"],["ar","Arabic","العربية"],["ku","Kurdish","Kurdî"],["so","Somali","Soomaali"],["ti","Tigrinya","ትግርኛ"]] %}
+            {% for l in langs %}
+            <li><a href="https://translate.google.com/translate?sl=en&amp;tl={{ l[0] }}&amp;u={{ site.liveUrl }}{{ page.url }}" data-lang="{{ l[0] }}" lang="{{ l[0] }}" rel="noopener" target="_blank"><span>{{ l[2] }}</span><span lang="en">{{ l[1] }}</span></a></li>
+            {% endfor %}
+            <li class="note">Opens Google Translate in a new tab. Machine translation may contain mistakes.</li>
+          </ul>
+        </details>
+      </li>
+      <li class="hide-sm"><a href="/accessibility/">Accessibility</a></li>
+      <li><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></li>
+    </ul>
+  </div>
+</div>
+<header class="masthead">
+  <div class="container">
+    <a class="wordmark" href="/" aria-label="{{ site.name }} home">
+      <span class="wordmark__mark">SCIPS</span>
+      <span class="wordmark__name">Sandwell Community Information &amp; Participation Service</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-toggle__icon" aria-hidden="true"><span></span></span>
+      Menu
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        {% for item in nav %}
+        <li><a href="{{ item.url }}"{% if item.url | isCurrent(page.url) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

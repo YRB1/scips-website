@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="wordmark" href="/" aria-label="{{ site.name }} home"><span class="wordmark__mark">SCIPS</span><span class="wordmark__name">Sandwell Community Information &amp; Participation Service</span></a>
+        <p>A community-led charity supporting tenants, residents and community groups across the Borough of Sandwell.</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></li>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>{{ site.hours }}</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <address>{% for line in site.address %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</address>
+      </div>
+      <div>
+        <h2>This website</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/cookies/">Cookies</a></li>
+          <li><a href="/accessibility/">Accessibility statement</a></li>
+          <li><a href="/terms/">Terms of use</a></li>
+          <li><a href="/image-credits/">Image credits</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© {% year %} {{ site.legalName }}. Registered charity in England and Wales, no. {{ site.charityNumber }}. Company limited by guarantee, no. {{ site.companyNumber }}. Registered office: 2nd Floor, National Metalforming Centre, 47 Birmingham Road, West Bromwich B70 6PY.</p>
+      {% if site.concept %}<p>Website proposal by <a href="https://yrbnova.com">YRB Nova</a></p>{% endif %}
+    </div>
+  </div>
+</footer>

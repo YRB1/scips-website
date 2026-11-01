@@ -1,51 +1,71 @@
-# SCIPS website: concept redesign
+# SCIPS website
 
-A concept redesign of [scips.org.uk](https://www.scips.org.uk) for **Sandwell Community Information & Participation Service (SCIPS)**, built by [YRB Nova](https://yrbnova.com) as a pitch.
+Website for **Sandwell Community Information and Participation Service (SCIPS)**, a community-led charity supporting tenants, residents and community groups across Sandwell.
 
-Static site, no build step: `index.html`, legal pages, `assets/img`, `assets/fonts`. Host anywhere (GitHub Pages, Netlify, Vercel, cPanel).
+Proposal build by [YRB Nova](https://yrbnova.com). Preview: https://yrb1.github.io/scips-website/
 
-## Features
-- Intro loader (first visit only), full-bleed hero slideshow with Ken Burns zoom and progress controls
-- Word-by-word heading reveals, scroll reveals, parallax, count-ups, magnetic buttons, custom cursor ring (mouse only)
-- Bordered floating header with active-section highlight, orange scrollbar and scroll progress bar
-- **Help finder**: two questions, then a tailored suggestion that pre-fills the contact form topic
-- "Sound familiar?" carousel (autoplay, arrows, dots, swipe, keyboard arrows)
-- Black-and-white photo gallery marquee that colours on hover
-- Animated six-towns map, bento services grid, scroll-filling "start a group" timeline
-- **Accessibility panel**: high contrast, readable font (Atkinson Hyperlegible), stop animations, underline links, text size, translate (Punjabi, Urdu, Polish, Bengali and more)
-- Mobile quick-action bar (Call / Email / Find help / Message)
+## Stack
 
-## Compliance checklist
-| Item | Status |
+- [Eleventy 3](https://www.11ty.dev/) static site generator with Nunjucks templates
+- Hand-written CSS (no framework), one stylesheet organised by tokens, layout and components
+- ~5 KB of vanilla JavaScript for progressive enhancement. Every page works without JavaScript
+- Responsive images (AVIF, WebP, JPEG at several widths) generated at build time with `@11ty/eleventy-img`
+- Self-hosted Atkinson Hyperlegible Next and Mono, designed by the Braille Institute for low-vision readers
+- Deployed to GitHub Pages by GitHub Actions on every push to `main`
+
+## Run locally
+
+```bash
+npm install
+npm start        # http://localhost:8080/scips-website/
+npm run build    # outputs to _site/
+```
+
+When the site moves to its own domain, build with `PATH_PREFIX=/ npm run build`.
+
+## Structure
+
+```
+src/
+  _data/           site details, navigation, photo library with credits
+  _includes/       base, page and legal layouts; header, footer, icons
+  assets/css/      main.css
+  assets/js/       main.js
+  assets/fonts/    Atkinson Hyperlegible Next and Mono (WOFF2)
+  assets/photos/   source photographs (resized at build time)
+  index.njk        home page
+  about/ how-we-help/ residents-groups/ get-involved/ contact/
+  privacy/ cookies/ accessibility/ terms/ image-credits/ 404.njk
+```
+
+Site-wide details (phone, email, address, charity and company numbers) live in `src/_data/site.json`, so they only need changing in one place.
+
+## Accessibility
+
+- Automated audit with axe-core: 0 violations on all pages against WCAG 2.2 AA
+- High-visibility focus states, skip link, logical heading order, landmarks and breadcrumbs
+- Form follows the GOV.UK pattern: visible labels, hints, inline errors and an error summary
+- Hero slideshow can be paused and does not play automatically when "reduce motion" is on
+- Carousel uses native scroll-snap with buttons and keyboard arrows
+- No accessibility overlay. The site is accessible by default instead
+
+## Privacy and compliance
+
+| Item | Approach |
 |---|---|
-| Privacy policy | `privacy.html` (draft for SCIPS to review) |
-| Terms | `terms.html` (website terms of use) |
-| Refund policy | Not applicable: no payments taken (stated in terms) |
-| Cookie policy | `cookies.html` |
-| Cookie / consent banner | Yes. No tracking cookies; external map only loads after opt-in. "Cookie settings" link in footer |
-| Form consents | Unticked consent box, linked to privacy policy |
-| No unnecessary data | Only name, email, message required; phone and town optional |
-| Third-party audit | Fonts and images self-hosted. Only third parties: OpenStreetMap (opt-in), Google Translate (user-initiated link) |
-| Dark patterns | None. "Essential only" is as easy as "Allow" |
-| Hidden fees | None |
-| Fake reviews | **Removed.** Replaced with a "Sound familiar?" carousel of situations SCIPS helps with. Add real, consented testimonials later |
-| Unsupported claims | Removed "free", response-time promise and unverified stats. Service bullets still to confirm with SCIPS |
-| Alt text | Meaningful images described; decorative images `alt=""` |
-| Colour contrast | Text and buttons checked against WCAG AA (dark text on orange buttons) |
-| Keyboard navigation | Skip link, visible focus, focus trapped in menu/panel, Escape closes, carousel arrow keys |
-| Business details | Charity no., company no., registered office in footer and legal pages |
-| Kids' data | Privacy policy asks under-13s to contact via a parent/carer |
-| Unsubscribe | Not applicable: no mailing list |
-| Fonts/images licensed | Fonts SIL OFL (self-hosted); photos Unsplash Licence; credits in footer |
-| Data deletion | Process in privacy policy (email "Data request") |
+| Cookies | None set, so no cookie banner is needed |
+| Third parties | Fonts and images self-hosted. OpenStreetMap map only loads on request; Google Translate opens in a new tab |
+| Forms | Only name, email and message required; explicit unticked consent; linked privacy notice |
+| Legal pages | Privacy, cookies, accessibility statement, terms, image credits (drafts for SCIPS to review) |
+| Claims | Only facts that can be verified from public sources; no testimonials or statistics invented |
+| Images | Geograph photos under CC BY-SA 2.0, credited on every image and on the image credits page |
+| Business details | Charity number, company number and registered office in the footer of every page |
 
-## Before going live
-- [ ] SCIPS to review the legal pages (marked as drafts) and confirm retention period
-- [ ] Confirm service wording (group support bullets, training topics)
-- [ ] Swap stock photos for real SCIPS photos (with consent) and add the logo
-- [ ] Add real testimonials, if SCIPS has consented ones
-- [ ] Wire the form to Formspree / Netlify Forms (currently opens the visitor's email app); update privacy policy if so
-- [ ] Remove `noindex` meta tags and the "Concept by YRB Nova" badge
+## Before launch
 
-## Sources
-Contact details, hours, charity no. 1097702 and the Tenant Engagement Strategy co-production: Sandwell Council Information Point & tenant engagement pages, Charity Commission register.
+- [ ] SCIPS to review all copy, especially service descriptions and the legal drafts
+- [ ] Add the SCIPS logo and their own photography (with consent)
+- [ ] Connect the contact form to a form service (e.g. Formspree) or a CMS, and update the privacy notice
+- [ ] Add a news and events section, if SCIPS will keep it updated
+- [ ] Set `"concept": false` in `src/_data/site.json` to remove `noindex` and the proposal credit
+- [ ] Point scips.org.uk at the host and build with `PATH_PREFIX=/`

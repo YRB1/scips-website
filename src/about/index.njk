@@ -1,0 +1,56 @@
+---
+layout: layouts/page.njk
+title: About us
+description: SCIPS is a community-led charity supporting tenants, residents and community groups across the Borough of Sandwell.
+lede: SCIPS is a charity led and governed by the community. We support tenants, residents and community groups across Sandwell to grow, develop and be heard.
+---
+<div class="section">
+  <div class="container intro-split">
+    <div class="prose">
+      <h2 style="margin-top:0">Who we are</h2>
+      <p>Sandwell Community Information and Participation Service, known as SCIPS, is a registered charity based in West Bromwich. We work with residents across all six towns of the borough.</p>
+      <p>Our aim is simple: people should have a real say in decisions about their homes and neighbourhoods. We help them get organised, find information, build skills and put their views to the people who make decisions.</p>
+      <p>We're open to everyone in Sandwell, whatever their age, background or beliefs, and whether they rent from the council, a housing association, a private landlord or own their home.</p>
+
+      <h2>How we're run</h2>
+      <p>SCIPS is community led and governed. Our trustees are volunteers who oversee the charity's work, and no trustee is paid for their role.</p>
+      <p>As a registered charity and a company limited by guarantee, we report each year to the Charity Commission and Companies House. You can see our latest accounts on the Charity Commission register.</p>
+      <p><a class="arrow-link" href="{{ site.charityRegister }}">View SCIPS on the Charity Commission register</a></p>
+
+      <h2>Working with Sandwell Council</h2>
+      <p>We work closely with Sandwell Council's housing team so that tenants' and residents' views shape housing services. The council describes SCIPS as its key partner in its Tenant Engagement Strategy, which we helped write with a group of nine tenant volunteers.</p>
+      <p>We're a separate organisation from the council. Our role is to support residents and make sure their voice is heard.</p>
+      <p><a class="arrow-link" href="{{ site.strategy }}">Read the Tenant Engagement Strategy</a></p>
+    </div>
+    <aside>
+      <dl class="facts">
+        <div><dt>Full name</dt><dd>{{ site.legalName }}</dd></div>
+        <div><dt>Charity no.</dt><dd>{{ site.charityNumber }} (England and Wales)</dd></div>
+        <div><dt>Company no.</dt><dd>{{ site.companyNumber }}</dd></div>
+        <div><dt>Area</dt><dd>Borough of Sandwell</dd></div>
+        <div><dt>Office</dt><dd>{% for line in site.address %}{{ line }}{% if not loop.last %}, {% endif %}{% endfor %}</dd></div>
+      </dl>
+      <figure class="figure mt-l">
+        {% picture "5847104", "(min-width: 60em) 40vw, 100vw" %}
+        <figcaption>{% credit "5847104" %}</figcaption>
+      </figure>
+    </aside>
+  </div>
+</div>
+
+<section class="section section--stone" aria-labelledby="towns-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="towns-title">Where we work</h2>
+      <p>We cover the whole Borough of Sandwell. As well as our office in West Bromwich, we meet residents in community venues when that's easier for them.</p>
+    </div>
+    <ul class="ruled-grid" style="list-style:none;padding-left:0">
+      <li><span class="num">01</span><h3>West Bromwich</h3><p>Home to our office at the National Metalforming Centre on Birmingham Road.</p></li>
+      <li><span class="num">02</span><h3>Oldbury</h3><p>Including Langley, Tividale and the surrounding estates.</p></li>
+      <li><span class="num">03</span><h3>Rowley Regis</h3><p>Including Blackheath, Cradley Heath and Old Hill.</p></li>
+      <li><span class="num">04</span><h3>Smethwick</h3><p>Including Cape Hill, Bearwood and Soho.</p></li>
+      <li><span class="num">05</span><h3>Tipton</h3><p>Including Princes End, Great Bridge and Tipton Green.</p></li>
+      <li><span class="num">06</span><h3>Wednesbury</h3><p>Including Friar Park, Wood Green and Mesty Croft.</p></li>
+    </ul>
+  </div>
+</section>

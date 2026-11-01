@@ -1,0 +1,52 @@
+---
+layout: layouts/page.njk
+title: Get involved
+heading: Have your say on housing in Sandwell
+crumb: Get involved
+description: Ways tenants and residents can get involved in decisions about housing in Sandwell.
+lede: Not ready to run a group? There are other ways to get involved, and we can help you find the right one.
+ways:
+  - title: Tenant and Leaseholder Scrutiny Group
+    text: Residents who meet to look closely at housing services and recommend improvements.
+  - title: Resident Building Safety Forum
+    text: Gives residents in high-rise blocks a say on building safety, including fire, asbestos, gas and water.
+  - title: Youth involvement
+    text: Makes sure younger tenants and residents are part of the conversation.
+  - title: Task and finish groups
+    text: Short-term groups set up to help write a specific policy or strategy.
+  - title: TRAs and community groups
+    text: Bring tenants and residents in a local area together. We can help you start one.
+  - title: Volunteering with SCIPS
+    text: Interested in helping your community? Get in touch to find out about volunteering with us.
+---
+<div class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Ways to get involved</h2>
+      <p>These are some of the ways Sandwell Council tenants and leaseholders can take part, set out in the council's Tenant Engagement Strategy.</p>
+    </div>
+    <ul class="ruled-grid" style="list-style:none;padding-left:0">
+      {% for w in ways %}
+      <li><span class="num">{{ "0" + loop.index }}</span><h3>{{ w.title }}</h3><p>{{ w.text }}</p></li>
+      {% endfor %}
+    </ul>
+    <p class="mt-l"><a class="arrow-link" href="{{ site.strategy }}">Read the Tenant Engagement Strategy on sandwell.gov.uk</a></p>
+  </div>
+</div>
+
+<section class="section section--stone" aria-labelledby="help-title">
+  <div class="container intro-split">
+    <div class="prose">
+      <h2 id="help-title" style="margin-top:0">We'll help you take part</h2>
+      <p>Joining a forum or panel for the first time can feel daunting. We can explain how it works, help you prepare and support you to make your point.</p>
+      <p>Tell us what you're interested in and we'll point you to the right group.</p>
+      <div class="button-group mt-m">
+        <a class="button" href="/contact/?topic=involved">Get in touch</a>
+      </div>
+    </div>
+    <figure class="figure">
+      {% picture "7476781", "(min-width: 60em) 40vw, 100vw" %}
+      <figcaption>{% credit "7476781" %}</figcaption>
+    </figure>
+  </div>
+</section>

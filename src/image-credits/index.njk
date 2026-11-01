@@ -1,0 +1,14 @@
+---
+layout: layouts/legal.njk
+title: Image credits
+lede: Photographs of Sandwell used on this website, and who took them.
+---
+<p>These photographs come from <a href="https://www.geograph.org.uk/">Geograph Britain and Ireland</a> and are used under the <a href="https://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0</a> licence. They have been resized and compressed for the web.</p>
+<table>
+  <thead><tr><th scope="col">Place</th><th scope="col">Photographer</th><th scope="col">Original</th></tr></thead>
+  <tbody>
+  {% for id, p in photos %}
+    <tr><td>{{ p.place }}</td><td>{{ p.author }}</td><td><a href="{{ p.link }}">{{ p.title | replace(r/^\w+ : /, "") }}</a></td></tr>
+  {% endfor %}
+  </tbody>
+</table>
