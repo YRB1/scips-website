@@ -23,6 +23,7 @@
 <header class="masthead">
   <div class="container">
     <a class="wordmark" href="/" aria-label="{{ site.name }} home">
+      <svg class="wordmark__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="8" fill="#e2792a"/><path d="M9 31V18.5L20 10l11 8.5V31h-7.5v-8h-7v8z" fill="#191a17"/></svg>
       <span class="wordmark__mark">SCIPS</span>
       <span class="wordmark__name">Sandwell Community Information &amp; Participation Service</span>
     </a>
@@ -30,12 +31,19 @@
       <span class="menu-toggle__icon" aria-hidden="true"><span></span></span>
       Menu
     </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <ul>
-        {% for item in nav %}
-        <li><a href="{{ item.url }}"{% if item.url | isCurrent(page.url) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <div class="nav" id="site-nav">
+      <nav aria-label="Main">
+        <ul>
+          {% for item in nav %}
+          <li><a href="{{ item.url }}"{% if item.url | isCurrent(page.url) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <form class="site-search" action="/search/" method="get" role="search">
+        <label class="visually-hidden" for="site-search-q">Search this website</label>
+        <input id="site-search-q" name="q" type="search" placeholder="Search" autocomplete="off">
+        <button type="submit" aria-label="Search"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 11l4 4" stroke="currentColor" stroke-width="2"/></svg></button>
+      </form>
+    </div>
   </div>
 </header>

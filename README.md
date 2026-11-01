@@ -10,7 +10,11 @@ Proposal build by [YRB Nova](https://yrbnova.com). Preview: https://yrb1.github.
 - Hand-written CSS (no framework), one stylesheet organised by tokens, layout and components
 - ~5 KB of vanilla JavaScript for progressive enhancement. Every page works without JavaScript
 - Responsive images (AVIF, WebP, JPEG at several widths) generated at build time with `@11ty/eleventy-img`
-- Self-hosted Atkinson Hyperlegible Next and Mono, designed by the Braille Institute for low-vision readers
+- Self-hosted Newsreader (headings) and Hanken Grotesk (text), both under the SIL Open Font Licence
+- Static site search with [Pagefind](https://pagefind.app/), built at deploy time, no server or third-party service
+- Printable guides written in Markdown (`src/guides/`), with automatic contents lists
+- Static, on-brand location map rendered from OpenStreetMap data (no embed, no tracking)
+- Social sharing image, sitemap and robots.txt
 - Deployed to GitHub Pages by GitHub Actions on every push to `main`
 
 ## Run locally
@@ -18,7 +22,7 @@ Proposal build by [YRB Nova](https://yrbnova.com). Preview: https://yrb1.github.
 ```bash
 npm install
 npm start        # http://localhost:8080/scips-website/
-npm run build    # outputs to _site/
+npm run build    # outputs to _site/ and builds the search index
 ```
 
 When the site moves to its own domain, build with `PATH_PREFIX=/ npm run build`.
@@ -33,8 +37,9 @@ src/
   assets/js/       main.js
   assets/fonts/    Atkinson Hyperlegible Next and Mono (WOFF2)
   assets/photos/   source photographs (resized at build time)
+  guides/          guides as Markdown files; add a file to add a guide
   index.njk        home page
-  about/ how-we-help/ residents-groups/ get-involved/ contact/
+  about/ how-we-help/ residents-groups/ get-involved/ contact/ search/
   privacy/ cookies/ accessibility/ terms/ image-credits/ 404.njk
 ```
 
@@ -43,6 +48,7 @@ Site-wide details (phone, email, address, charity and company numbers) live in `
 ## Accessibility
 
 - Automated audit with axe-core: 0 violations on all pages against WCAG 2.2 AA
+- Lighthouse (mobile): Accessibility 100, Best Practices 100, Performance 93 to 100. SEO is held back only by the deliberate `noindex` on this proposal build
 - High-visibility focus states, skip link, logical heading order, landmarks and breadcrumbs
 - Form follows the GOV.UK pattern: visible labels, hints, inline errors and an error summary
 - Hero slideshow can be paused and does not play automatically when "reduce motion" is on
@@ -54,11 +60,11 @@ Site-wide details (phone, email, address, charity and company numbers) live in `
 | Item | Approach |
 |---|---|
 | Cookies | None set, so no cookie banner is needed |
-| Third parties | Fonts and images self-hosted. OpenStreetMap map only loads on request; Google Translate opens in a new tab |
+| Third parties | Fonts, images and map all self-hosted. Google Translate and Google Maps only open when a visitor follows the link |
 | Forms | Only name, email and message required; explicit unticked consent; linked privacy notice |
 | Legal pages | Privacy, cookies, accessibility statement, terms, image credits (drafts for SCIPS to review) |
 | Claims | Only facts that can be verified from public sources; no testimonials or statistics invented |
-| Images | Geograph photos under CC BY-SA 2.0, credited on every image and on the image credits page |
+| Images | Geograph photos under CC BY-SA 2.0, credited on every image and on the image credits page. Map data © OpenStreetMap contributors (ODbL) |
 | Business details | Charity number, company number and registered office in the footer of every page |
 
 ## Before launch

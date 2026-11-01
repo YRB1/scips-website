@@ -74,14 +74,7 @@ towns: ["West Bromwich","Oldbury","Rowley Regis","Smethwick","Tipton","Wednesbur
         <div><dt>Open</dt><dd>{{ site.hours }}</dd></div>
         <div><dt>Address</dt><dd>{% for line in site.address %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</dd></div>
       </dl>
-      <div class="map mt-l" data-map data-src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9935%2C52.5115%2C-1.9775%2C52.5185&amp;layer=mapnik&amp;marker=52.5150%2C-1.9855">
-        <div class="map__placeholder">
-          <p>The map is provided by OpenStreetMap, which will receive your IP address when it loads.</p>
-          <button class="button button--secondary" type="button" data-map-load>Show map</button>
-          <a href="https://www.openstreetmap.org/search?query=B70%206PY">Open in OpenStreetMap</a>
-        </div>
-      </div>
-      <p class="mt-s"><a class="arrow-link" href="https://www.google.com/maps/search/?api=1&amp;query=National+Metalforming+Centre+B70+6PY">Get directions</a></p>
+      <div class="mt-l">{% include "partials/map.njk" %}</div>
     </aside>
   </div>
 </div>

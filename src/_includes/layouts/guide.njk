@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+---
+{% set toc = content | toc %}
+<header class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><span aria-current="page">{{ short or title }}</span></li>
+      </ol>
+    </nav>
+    <p class="kicker mt-m">Guide · {{ readingTime }} read</p>
+    <h1>{{ title }}</h1>
+    <p class="lede">{{ summary }}</p>
+  </div>
+</header>
+<div class="section">
+  <div class="container with-sidebar">
+    <aside class="guide-aside">
+      {% if toc.length %}
+      <nav class="toc" aria-labelledby="toc-title" data-toc>
+        <h2 id="toc-title">Contents</h2>
+        <ol>{% for h in toc %}<li><a href="#{{ h.id }}">{{ h.text }}</a></li>{% endfor %}</ol>
+      </nav>
+      {% endif %}
+      <button class="button button--secondary guide-print" type="button" data-print hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h8v4H4zM2 6h12v6h-2v3H4v-3H2zM5 10v4h6v-4z" fill="currentColor" fill-rule="evenodd"/></svg>
+        Print this guide
+      </button>
+    </aside>
+    <article class="prose guide">
+      {{ content | safe }}
+      <p class="muted guide-meta">{% if site.concept %}Draft guide for SCIPS to review.{% else %}Last reviewed November 2026.{% endif %} Information is general and not legal advice.</p>
+    </article>
+  </div>
+</div>
+<section class="section section--stone" aria-labelledby="more-guides">
+  <div class="container">
+    <h2 id="more-guides" class="h3-size">More guides</h2>
+    <ul class="guide-mini mt-m">
+      {% for g in collections.guide | sort(false, false, "data.order") %}{% if g.url != page.url %}
+      <li><a href="{{ g.url }}">{{ g.data.title }}</a></li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>

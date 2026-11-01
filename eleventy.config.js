@@ -1,6 +1,7 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import Image from "@11ty/eleventy-img";
 import { readFileSync } from "node:fs";
+import markdownItAnchor from "markdown-it-anchor";
 
 const photos = JSON.parse(readFileSync("src/_data/photos.json", "utf8"));
 
@@ -51,6 +52,24 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("isCurrent", (navUrl, pageUrl) =>
     navUrl === "/" ? pageUrl === "/" : pageUrl.startsWith(navUrl)
   );
+
+  // Headings get stable ids so guides can have a contents list
+  eleventyConfig.amendLibrary("md", (md) => md.use(markdownItAnchor, { level: [2], tabIndex: false }));
+
+  /** Extract <h2 id="..."> headings from rendered HTML for a contents list */
+  eleventyConfig.addFilter("toc", (html = "") =>
+    [...html.matchAll(/<h2 id="([^"]+)"[^>]*>(.*?)<\/h2>/g)].map(([, id, text]) => ({
+      id,
+      text: text.replace(/<[^>]+>/g, ""),
+    }))
+  );
+
+  eleventyConfig.addCollection("sitemap", (api) =>
+    api.getAll().filter((p) => p.url && !p.url.endsWith(".xml") && !p.url.endsWith(".txt") && p.url !== "/404.html")
+  );
+
+  eleventyConfig.addPassthroughCopy({ "src/assets/og.png": "assets/og.png" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/map-office.webp": "assets/map-office.webp", "src/assets/map-office.jpg": "assets/map-office.jpg" });
 
   eleventyConfig.addWatchTarget("src/assets/");
 

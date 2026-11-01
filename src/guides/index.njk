@@ -1,0 +1,28 @@
+---
+layout: layouts/page.njk
+title: Guides
+heading: Guides for residents' groups
+description: Practical guides for tenants' and residents' associations in Sandwell, from starting a group to running an AGM.
+lede: Practical, plain-English guides for setting up and running a residents' group. Each one can be printed.
+eleventyExcludeFromCollections: true
+---
+<div class="section">
+  <div class="container">
+    <ol class="guide-list">
+      {% for g in collections.guide | sort(false, false, "data.order") %}
+      <li>
+        <a href="{{ g.url }}">
+          <span class="guide-list__num">{{ "0" + loop.index }}</span>
+          <span class="guide-list__title">{{ g.data.title }}</span>
+          <span class="guide-list__summary">{{ g.data.summary }}</span>
+          <span class="guide-list__meta">{{ g.data.readingTime }} read</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+    <div class="panel mt-l">
+      <h2>Need something that isn't here?</h2>
+      <p>Call us on <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a> or <a href="/contact/">send us a message</a>. We can also provide guides in large print or another format.</p>
+    </div>
+  </div>
+</div>

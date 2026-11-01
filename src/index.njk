@@ -42,24 +42,16 @@ situations:
 {% from "partials/icons.njk" import arrow, prev, pause %}
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="container hero__grid">
-    <div class="hero__text">
-      <p class="kicker">Community-led charity · Borough of Sandwell</p>
-      <h1 id="hero-title">Helping Sandwell residents have a say in their homes and neighbourhoods</h1>
-      <p class="lede">We support tenants, residents and community groups to come together, get organised and be heard by the people who make decisions about where they live.</p>
-      <div class="button-group">
-        <a class="button button--brand" href="/residents-groups/">Start a residents' group {{ arrow() | safe }}</a>
-        <a class="button button--secondary" href="/contact/">Contact us</a>
-      </div>
-      <p class="hero__contact">Talk to us on <strong><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></strong><br>{{ site.hours }}</p>
-    </div>
+  <div class="container">
+    <p class="kicker">Community-led charity in Sandwell</p>
+    <h1 id="hero-title" class="hero__title">Helping Sandwell residents have a say in their <em>homes and neighbourhoods</em></h1>
 
-    <div class="hero__media">
+    <div class="hero__layout">
       <div class="slideshow" data-slideshow aria-roledescription="carousel" aria-label="Photographs of Sandwell">
         <div class="slideshow__frame">
           {% for id in heroSlides %}
           <div class="slideshow__slide{% if loop.first %} is-active{% endif %}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ heroSlides.length }}"{% if not loop.first %} aria-hidden="true"{% endif %}>
-            {% picture id, "(min-width: 60em) 58vw, 100vw", { loading: ("eager" if loop.first else "lazy") } %}
+            {% picture id, "(min-width: 60em) 62vw, 100vw", { loading: ("eager" if loop.first else "lazy") } %}
           </div>
           {% endfor %}
         </div>
@@ -72,6 +64,15 @@ situations:
             <button class="icon-button" type="button" data-slideshow-toggle aria-label="Pause slideshow">{{ pause() | safe }}</button>
           </div>
         </div>
+      </div>
+
+      <div class="hero__aside">
+        <p class="lede">We support tenants, residents and community groups to come together, get organised and be heard by the people who make decisions about where they live.</p>
+        <div class="button-group">
+          <a class="button button--brand" href="/residents-groups/">Start a residents' group {{ arrow() | safe }}</a>
+          <a class="button button--secondary" href="/how-we-help/">See how we help {{ arrow() | safe }}</a>
+        </div>
+        <p class="hero__contact">Talk to us on <strong><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></strong><br>{{ site.hours }}</p>
       </div>
     </div>
   </div>
@@ -120,7 +121,7 @@ situations:
   </div>
 </section>
 
-<section class="band" aria-labelledby="strategy-title">
+<section class="band band--green" aria-labelledby="strategy-title">
   <div class="container band__grid">
     <div>
       <h2 id="strategy-title">We helped shape how Sandwell Council works with its tenants</h2>
@@ -178,16 +179,36 @@ situations:
   </div>
 </section>
 
-<section class="section section--stone" aria-labelledby="contact-title">
+<section class="section section--ruled" aria-labelledby="guides-title">
   <div class="container">
-    <div class="section-head">
+    <div class="carousel__head">
+      <div class="section-head" style="margin-bottom:0">
+        <h2 id="guides-title">Guides for residents' groups</h2>
+        <p>Plain-English guides you can read online or print for your committee.</p>
+      </div>
+      <a class="arrow-link" href="/guides/">All guides</a>
+    </div>
+    <ul class="guides-strip">
+      {% for g in collections.guide | sort(false, false, "data.order") %}
+      <li><a href="{{ g.url }}"><span>Guide {{ loop.index }} · {{ g.data.readingTime }}</span><strong>{{ g.data.title }}</strong><span>{{ g.data.summary }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--stone" aria-labelledby="contact-title">
+  <div class="container visit">
+    <div>
       <h2 id="contact-title">Talk to us</h2>
-      <p>You don't need a referral. Get in touch and tell us what's happening where you live.</p>
+      <p class="lede mt-s">You don't need a referral. Get in touch and tell us what's happening where you live.</p>
+      <dl class="facts mt-l">
+        <div><dt>Call</dt><dd><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        <div><dt>Open</dt><dd>{{ site.hours }}</dd></div>
+        <div><dt>Visit</dt><dd>{% for line in site.address %}{{ line }}{% if not loop.last %}, {% endif %}{% endfor %}</dd></div>
+      </dl>
+      <div class="button-group mt-l"><a class="button" href="/contact/">Send us a message {{ arrow() | safe }}</a></div>
     </div>
-    <div class="contact-strip">
-      <div><span class="kicker">Call</span><a class="big" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><p class="muted">{{ site.hours }}</p></div>
-      <div><span class="kicker">Email</span><a class="big" href="mailto:{{ site.email }}">{{ site.email }}</a></div>
-      <div><span class="kicker">Write to us</span><p><a href="/contact/">Use our contact form</a></p></div>
-    </div>
+    {% include "partials/map.njk" %}
   </div>
 </section>

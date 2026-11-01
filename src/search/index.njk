@@ -1,0 +1,30 @@
+---
+layout: layouts/page.njk
+title: Search
+heading: Search this website
+searchable: false
+eleventyExcludeFromCollections: true
+---
+<div class="section">
+  <div class="container">
+    <div class="search" data-search>
+      <noscript><p>Search needs JavaScript. You can <a href="/guides/">browse our guides</a> or <a href="/contact/">contact us</a> instead.</p></noscript>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const ui = new PagefindUI({
+      element: "[data-search]",
+      showSubResults: true,
+      showImages: false,
+      resetStyles: false,
+      translations: { placeholder: "Search for guides, services or help", zero_results: "No results for [SEARCH_TERM]. Try a different word, or call us on 0121 544 1230." },
+    });
+    const q = new URLSearchParams(location.search).get("q");
+    if (q) ui.triggerSearch(q);
+    setTimeout(() => document.querySelector(".pagefind-ui__search-input")?.focus(), 50);
+  });
+</script>
