@@ -25,7 +25,10 @@ npm start        # http://localhost:8080/scips-website/
 npm run build    # outputs to _site/ and builds the search index
 ```
 
-When the site moves to its own domain, build with `PATH_PREFIX=/ npm run build`.
+### Hosting
+
+- **Vercel** (recommended): import the repo at vercel.com/new. `vercel.json` sets the build (`PATH_PREFIX=/ npm run build`) and output (`_site`). Canonical and share links follow the Vercel domain automatically; set `SITE_URL` in project settings once a custom domain is added.
+- **GitHub Pages**: built by `.github/workflows/deploy.yml` under `/scips-website/`.
 
 ## Structure
 

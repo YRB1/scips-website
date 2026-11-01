@@ -1,4 +1,6 @@
-{
+// Site-wide details. SITE_URL is set per host so canonical links and share
+// links point at the right domain (GitHub Pages preview, Vercel, or scips.org.uk).
+const base = {
   "name": "SCIPS",
   "fullName": "Sandwell Community Information and Participation Service",
   "legalName": "Sandwell Community Information and Participation Service Limited",
@@ -19,4 +21,9 @@
   "charityRegister": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/3103391",
   "strategy": "https://www.sandwell.gov.uk/housing/tenant-engagement-strategy",
   "liveUrl": "https://yrb1.github.io/scips-website"
-}
+};
+
+const fromEnv = process.env.SITE_URL
+  || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null);
+
+export default { ...base, liveUrl: (fromEnv || base.liveUrl).replace(/\/$/, "") };
