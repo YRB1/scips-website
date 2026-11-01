@@ -23,6 +23,26 @@
     new IntersectionObserver(([e]) => masthead.classList.toggle("is-stuck", !e.isIntersecting), { rootMargin: "80px 0px 0px 0px" }).observe(sentinel);
   }
 
+  /* Guide: copy link + feedback */
+  $$("[data-share]").forEach((root) => {
+    const btn = $("[data-copy]", root);
+    if (!btn || !navigator.clipboard) return;
+    btn.hidden = false;
+    btn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(root.dataset.url);
+      const label = $("span", btn);
+      label.textContent = "Link copied";
+      setTimeout(() => (label.textContent = "Copy link"), 2500);
+    });
+  });
+  $$("[data-feedback]").forEach((root) => {
+    $$("[data-fb]", root).forEach((b) => b.addEventListener("click", () => {
+      $$("[data-fb]", root).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      $("[data-fb-yes]", root).hidden = b.dataset.fb !== "yes";
+      $("[data-fb-no]", root).hidden = b.dataset.fb !== "no";
+    }));
+  });
+
   /* Mobile navigation ---------------------------------------------------- */
   const toggle = $(".menu-toggle");
   const nav = $("#site-nav");

@@ -5,11 +5,28 @@ permalink: /404.html
 searchable: false
 eleventyExcludeFromCollections: true
 ---
-<div class="section">
-  <div class="container prose">
+<section class="page-header">
+  <div class="container">
     <p class="kicker">Error 404</p>
-    <h1>Page not found</h1>
-    <p>If you typed the web address, check it is correct. If you pasted the web address, check you copied the entire address.</p>
-    <p><a href="/">Go to the home page</a> or call us on <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+    <h1>We can't find that page</h1>
+    <p class="lede">It may have moved, or the web address may be wrong. Try searching, or use one of the links below.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container grid">
+    <form class="notfound-search span-6" action="/search/" method="get" role="search">
+      <label for="nf-q"><strong>Search this website</strong></label>
+      <div class="notfound-search__row">
+        <input id="nf-q" name="q" type="search" autocomplete="off">
+        <button class="button" type="submit">Search</button>
+      </div>
+    </form>
+    <nav class="span-5 start-8" aria-labelledby="nf-links">
+      <h2 id="nf-links" class="h3-size">Popular pages</h2>
+      <ul class="nf-list mt-s">
+        {% for s in searchSuggestions %}<li><a class="arrow-link" href="{{ s.url }}">{{ s.label }}</a></li>{% endfor %}
+        <li><a class="arrow-link" href="/">Home page</a></li>
+      </ul>
+    </nav>
   </div>
 </div>

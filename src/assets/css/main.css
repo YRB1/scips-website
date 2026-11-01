@@ -1061,3 +1061,30 @@ html { scroll-padding-top: 6rem; }
 /* Place photos: name lifts slightly on hover */
 .place5 .place5__name { transition: transform .4s var(--ease); }
 .place5 figure:hover .place5__name { transform: translateY(-4px); }
+
+/* Guide tools */
+.guide-tools { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l); margin-top: var(--space-xl) !important; padding: var(--space-m); background: #fbf7ef; border: 1px solid var(--rule); border-radius: var(--radius); }
+.guide .guide-tools__heading { font-family: var(--font); font-size: var(--step-0); font-weight: 700; letter-spacing: 0; margin: 0 0 .75rem; padding: 0; border: 0; }
+.share__buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+.share__btn { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .9rem; border: 1.5px solid var(--green); border-radius: var(--radius); background: transparent; color: var(--green); font-weight: 700; font-size: .9375rem; text-decoration: none; cursor: pointer; background-image: none !important; }
+.share__btn:hover { background: var(--green); color: var(--paper); }
+.share__btn svg { width: 1.1rem; height: 1.1rem; }
+.share__btn[aria-pressed="true"] { background: var(--green); color: var(--paper); }
+.feedback__thanks { margin-top: .75rem; font-size: var(--step--1); }
+@media (max-width: 48em) { .guide-tools { grid-template-columns: 1fr; } }
+
+/* Contact: next steps */
+.next-steps { grid-column: 1 / span 7; margin-top: var(--space-l); padding-top: var(--space-l); border-top: 1px solid var(--rule); }
+.next-steps .steps > li { grid-template-columns: 3rem 1fr; }
+@media (max-width: 60em) { .next-steps { grid-column: 1 / -1; } }
+
+/* 404 */
+.notfound-search { display: grid; gap: .5rem; align-content: start; }
+.notfound-search__row { display: flex; gap: .5rem; }
+.notfound-search input { flex: 1; padding: .75rem; border: 2px solid var(--green); border-radius: var(--radius); background: #fff; }
+.nf-list { list-style: none; padding: 0; display: grid; gap: .6rem; }
+.span-5 { grid-column: span 5; }
+.span-5.start-8 { grid-column: 8 / span 5; }
+
+/* Footer */
+.to-top { font-weight: 700; }
