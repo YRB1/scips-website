@@ -1,16 +1,25 @@
 ---
 layout: layouts/base.njk
 ---
-<header class="page-header">
-  <div class="container">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="/">Home</a></li>
-        <li><span aria-current="page">{{ crumb or title }}</span></li>
-      </ol>
-    </nav>
-    <h1>{{ heading or title }}</h1>
-    {% if lede %}<p class="lede">{{ lede | safe }}</p>{% endif %}
+<header class="page-header{% if headerPhoto %} page-header--photo{% endif %}">
+  <div class="container page-header__grid">
+    <div class="page-header__text">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span aria-current="page">{{ crumb or title }}</span></li>
+        </ol>
+      </nav>
+      <h1>{{ heading or title }}</h1>
+      {% if lede %}<p class="lede">{{ lede | safe }}</p>{% endif %}
+    </div>
+    {% if headerPhoto %}
+    <figure class="figure page-header__media">
+      {% picture headerPhoto, "(min-width: 60em) 40vw, 100vw", { loading: "eager" } %}
+      <figcaption>{% credit headerPhoto %}</figcaption>
+    </figure>
+    {% endif %}
   </div>
 </header>
 {{ content | safe }}
+{% if not hideCta %}{% include "partials/cta.njk" %}{% endif %}

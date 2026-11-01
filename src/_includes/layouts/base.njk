@@ -3,41 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if title and page.url != "/" %}{{ title }} | {% endif %}{{ site.name }}{% if page.url == "/" %}: {{ site.fullName }}{% endif %}</title>
-  <meta name="description" content="{{ description or 'SCIPS supports tenants, residents and community groups across Sandwell to have a say in decisions about their homes and neighbourhoods.' }}">
-  {% if site.concept %}<meta name="robots" content="noindex, nofollow">{% endif %}
-  <meta name="theme-color" content="#1c1b19">
-  <meta property="og:title" content="{{ title or site.fullName }}">
-  <meta property="og:description" content="{{ description or 'Support for tenants, residents and community groups across Sandwell.' }}">
-  <meta property="og:type" content="website">
+  {%- set canonicalBase = site.liveUrl if site.concept else site.url -%}
+  {%- set canonical = canonicalBase + page.url -%}
+  {%- set pageTitle = seoTitle or ((title + " | " + site.name) if title and page.url != "/" else site.name + ": " + site.fullName) -%}
+  {%- if seoTitle and page.url != "/" %}{% set pageTitle = seoTitle + " | " + site.name %}{% endif -%}
+  {%- set pageDesc = description or summary or "SCIPS supports tenants, residents and community groups across Sandwell to have a say in decisions about their homes and neighbourhoods." -%}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {% if site.concept %}<meta name="robots" content="noindex, nofollow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+  <meta name="theme-color" content="#191a17">
+  <meta name="geo.region" content="GB-SAW">
+  <meta name="geo.placename" content="West Bromwich, Sandwell">
+  <meta name="geo.position" content="52.5124;-1.9803">
+  <meta property="og:type" content="{{ 'article' if (tags and 'guide' in tags) else 'website' }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:title" content="{{ seoTitle or title or site.fullName }}">
+  <meta property="og:description" content="{{ pageDesc }}">
   <meta property="og:locale" content="en_GB">
   <meta property="og:site_name" content="{{ site.fullName }}">
   <meta property="og:image" content="{{ site.liveUrl }}/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="SCIPS: Sandwell Community Information and Participation Service">
+  <meta property="og:image:alt" content="SCIPS: helping Sandwell residents have a say in their homes and neighbourhoods">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seoTitle or title or site.fullName }}">
+  <meta name="twitter:description" content="{{ pageDesc }}">
+  <meta name="twitter:image" content="{{ site.liveUrl }}/assets/og.png">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/hanken-grotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NGO",
-    "name": "{{ site.fullName }} ({{ site.name }})",
-    "legalName": "{{ site.legalName }}",
-    "url": "{{ site.url }}",
-    "telephone": "{{ site.phoneHref }}",
-    "email": "{{ site.email }}",
-    "nonprofitStatus": "https://schema.org/UKNonprofitType",
-    "identifier": [{"@type":"PropertyValue","propertyID":"Registered charity number (England and Wales)","value":"{{ site.charityNumber }}"},{"@type":"PropertyValue","propertyID":"Company number","value":"{{ site.companyNumber }}"}],
-    "address": {"@type":"PostalAddress","streetAddress":"{{ site.address[0] }}, {{ site.address[1] }}","addressLocality":"{{ site.address[2] }}","postalCode":"{{ site.address[3] }}","addressCountry":"GB"},
-    "openingHours": "Mo-Fr 09:30-17:30",
-    "areaServed": "Sandwell"
-  }
-  </script>
+  {% include "partials/schema.njk" %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>

@@ -69,6 +69,11 @@ export default function (eleventyConfig) {
   );
 
   eleventyConfig.addPassthroughCopy({ "src/assets/og.png": "assets/og.png" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/apple-touch-icon.png": "apple-touch-icon.png", "src/assets/icon-512.png": "assets/icon-512.png" });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/leaflet/dist/leaflet.js": "assets/vendor/leaflet/leaflet.js",
+    "node_modules/leaflet/dist/leaflet.css": "assets/vendor/leaflet/leaflet.css",
+  });
   eleventyConfig.addPassthroughCopy({ "src/assets/map-office.webp": "assets/map-office.webp", "src/assets/map-office.jpg": "assets/map-office.jpg" });
 
   eleventyConfig.addWatchTarget("src/assets/");

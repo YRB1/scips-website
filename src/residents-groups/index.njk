@@ -1,9 +1,24 @@
 ---
+headerPhoto: "6815360"
 layout: layouts/page.njk
 title: Residents' groups
 heading: Tenants' and residents' associations
 crumb: Residents' groups
-description: How SCIPS helps people in Sandwell start and run a tenants' and residents' association (TRA).
+description: "Start or run a tenants' and residents' association (TRA) in Sandwell. Support from SCIPS with constitutions, AGMs, committees, money and funding."
+seoTitle: Tenants' and residents' associations (TRAs) in Sandwell
+faqs:
+  - q: "Do we need a constitution?"
+    a: "Yes. A constitution sets out what your group is for, who can join, how decisions are made and how money is handled. Landlords and funders usually ask to see one. We can help you write yours or check an existing one."
+  - q: "What happens at an AGM?"
+    a: "At your annual general meeting, members hear what the group has done over the year, see the accounts and elect the committee. We can help you plan it and make sure it follows your constitution."
+  - q: "How should we manage the group's money?"
+    a: "Keep the group's money in a bank account in its name, with at least two people needed to approve payments. Keep simple records of money in and out, and share them with members. We can talk you through setting this up."
+  - q: "Where can we find funding?"
+    a: "Small grants are often available for community activities and running costs. Tell us what you'd like to do and we can help you look for suitable funding and put an application together."
+  - q: "How do we work with our landlord or the council?"
+    a: "Groups get the best results when they have a regular, constructive relationship with the people who make decisions. We can help you set up meetings, prepare what you want to say and follow up afterwards."
+  - q: "Our group has stopped meeting. Can you help?"
+    a: "Yes. Groups go quiet for all sorts of reasons. We can help you bring people back together, refresh your committee and decide what to focus on next."
 lede: A tenants' and residents' association (TRA) gives your street or estate one strong voice. We can help you start one, and keep it running well.
 ---
 <div class="section">
@@ -15,8 +30,8 @@ lede: A tenants' and residents' association (TRA) gives your street or estate on
       <p>You don't need any experience to start one. You need a few neighbours who care about where they live.</p>
     </div>
     <figure class="figure">
-      {% picture "6815366", "(min-width: 60em) 40vw, 100vw" %}
-      <figcaption>{% credit "6815366" %}</figcaption>
+      {% picture "7398084", "(min-width: 60em) 40vw, 100vw" %}
+      <figcaption>{% credit "7398084" %}</figcaption>
     </figure>
   </div>
 </div>
@@ -43,30 +58,12 @@ lede: A tenants' and residents' association (TRA) gives your street or estate on
       <p class="mt-s muted">Common questions from committees. Ask us about anything that isn't covered here.</p>
     </div>
     <div class="accordion span-8">
+      {% for f in faqs %}
       <details>
-        <summary>Do we need a constitution?</summary>
-        <div class="accordion__body"><p>Yes. A constitution sets out what your group is for, who can join, how decisions are made and how money is handled. Landlords and funders usually ask to see one. We can help you write yours or check an existing one.</p></div>
+        <summary>{{ f.q }}</summary>
+        <div class="accordion__body"><p>{{ f.a }}</p></div>
       </details>
-      <details>
-        <summary>What happens at an AGM?</summary>
-        <div class="accordion__body"><p>At your annual general meeting, members hear what the group has done over the year, see the accounts and elect the committee. We can help you plan it and make sure it follows your constitution.</p></div>
-      </details>
-      <details>
-        <summary>How should we manage the group's money?</summary>
-        <div class="accordion__body"><p>Keep the group's money in a bank account in its name, with at least two people needed to approve payments. Keep simple records of money in and out, and share them with members. We can talk you through setting this up.</p></div>
-      </details>
-      <details>
-        <summary>Where can we find funding?</summary>
-        <div class="accordion__body"><p>Small grants are often available for community activities and running costs. Tell us what you'd like to do and we can help you look for suitable funding and put an application together.</p></div>
-      </details>
-      <details>
-        <summary>How do we work with our landlord or the council?</summary>
-        <div class="accordion__body"><p>Groups get the best results when they have a regular, constructive relationship with the people who make decisions. We can help you set up meetings, prepare what you want to say and follow up afterwards.</p></div>
-      </details>
-      <details>
-        <summary>Our group has stopped meeting. Can you help?</summary>
-        <div class="accordion__body"><p>Yes. Groups go quiet for all sorts of reasons. We can help you bring people back together, refresh your committee and decide what to focus on next.</p></div>
-      </details>
+      {% endfor %}
     </div>
   </div>
 </section>

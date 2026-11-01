@@ -5,6 +5,15 @@
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Gentle reveal for sections as they scroll into view */
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    const targets = $$("main .section-head, main .task-list, main .facts, main .ruled-grid, main .photo-grid .figure, main .guides-strip, main .carousel__track, main .steps, main .accordion, main .guide-list, main .service, main .map-card, .cta__grid");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    targets.forEach((el) => { if (el.getBoundingClientRect().top > window.innerHeight) { el.setAttribute("data-reveal", ""); io.observe(el); } });
+  }
+
   /* Mobile navigation ---------------------------------------------------- */
   const toggle = $(".menu-toggle");
   const nav = $("#site-nav");
@@ -107,14 +116,59 @@
     links.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
   }
 
-  /* Map: only load OpenStreetMap when asked ------------------------------ */
-  $$("[data-map]").forEach((map) => {
-    $("[data-map-load]", map)?.addEventListener("click", () => {
-      const frame = document.createElement("iframe");
-      frame.title = "Map showing the SCIPS office at the National Metalforming Centre, West Bromwich";
-      frame.src = map.dataset.src;
-      frame.loading = "lazy";
-      map.replaceChildren(frame);
+  /* Map: static image first; becomes a movable map (Leaflet + OpenStreetMap) on request */
+  const loadLeaflet = (() => {
+    let promise;
+    return (base) => promise ??= new Promise((resolve, reject) => {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = `${base}assets/vendor/leaflet/leaflet.css`;
+      document.head.append(css);
+      const js = document.createElement("script");
+      js.src = `${base}assets/vendor/leaflet/leaflet.js`;
+      js.onload = () => resolve(window.L);
+      js.onerror = reject;
+      document.head.append(js);
+    });
+  })();
+  const base = document.querySelector('link[rel="icon"]').getAttribute("href").replace("favicon.svg", "");
+
+  $$("[data-map]").forEach((root) => {
+    const canvas = $("[data-map-canvas]", root);
+    const btn = $("[data-map-activate]", root);
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      btn.textContent = "Loading map…";
+      try {
+        const L = await loadLeaflet(base);
+        const pos = [parseFloat(root.dataset.lat), parseFloat(root.dataset.lng)];
+        canvas.replaceChildren();
+        canvas.classList.add("is-live");
+        const map = L.map(canvas, { center: pos, zoom: 16, scrollWheelZoom: false, zoomControl: true, attributionControl: true });
+        map.attributionControl.setPrefix(false);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19, minZoom: 12,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+        const pin = L.divIcon({
+          className: "scips-pin",
+          html: '<span class="map-card__label">SCIPS<span>National Metalforming Centre</span></span><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M15 0C6.7 0 0 6.6 0 14.8 0 26 15 40 15 40s15-14 15-25.2C30 6.6 23.3 0 15 0z" fill="#191a17"/><circle cx="15" cy="14.5" r="6" fill="#e2792a"/></svg>',
+          iconSize: [30, 40], iconAnchor: [15, 40],
+        });
+        L.marker(pos, { icon: pin, keyboard: false, title: "SCIPS office" }).addTo(map);
+        map.on("click focus", () => map.scrollWheelZoom.enable());
+        map.on("mouseout", () => map.scrollWheelZoom.disable());
+        const hint = document.createElement("span");
+        hint.className = "map-hint";
+        hint.textContent = "Drag to move · use + and − to zoom";
+        canvas.append(hint);
+        setTimeout(() => (hint.style.opacity = "0"), 3500);
+        canvas.setAttribute("aria-label", "Interactive map. Use arrow keys to move and plus or minus to zoom.");
+        canvas.focus({ preventScroll: true });
+      } catch {
+        btn.disabled = false;
+        btn.textContent = "Map couldn't load. Try again";
+      }
     });
   });
 

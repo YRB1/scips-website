@@ -1,0 +1,53 @@
+{%- set base = site.liveUrl if site.concept else site.url -%}
+{%- set orgId = site.url + "/#organisation" -%}
+{%- set graph = [
+  {
+    "@type": ["NGO", "LocalBusiness"],
+    "@id": orgId,
+    "name": site.fullName,
+    "alternateName": site.name,
+    "legalName": site.legalName,
+    "url": site.url,
+    "logo": base + "/apple-touch-icon.png",
+    "image": base + "/assets/og.png",
+    "description": "Community-led charity supporting tenants, residents and community groups across the Borough of Sandwell.",
+    "telephone": site.phoneHref,
+    "email": site.email,
+    "address": { "@type": "PostalAddress", "streetAddress": "2nd Floor, National Metalforming Centre, 37-47 Birmingham Road", "addressLocality": "West Bromwich", "addressRegion": "West Midlands", "postalCode": "B70 6PY", "addressCountry": "GB" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 52.5124, "longitude": -1.9803 },
+    "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "17:30" }],
+    "areaServed": { "@type": "AdministrativeArea", "name": "Metropolitan Borough of Sandwell" },
+    "nonprofitStatus": "https://schema.org/UKNonprofitType",
+    "identifier": [
+      { "@type": "PropertyValue", "propertyID": "Registered charity number (England and Wales)", "value": site.charityNumber },
+      { "@type": "PropertyValue", "propertyID": "Companies House number", "value": site.companyNumber }
+    ],
+    "sameAs": [site.charityRegister]
+  },
+  {
+    "@type": "WebSite",
+    "@id": base + "/#website",
+    "url": base + "/",
+    "name": site.fullName,
+    "inLanguage": "en-GB",
+    "publisher": { "@id": orgId },
+    "potentialAction": { "@type": "SearchAction", "target": { "@type": "EntryPoint", "urlTemplate": base + "/search/?q={search_term_string}" }, "query-input": "required name=search_term_string" }
+  }
+] -%}
+{%- if page.url != "/" -%}
+  {%- set crumbs = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": base + "/" }] -%}
+  {%- if tags and "guide" in tags -%}
+    {%- set crumbs = (crumbs.push({ "@type": "ListItem", "position": 2, "name": "Guides", "item": base + "/guides/" }), crumbs) -%}
+  {%- endif -%}
+  {%- set crumbs = (crumbs.push({ "@type": "ListItem", "position": crumbs.length + 1, "name": crumb or short or title }), crumbs) -%}
+  {%- set graph = (graph.push({ "@type": "BreadcrumbList", "itemListElement": crumbs }), graph) -%}
+{%- endif -%}
+{%- if faqs -%}
+  {%- set qs = [] -%}
+  {%- for f in faqs -%}{%- set qs = (qs.push({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }), qs) -%}{%- endfor -%}
+  {%- set graph = (graph.push({ "@type": "FAQPage", "mainEntity": qs }), graph) -%}
+{%- endif -%}
+{%- if tags and "guide" in tags -%}
+  {%- set graph = (graph.push({ "@type": "Article", "headline": title, "description": summary, "inLanguage": "en-GB", "author": { "@id": orgId }, "publisher": { "@id": orgId }, "mainEntityOfPage": base + page.url, "image": base + "/assets/og.png", "dateModified": page.date.toISOString() }), graph) -%}
+{%- endif %}
+  <script type="application/ld+json">{{ { "@context": "https://schema.org", "@graph": graph } | dump | safe }}</script>
