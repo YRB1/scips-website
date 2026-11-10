@@ -1,7 +1,7 @@
 {% from "partials/icons.njk" import arrow %}
-<section class="cta" aria-labelledby="cta-title">
+<section class="cta" data-theme="dark" data-hide-pill aria-labelledby="cta-title">
   <div class="container cta__grid">
-    <h2 id="cta-title">Not sure where to start? <span>Talk to us.</span></h2>
+    <h2 id="cta-title" data-split>Not sure where to start? <span>Talk to us.</span></h2>
     <div class="cta__actions">
       <a class="cta__phone" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>
       <p>{{ site.hours }}</p>

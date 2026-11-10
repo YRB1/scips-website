@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 ---
 {% set toc = content | toc %}
-<header class="page-header">
+<header class="page-header" data-theme="dark">
   <div class="container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <ol>
@@ -12,7 +12,7 @@ layout: layouts/base.njk
       </ol>
     </nav>
     <p class="kicker mt-m">Guide · {{ readingTime }} read</p>
-    <h1>{{ title }}</h1>
+    <h1 data-split>{{ title }}</h1>
     <p class="lede">{{ summary }}</p>
   </div>
 </header>

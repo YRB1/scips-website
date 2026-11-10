@@ -3,23 +3,32 @@ seoTitle: "SCIPS: support for tenants, residents and community groups in Sandwel
 layout: layouts/base.njk
 title: Home
 description: "SCIPS is a community-led charity in West Bromwich helping tenants, residents and community groups across Sandwell have a say on their homes and neighbourhoods."
-heroSlides: ["7457170", "6815366", "7470106", "5783648"]
+heroPhoto: "6815366"
 tasks:
   - title: Start a residents' group
     desc: Bring neighbours together and set your group up properly
     url: /residents-groups/#starting
+    photo: "7398084"
   - title: Support for your group
     desc: Constitutions, meetings, AGMs, money and funding
     url: /residents-groups/#running
+    photo: "6351591"
   - title: Have your say on housing
     desc: Forums, panels and groups that residents can join
     url: /get-involved/
+    photo: "5220886"
   - title: Training
     desc: Skills to run meetings and represent your area
     url: /how-we-help/#training
+    photo: "5853324"
   - title: Help with an issue
     desc: Raise a problem with the people who can fix it
     url: /how-we-help/#advocacy
+    photo: "5371532"
+  - title: Talk to someone
+    desc: Not sure where to start? Call or send us a message
+    url: /contact/
+    photo: "7470106"
 situations:
   - label: Group support
     quote: Bins, fly-tipping, broken lights. You've reported it again and again and nothing changes.
@@ -40,192 +49,204 @@ situations:
     quote: Something isn't right with your home and you don't feel listened to.
     how: We help you set out your case clearly and take it to the people who can put it right.
 places:
-  - { id: "5290424", name: "West Bromwich" }
+  - { id: "5290424", name: "West Bromwich", note: "Our office is here, on Birmingham Road" }
   - { id: "7457170", name: "Smethwick" }
-  - { id: "6815360", name: "Tipton" }
-  - { id: "6997029", name: "Wednesbury" }
+  - { id: "6815409", name: "Tipton" }
+  - { id: "7476781", name: "Wednesbury" }
   - { id: "6345055", name: "Tividale" }
 ---
-{% from "partials/icons.njk" import arrow, prev, pause %}
+{% from "partials/icons.njk" import arrow %}
 
-<section class="h5" aria-labelledby="hero-title">
-  <div class="container h5__grid">
-    <div class="h5__text">
-      <p class="kicker kicker--light">Community-led charity · Borough of Sandwell</p>
-      <h1 id="hero-title" class="h5__title">Helping Sandwell residents have <em>a say</em> in their homes and neighbourhoods</h1>
-      <p class="h5__lede">We support tenants, residents and community groups to come together, get organised and be heard by the people who make decisions about where they live.</p>
+{# 1. Hero: a house window you scroll through until the street fills the screen #}
+<section class="xh" data-cursor="Scroll" data-scene="hero" data-theme="dark" aria-labelledby="hero-title">
+  <div class="xh__stage">
+    <div class="xh__frame" aria-hidden="true"></div>
+    <div class="xh__window" aria-hidden="true">
+      <div class="xh__photo">{% picture heroPhoto, "100vw", { loading: "eager", widths: [800, 1024] } %}</div>
+      <span class="xh__bars"></span>
+    </div>
+
+    <p class="xh__kicker">Community-led charity · Borough of Sandwell</p>
+    <h1 id="hero-title" class="xh__title">
+      <span class="xh__half xh__half--l">Your home.</span>
+      <span class="xh__half xh__half--r">Your say.</span>
+    </h1>
+    <p class="xh__lede">We help tenants, residents and community groups across Sandwell come together, get organised and be heard.</p>
+    <p class="xh__hint" aria-hidden="true"><span></span>Scroll</p>
+
+    <div class="xh__after">
+      <p class="xh__statement">Helping Sandwell residents have a say in their homes and neighbourhoods.</p>
       <div class="button-group">
         <a class="button button--brand" href="/residents-groups/">Start a residents' group {{ arrow() | safe }}</a>
-        <a class="button button--ghost-light" href="/how-we-help/">How we help</a>
+        <a class="button button--glass" href="/how-we-help/">How we help</a>
       </div>
-      <p class="h5__phone">Call <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a> · {{ site.hours }}</p>
+      <p class="xh__credit credit">{% credit heroPhoto %}</p>
     </div>
+  </div>
+</section>
 
-    <div class="h5__media">
-      <div class="slideshow" data-slideshow aria-roledescription="carousel" aria-label="Photographs of Sandwell">
-        <div class="slideshow__frame">
-          {% for id in heroSlides %}
-          <div class="slideshow__slide{% if loop.first %} is-active{% endif %}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ heroSlides.length }}"{% if not loop.first %} aria-hidden="true"{% endif %}>
-            {% picture id, "(min-width: 60em) 46vw, 100vw", { loading: ("eager" if loop.first else "lazy") } %}
-          </div>
-          {% endfor %}
+{# 2. Who we are: the statement lights up word by word as you scroll #}
+<section class="xs curtain" data-scene="reveal" aria-labelledby="about-title">
+  <figure class="xs__float xs__float--a" data-speed="-0.18">
+    {% picture "5783648", "(min-width: 60em) 18vw, 40vw" %}
+    <figcaption class="credit">{% credit "5783648" %}</figcaption>
+  </figure>
+  <figure class="xs__float xs__float--b" data-speed="0.14">
+    {% picture "6815381", "(min-width: 60em) 24vw, 50vw" %}
+    <figcaption class="credit">{% credit "6815381" %}</figcaption>
+  </figure>
+  <div class="container xs__inner">
+    <h2 id="about-title" class="eyebrow">About SCIPS · Run by local people, for local people</h2>
+    <p class="xs__text" data-words>SCIPS is a charity led and governed by the community. We help residents build pride in their neighbourhoods, and make sure their views reach the people who make decisions.</p>
+    <dl class="xs__facts">
+      <div><dt>Area</dt><dd>All six towns</dd></div>
+      <div><dt>Referral</dt><dd>Not needed</dd></div>
+      <div><dt>Charity no.</dt><dd><a href="{{ site.charityRegister }}">{{ site.charityNumber }}</a></dd></div>
+    </dl>
+    <p class="xs__more"><a class="arrow-link" href="/about/">More about us</a></p>
+  </div>
+</section>
+
+{# 3. Ways in: a list of tasks beside a photo that changes with the one you point at #}
+<section class="xt curtain" aria-labelledby="tasks-title" data-tasks>
+  <div class="container xt__grid">
+    <div class="xt__list">
+      <h2 id="tasks-title" class="eyebrow">How can we help?</h2>
+      <p class="xt__intro">Choose what you'd like to do. Not sure? <a href="tel:{{ site.phoneHref }}">Call us</a> and we'll talk it through.</p>
+      <ol class="xt__rows">
+        {% for t in tasks %}
+        <li>
+          <a class="xt__row" data-cursor="Open" href="{{ t.url }}" data-task="{{ loop.index0 }}">
+            <span class="xt__num">{{ "0" + loop.index }}</span>
+            <span class="xt__title">{{ t.title }}</span>
+            <span class="xt__desc">{{ t.desc }}</span>
+            <span class="xt__arrow">{{ arrow() | safe }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="xt__media" inert>
+      <div class="xt__frame">
+        {% for t in tasks %}
+        <div class="xt__img{% if loop.first %} is-active{% endif %}" data-task-img="{{ loop.index0 }}">
+          {% picture t.photo, "(min-width: 60em) 40vw, 1px" %}
+          <span class="credit">{% credit t.photo %}</span>
         </div>
-        <div class="slideshow__bar">
-          <div class="slideshow__captions credit" aria-live="off">
-            {% for id in heroSlides %}<p{% if loop.first %} class="is-active"{% endif %}>{% credit id %}</p>{% endfor %}
-          </div>
-          <div class="slideshow__controls">
-            <span data-slideshow-count>1 / {{ heroSlides.length }}</span>
-            <button class="icon-button" type="button" data-slideshow-toggle aria-label="Pause slideshow">{{ pause() | safe }}</button>
-          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# 4. Sound familiar? One situation at a time, held on screen while you scroll #}
+<section class="xq curtain" data-scene="steps" data-theme="dark" aria-labelledby="situations-title" style="--n: {{ situations.length }}">
+  <div class="xq__stage">
+    <div class="container xq__grid">
+      <div class="xq__head">
+        <p class="eyebrow">Sound familiar?</p>
+        <h2 id="situations-title" class="xq__title" data-split>Things we can help with</h2>
+        <div class="xq__progress" aria-hidden="true">
+          <span class="xq__count"><span data-step-current>01</span> / {{ "0" + situations.length }}</span>
+          <span class="xq__bar"><span></span></span>
         </div>
       </div>
-      <div class="h5__inset" aria-hidden="true">
-        {% picture "6815366", "20vw" %}
-      </div>
-    </div>
-  </div>
-  <div class="roofline roofline--paper" aria-hidden="true"></div>
-</section>
-
-<section class="tasks5" aria-labelledby="tasks-title">
-  <div class="container">
-    <div class="tasks5__head">
-      <h2 id="tasks-title">How can we help?</h2>
-      <p>Choose what you'd like to do. Not sure? <a href="tel:{{ site.phoneHref }}">Call us</a> and we'll talk it through.</p>
-    </div>
-    <ul class="tasks5__grid">
-      {% for t in tasks %}
-      <li>
-        <a class="task5" href="{{ t.url }}">
-          <span class="task5__num">{{ "0" + loop.index }}</span>
-          <span class="task5__title">{{ t.title }}</span>
-          <span class="task5__desc">{{ t.desc }}</span>
-          <span class="task5__arrow">{{ arrow() | safe }}</span>
-        </a>
-      </li>
-      {% endfor %}
-      <li>
-        <a class="task5 task5--brand" href="/contact/">
-          <span class="task5__num">06</span>
-          <span class="task5__title">Talk to someone</span>
-          <span class="task5__desc">{{ site.phone }} · Mon to Fri</span>
-          <span class="task5__arrow">{{ arrow() | safe }}</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section class="about5" aria-labelledby="about-title">
-  <div class="container about5__grid">
-    <figure class="about5__photo figure">
-      {% picture "7470106", "(min-width: 60em) 40vw, 100vw" %}
-      <figcaption>{% credit "7470106" %}</figcaption>
-    </figure>
-    <div class="about5__text">
-      <p class="kicker">About SCIPS</p>
-      <h2 id="about-title">Run by local people, for local people</h2>
-      <p class="lede">SCIPS is a charity led and governed by the community. We help residents build pride in their neighbourhoods, and make sure their views reach the people who make decisions.</p>
-      <p>We work with tenants' and residents' associations, community groups and individual residents across Sandwell, alongside Sandwell Council and local housing providers.</p>
-      <dl class="stats5">
-        <div><dt>Area</dt><dd>All six towns</dd></div>
-        <div><dt>Referral</dt><dd>Not needed</dd></div>
-        <div><dt>Charity no.</dt><dd><a href="{{ site.charityRegister }}">{{ site.charityNumber }}</a></dd></div>
-      </dl>
-      <p><a class="arrow-link" href="/about/">More about us</a></p>
+      <ol class="xq__list">
+        {% for s in situations %}
+        <li class="xq__item{% if loop.first %} is-active{% endif %}" data-step="{{ loop.index0 }}">
+          <p class="xq__label">{{ s.label }}</p>
+          <blockquote class="xq__quote"><p>{{ s.quote }}</p></blockquote>
+          <p class="xq__how"><strong>How we help</strong> {{ s.how }}</p>
+        </li>
+        {% endfor %}
+      </ol>
     </div>
   </div>
 </section>
 
-<section class="quote5" aria-labelledby="strategy-title">
-  <div class="roofline roofline--green-top" aria-hidden="true"></div>
-  <div class="container quote5__grid">
+{# 5. Where we work: full-screen places that stack over each other #}
+<section class="xp" aria-labelledby="area-title">
+  <div class="xp__intro" data-theme="dark">
+    <div class="container">
+      <h2 id="area-title" class="eyebrow">Where we work</h2>
+      <p class="xp__lede">Across the whole borough. Our office is in West Bromwich, and we meet residents in local venues across Oldbury, Rowley Regis, Smethwick, Tipton and Wednesbury.</p>
+    </div>
+  </div>
+  <ol class="xp__list">
+    {% for pl in places %}
+    <li class="xp__panel" data-scene="panel" data-theme="dark">
+      <figure>
+        <div class="xp__img">{% picture pl.id, "100vw", { widths: [800, 1024] } %}</div>
+        <figcaption>
+          <span class="xp__index" aria-hidden="true">{{ "0" + loop.index }} / {{ "0" + places.length }}</span>
+          <span class="xp__name">{{ pl.name }}</span>
+          {% if pl.note %}<span class="xp__note">{{ pl.note }}</span>{% endif %}
+          <span class="credit">{% credit pl.id %}</span>
+        </figcaption>
+      </figure>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# 6. Track record #}
+<section class="xr curtain" data-scene="drift" data-theme="dark" aria-labelledby="strategy-title">
+  <p class="xr__drift" aria-hidden="true"><span>Key partner · Key partner · Key partner · Key partner ·</span></p>
+  <div class="container xr__grid">
     <div>
-      <p class="kicker kicker--light">Our track record</p>
-      <h2 id="strategy-title">We helped shape how Sandwell Council works with its tenants</h2>
-      <p class="quote5__body">The council's Tenant Engagement Strategy was written by a group of nine tenants, SCIPS and the council's housing team, working together.</p>
-      <a class="button button--ghost-light mt-m" href="{{ site.strategy }}">Read the strategy {{ arrow() | safe }}</a>
+      <p class="eyebrow">Our track record</p>
+      <h2 id="strategy-title" class="xr__title" data-split>We helped shape how Sandwell Council works with its tenants</h2>
+      <p class="xr__body">The council's Tenant Engagement Strategy was written by a group of nine tenants, SCIPS and the council's housing team, working together.</p>
+      <a class="button button--glass" href="{{ site.strategy }}">Read the strategy {{ arrow() | safe }}</a>
     </div>
-    <blockquote class="quote5__quote">
-      <p>…our key partner, Sandwell Community Information and Participation Services (SCIPS)</p>
+    <blockquote class="xr__quote">
+      <p>“…our key partner, Sandwell Community Information and Participation Services (SCIPS)”</p>
       <cite>Sandwell Council, Tenant Engagement Strategy</cite>
     </blockquote>
   </div>
 </section>
 
-<section class="section situ5" aria-labelledby="situations-title" data-carousel>
-  <div class="container">
-    <div class="carousel__head">
-      <div class="section-head" style="margin-bottom:0">
-        <p class="kicker">Sound familiar?</p>
-        <h2 id="situations-title">Things we can help with</h2>
-      </div>
-      <div class="carousel__nav" hidden>
-        <button class="icon-button" type="button" data-carousel-prev aria-label="Previous">{{ prev() | safe }}</button>
-        <span data-carousel-status aria-live="polite">1 of {{ situations.length }}</span>
-        <button class="icon-button" type="button" data-carousel-next aria-label="Next">{{ arrow() | safe }}</button>
-      </div>
-    </div>
-    <ul class="carousel__track" data-carousel-track tabindex="0" aria-label="Situations we help with. Scroll sideways to see more.">
-      {% for s in situations %}
-      <li class="carousel__item situ5__card">
-        <span class="label">{{ s.label }}</span>
-        <blockquote>{{ s.quote }}</blockquote>
-        <p class="how"><strong>How we help</strong>{{ s.how }}</p>
-      </li>
-      {% endfor %}
-    </ul>
+{# Town names, drifting #}
+<div class="xm curtain" data-marquee aria-hidden="true">
+  <div class="xm__track">
+    {% for round in [1, 2] %}{% for town in ["West Bromwich", "Smethwick", "Tipton", "Wednesbury", "Oldbury", "Rowley Regis"] %}<span class="xm__item">{{ town }}<svg viewBox="0 0 40 40"><path d="M9 31V18.5L20 10l11 8.5V31h-7.5v-8h-7v8z"/></svg></span>{% endfor %}{% endfor %}
   </div>
-</section>
+</div>
 
-<section class="section places5" aria-labelledby="area-title">
+{# 7. Guides #}
+<section class="xg" aria-labelledby="guides-title">
   <div class="container">
-    <div class="carousel__head">
-      <div class="section-head" style="margin-bottom:0">
-        <p class="kicker">Where we work</p>
-        <h2 id="area-title">Across the whole borough</h2>
-        <p>Our office is in West Bromwich, and we meet residents in local venues across Oldbury, Rowley Regis, Smethwick, Tipton and Wednesbury.</p>
-      </div>
-    </div>
-    <ul class="places5__grid">
-      {% for pl in places %}
-      <li class="place5">
-        <figure>
-          {% picture pl.id, "(min-width: 48em) 33vw, 100vw" %}
-          <figcaption><span class="place5__name">{{ pl.name }}</span><span class="credit">{% credit pl.id %}</span></figcaption>
-        </figure>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="section section--ruled" aria-labelledby="guides-title">
-  <div class="container">
-    <div class="carousel__head">
-      <div class="section-head" style="margin-bottom:0">
-        <p class="kicker">Free guides</p>
-        <h2 id="guides-title">Guides for residents' groups</h2>
+    <div class="xg__head">
+      <div>
+        <p class="eyebrow">Free guides</p>
+        <h2 id="guides-title" class="xg__title" data-split>Guides for residents' groups</h2>
       </div>
       <a class="arrow-link" href="/guides/">All guides</a>
     </div>
-    <ul class="guides-strip">
+    <ol class="xg__list">
       {% for g in collections.guide | sort(false, false, "data.order") %}
-      <li><a href="{{ g.url }}"><span>Guide {{ loop.index }} · {{ g.data.readingTime }}</span><strong>{{ g.data.title }}</strong><span>{{ g.data.summary }}</span></a></li>
+      <li>
+        <a class="xg__card" data-cursor="Read" href="{{ g.url }}">
+          <span class="xg__num" aria-hidden="true">{{ "0" + loop.index }}</span>
+          <strong>{{ g.data.title }}</strong>
+          <span class="xg__sum">{{ g.data.summary }}</span>
+          <span class="xg__meta">{{ g.data.readingTime }} read {{ arrow() | safe }}</span>
+        </a>
+      </li>
       {% endfor %}
-    </ul>
+    </ol>
   </div>
 </section>
 
-<section class="section section--stone" aria-labelledby="contact-title">
-  <div class="container visit">
+{# 8. Contact #}
+<section class="xc curtain" aria-labelledby="contact-title" data-hide-pill>
+  <div class="container xc__grid">
     <div>
-      <p class="kicker">Get in touch</p>
-      <h2 id="contact-title">Talk to us</h2>
-      <p class="lede mt-s">You don't need a referral. Get in touch and tell us what's happening where you live.</p>
-      <dl class="facts mt-l">
-        <div><dt>Call</dt><dd><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></dd></div>
+      <p class="eyebrow">Get in touch</p>
+      <h2 id="contact-title" class="xc__title" data-split>Talk to us.</h2>
+      <p class="xc__lede">You don't need a referral. Tell us what's happening where you live.</p>
+      <a class="xc__phone" href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>
+      <dl class="facts">
         <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
         <div><dt>Open</dt><dd>{{ site.hours }}</dd></div>
         <div><dt>Visit</dt><dd>{% for line in site.address %}{{ line }}{% if not loop.last %}, {% endif %}{% endfor %}</dd></div>

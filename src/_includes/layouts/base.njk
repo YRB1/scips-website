@@ -12,7 +12,7 @@
   <meta name="description" content="{{ pageDesc }}">
   <link rel="canonical" href="{{ canonical }}">
   {% if site.concept %}<meta name="robots" content="noindex, nofollow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
-  <meta name="theme-color" content="#191a17">
+  <meta name="theme-color" content="#0e1c16">
   <meta name="geo.region" content="GB-SAW">
   <meta name="geo.placename" content="West Bromwich, Sandwell">
   <meta name="geo.position" content="52.5124;-1.9803">
@@ -37,15 +37,22 @@
   <link rel="preload" href="/assets/fonts/hanken-grotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/main.css">
-  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script>document.documentElement.classList.replace("no-js", "js");if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");{% if page.url == "/" %}try{if(!sessionStorage.getItem("scips-intro"))document.documentElement.classList.add("intro-on")}catch(e){}{% endif %}}</script>
   {% include "partials/schema.njk" %}
 </head>
-<body>
+<body class="{{ 'is-home' if page.url == '/' else 'is-inner' }}">
+  {% if page.url == "/" %}<div class="intro" data-intro aria-hidden="true">
+    <svg class="intro__mark" viewBox="0 0 40 40"><path d="M9 31V18.5L20 10l11 8.5V31h-7.5v-8h-7v8z" pathLength="1"/></svg>
+    <p class="intro__word">SCIPS</p>
+    <p class="intro__count"><span data-intro-count>000</span></p>
+    <p class="intro__place">Sandwell</p>
+  </div>{% endif %}
   <a class="skip-link" href="#main">Skip to main content</a>
   {% include "partials/header.njk" %}
   <main id="main" tabindex="-1"{% if searchable !== false %} data-pagefind-body{% endif %}>
     {{ content | safe }}
   </main>
+  {% include "partials/pill.njk" %}
   {% include "partials/footer.njk" %}
   <script src="/assets/js/main.js" defer></script>
 </body>

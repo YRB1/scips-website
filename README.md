@@ -54,8 +54,8 @@ Site-wide details (phone, email, address, charity and company numbers) live in `
 - Lighthouse (mobile): Accessibility 100, Best Practices 100, Performance 93 to 100. SEO is held back only by the deliberate `noindex` on this proposal build
 - High-visibility focus states, skip link, logical heading order, landmarks and breadcrumbs
 - Form follows the GOV.UK pattern: visible labels, hints, inline errors and an error summary
-- Hero slideshow can be paused and does not play automatically when "reduce motion" is on
-- Carousel uses native scroll-snap with buttons and keyboard arrows
+- Scroll animations switch off when "reduce motion" is on; every section then shows as ordinary static content
+- Every page still works without JavaScript
 - No accessibility overlay. The site is accessible by default instead
 
 ## Privacy and compliance
